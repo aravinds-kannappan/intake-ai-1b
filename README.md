@@ -2,7 +2,7 @@
 
 A tool that takes a clinical trial protocol PDF, finds the Schedule of Activities (whatever the sponsor decided to call it), and produces a faithful, structured, machine-readable representation of it: every row, every column, verbatim cell values, hierarchical headers on both axes, and footnotes linked to the cells they modify. A web UI lets you drop in any protocol and inspect the result against the source pages.
 
-Live demo: deployed on Vercel (GitHub auto-deploy from `main`).
+Deployment: Vercel, auto-deploying from `main` (import this repo in Vercel and set `ANTHROPIC_API_KEY` in the project's environment variables; no other configuration is needed).
 
 ## Running it
 
