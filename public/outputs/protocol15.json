@@ -1,0 +1,1555 @@
+{
+  "tables": [
+    {
+      "id": "t1",
+      "title": "Table 1. Overview of Study Assessments",
+      "pages": [
+        25
+      ],
+      "columns": [
+        {
+          "id": "c1",
+          "path": [
+            "Screening"
+          ],
+          "label": "Screening",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "-4 to 0*",
+          "window": null,
+          "markers": [
+            "*"
+          ]
+        },
+        {
+          "id": "c2",
+          "path": [
+            "Baseline"
+          ],
+          "label": "Baseline",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "-4 to 0*",
+          "window": null,
+          "markers": [
+            "*"
+          ]
+        },
+        {
+          "id": "c3",
+          "path": [],
+          "label": "RANDOMIZATION",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c4",
+          "path": [
+            "Treatment"
+          ],
+          "label": "1-3",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "1-3",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c5",
+          "path": [
+            "Treatment"
+          ],
+          "label": "4",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "4",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c6",
+          "path": [
+            "Treatment"
+          ],
+          "label": "5-7",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "5-7",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c7",
+          "path": [
+            "Treatment"
+          ],
+          "label": "8",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "8",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c8",
+          "path": [
+            "Treatment"
+          ],
+          "label": "9-11",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "9-11",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c9",
+          "path": [
+            "Treatment"
+          ],
+          "label": "12",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "12",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c10",
+          "path": [
+            "Follow-up"
+          ],
+          "label": "16",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "16",
+          "window": null,
+          "markers": []
+        }
+      ],
+      "rows": [
+        {
+          "id": "rcat1",
+          "kind": "category",
+          "label": "Screening",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r1",
+          "kind": "assessment",
+          "label": "Informed consent",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "kind": "assessment",
+          "label": "SCID",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r3",
+          "kind": "assessment",
+          "label": "Psychiatric evaluation",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "kind": "assessment",
+          "label": "ADD evaluation",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "kind": "assessment",
+          "label": "Medical history",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r6",
+          "kind": "assessment",
+          "label": "Prior medications",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r7",
+          "kind": "assessment",
+          "label": "Infectious disease panel/ syphilis test",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r8",
+          "kind": "assessment",
+          "label": "HIV Test (optional)",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "rcat2",
+          "kind": "category",
+          "label": "Safety",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r9",
+          "kind": "assessment",
+          "label": "Physical exam/FEV1",
+          "category": "Safety",
+          "markers": [
+            "Xd"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r10",
+          "kind": "assessment",
+          "label": "Vital signs",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r11",
+          "kind": "assessment",
+          "label": "Hematology",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r12",
+          "kind": "assessment",
+          "label": "Blood chemistries",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r13",
+          "kind": "assessment",
+          "label": "Ham-D",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r14",
+          "kind": "assessment",
+          "label": "CSSA",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "3X"
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r15",
+          "kind": "assessment",
+          "label": "Urinalysis",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r16",
+          "kind": "assessment",
+          "label": "Pregnancy test",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r17",
+          "kind": "assessment",
+          "label": "ECG",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r18",
+          "kind": "assessment",
+          "label": "Adverse events",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "3X"
+            },
+            {
+              "col": "c5",
+              "value": "3X"
+            },
+            {
+              "col": "c6",
+              "value": "3X"
+            },
+            {
+              "col": "c7",
+              "value": "3X"
+            },
+            {
+              "col": "c8",
+              "value": "3X"
+            },
+            {
+              "col": "c9",
+              "value": "3X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r19",
+          "kind": "assessment",
+          "label": "Concomitant medications",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "Weekly x 2 weeks"
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "rcat3",
+          "kind": "category",
+          "label": "Efficacy",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r20",
+          "kind": "assessment",
+          "label": "ASI-Lite",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r21",
+          "kind": "assessment",
+          "label": "HRBS",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r22",
+          "kind": "assessment",
+          "label": "BSCS",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "Weekly x 2 weeks"
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r23",
+          "kind": "assessment",
+          "label": "CCQ-NOW",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r24",
+          "kind": "assessment",
+          "label": "CGI-S",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "Weekly x 2 weeks"
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r25",
+          "kind": "assessment",
+          "label": "CGI-O",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "Weekly x 2 weeks"
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r26",
+          "kind": "assessment",
+          "label": "SUI",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "3 X/week for 2 weeks"
+            },
+            {
+              "col": "c4",
+              "value": "3 X"
+            },
+            {
+              "col": "c5",
+              "value": "3 X"
+            },
+            {
+              "col": "c6",
+              "value": "3 X"
+            },
+            {
+              "col": "c7",
+              "value": "3 X"
+            },
+            {
+              "col": "c8",
+              "value": "3 X"
+            },
+            {
+              "col": "c9",
+              "value": "3 X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r27",
+          "kind": "assessment",
+          "label": "Urine BE and creatinine",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "3 X/week for 2 weeks"
+            },
+            {
+              "col": "c4",
+              "value": "3 X"
+            },
+            {
+              "col": "c5",
+              "value": "3 X"
+            },
+            {
+              "col": "c6",
+              "value": "3 X"
+            },
+            {
+              "col": "c7",
+              "value": "3 X"
+            },
+            {
+              "col": "c8",
+              "value": "3 X"
+            },
+            {
+              "col": "c9",
+              "value": "3 X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r28",
+          "kind": "assessment",
+          "label": "Urine tox screen",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "Weekly x 2 weeks"
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r29",
+          "kind": "assessment",
+          "label": "Serum prolactin",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "Xa"
+              ]
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xa"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xa"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r30",
+          "kind": "assessment",
+          "label": "Treatment compliance",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c4",
+              "value": "3 X"
+            },
+            {
+              "col": "c5",
+              "value": "3 X"
+            },
+            {
+              "col": "c6",
+              "value": "3 X"
+            },
+            {
+              "col": "c7",
+              "value": "3 X"
+            },
+            {
+              "col": "c8",
+              "value": "3 X"
+            },
+            {
+              "col": "c9",
+              "value": "3 X"
+            }
+          ]
+        },
+        {
+          "id": "r31",
+          "kind": "assessment",
+          "label": "Follow-up interview",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        {
+          "marker": "*",
+          "text": "Baseline assessments must occur within 2 weeks during the screening period.  The screening period is within 4 weeks of subject enrollment.  Baseline and screening period may occur simultaneously.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "column",
+              "col": "c1"
+            },
+            {
+              "target": "column",
+              "col": "c2"
+            }
+          ]
+        },
+        {
+          "marker": "Xa",
+          "text": "X – Blood is collected in fasted state at least once (preferably twice) before investigational agent administration, once during weeks 3-6, and once at week 12 or at final visit if subject discontinues prematurely.  The two specimens prior to investigational agent may be drawn during baseline, or one may be drawn during baseline and one on study day 1 prior to administration of first dose of investigational agent.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r29",
+              "col": "c2"
+            },
+            {
+              "target": "cell",
+              "row": "r29",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r29",
+              "col": "c5"
+            }
+          ]
+        },
+        {
+          "marker": "Xb",
+          "text": "X - Once during the week preferably at the first visit of the week.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r10",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r10",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r10",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r10",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r10",
+              "col": "c8"
+            },
+            {
+              "target": "cell",
+              "row": "r11",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r11",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r12",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r12",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r13",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r13",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r14",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r14",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r14",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r14",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r14",
+              "col": "c8"
+            },
+            {
+              "target": "cell",
+              "row": "r15",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r15",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r16",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r16",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r19",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r19",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r19",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r19",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r19",
+              "col": "c8"
+            },
+            {
+              "target": "cell",
+              "row": "r19",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r20",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r20",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r22",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r22",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r22",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r22",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r22",
+              "col": "c8"
+            },
+            {
+              "target": "cell",
+              "row": "r22",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r23",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c8"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c8"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r28",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r28",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r28",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r28",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r28",
+              "col": "c8"
+            },
+            {
+              "target": "cell",
+              "row": "r28",
+              "col": "c9"
+            }
+          ]
+        },
+        {
+          "marker": "Xc",
+          "text": "X - At the final scheduled study visit (last visit of week 12) or if the subjects discontinues prematurely.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r9",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r10",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r11",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r12",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r13",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r14",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r15",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r16",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r17",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r20",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r21",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r29",
+              "col": "c9"
+            }
+          ]
+        },
+        {
+          "marker": "Xd",
+          "text": "X - FEV1 is only performed in those subjects suspected of having asthma.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r9"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "ambiguities": [
+        "The vertical column labeled 'RANDOMIZATION' (printed letter by letter down a divider between Baseline and Treatment columns) is represented as column c3 with no data cells; it appears to be a milestone divider marking the point of randomization rather than a data column.",
+        "The 'Study Week' header row shows '-4 to 0*' spanning both the Screening and Baseline columns; this has been represented via the studyWeek field on both c1 and c2 columns with the asterisk marker attached to both, rather than as a single spanning cell, since Study Week was modeled as a column attribute not a row."
+      ]
+    }
+  ],
+  "model": "claude-sonnet-5",
+  "extractedAt": "2026-08-28T14:19:24.132Z",
+  "sourceFile": "protocol15.pdf"
+}

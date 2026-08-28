@@ -1,0 +1,1512 @@
+{
+  "tables": [
+    {
+      "id": "t1",
+      "title": "Appendix I: Time and Events Schedule",
+      "pages": [
+        50,
+        51
+      ],
+      "columns": [
+        {
+          "id": "c1",
+          "path": [
+            "Pre-intake Screening"
+          ],
+          "label": "Pre-intake Screening",
+          "visitNumber": null,
+          "studyDay": "Up to -35",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c2",
+          "path": [
+            "Intake Screening"
+          ],
+          "label": "Intake Screening",
+          "visitNumber": null,
+          "studyDay": "-15* to -9",
+          "studyWeek": null,
+          "window": null,
+          "markers": [
+            "*"
+          ]
+        },
+        {
+          "id": "c3",
+          "path": [
+            "Screening Infusions"
+          ],
+          "label": "Screening Infusions",
+          "visitNumber": null,
+          "studyDay": "-6",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c4",
+          "path": [
+            "Baseline Infusions"
+          ],
+          "label": "Baseline Infusions",
+          "visitNumber": null,
+          "studyDay": "-2",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c5",
+          "path": [
+            "Baseline Infusions"
+          ],
+          "label": "Baseline Infusions",
+          "visitNumber": null,
+          "studyDay": "-1",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c6",
+          "path": [
+            "Treatment Infusions"
+          ],
+          "label": "Treatment Infusions",
+          "visitNumber": null,
+          "studyDay": "7",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c7",
+          "path": [
+            "Treatment Infusions"
+          ],
+          "label": "Treatment Infusions",
+          "visitNumber": null,
+          "studyDay": "8",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c8",
+          "path": [
+            "Treatment Infusions"
+          ],
+          "label": "Treatment Infusions",
+          "visitNumber": null,
+          "studyDay": "12",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c9",
+          "path": [
+            "Treatment Infusions"
+          ],
+          "label": "Treatment Infusions",
+          "visitNumber": null,
+          "studyDay": "13",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c10",
+          "path": [
+            "Discharge"
+          ],
+          "label": "Dis-charge",
+          "visitNumber": null,
+          "studyDay": "17",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c11",
+          "path": [
+            "Follow-up"
+          ],
+          "label": "Follow-up",
+          "visitNumber": null,
+          "studyDay": "31",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        }
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "kind": "assessment",
+          "label": "Informed consent",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "kind": "assessment",
+          "label": "Locator form/Demographics",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r3",
+          "kind": "assessment",
+          "label": "Cocaine use by timeline follow-back",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "kind": "assessment",
+          "label": "Breathalyzer test",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "kind": "assessment",
+          "label": "12-lead ECG",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r6",
+          "kind": "assessment",
+          "label": "SCID",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r7",
+          "kind": "assessment",
+          "label": "Medical History",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r8",
+          "kind": "assessment",
+          "label": "Physical Exam (complete)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r9",
+          "kind": "assessment",
+          "label": "Physical Exam (brief)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r10",
+          "kind": "assessment",
+          "label": "ASI-Lite",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r11",
+          "kind": "assessment",
+          "label": "Vital Signs",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r12",
+          "kind": "assessment",
+          "label": "Chemistries plus liver function tests**",
+          "category": null,
+          "markers": [
+            "**"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r13",
+          "kind": "assessment",
+          "label": "Hematology",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r14",
+          "kind": "assessment",
+          "label": "Pregnancy Test***",
+          "category": null,
+          "markers": [
+            "***"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r15",
+          "kind": "assessment",
+          "label": "Infectious disease serology",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r16",
+          "kind": "assessment",
+          "label": "Plasma alcohol",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r17",
+          "kind": "assessment",
+          "label": "Urine toxicology screen",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r18",
+          "kind": "assessment",
+          "label": "POMS, BSCS",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "Xa"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r19",
+          "kind": "assessment",
+          "label": "Cognitive assessments****",
+          "category": null,
+          "markers": [
+            "****"
+          ],
+          "cells": []
+        },
+        {
+          "id": "r20",
+          "kind": "assessment",
+          "label": "Atomoxetine or placebo",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r21",
+          "kind": "assessment",
+          "label": "Atomoxetine blood levels",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xf"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r22",
+          "kind": "assessment",
+          "label": "Adverse Events",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r23",
+          "kind": "assessment",
+          "label": "Cocaine Infusion Session #",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c3",
+              "value": "1&2"
+            },
+            {
+              "col": "c4",
+              "value": "3"
+            },
+            {
+              "col": "c5",
+              "value": "4"
+            },
+            {
+              "col": "c6",
+              "value": "5"
+            },
+            {
+              "col": "c7",
+              "value": "6"
+            },
+            {
+              "col": "c8",
+              "value": "7"
+            },
+            {
+              "col": "c9",
+              "value": "8"
+            }
+          ]
+        },
+        {
+          "id": "r24",
+          "kind": "assessment",
+          "label": "Saline/20 mg cocaine/40 mg cocaine i.v.",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c3",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r25",
+          "kind": "assessment",
+          "label": "20 mg cocaine i.v.",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r26",
+          "kind": "assessment",
+          "label": "40 mg cocaine i.v.",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r27",
+          "kind": "assessment",
+          "label": "VAS",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r28",
+          "kind": "assessment",
+          "label": "ARCI",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "Xd"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r29",
+          "kind": "assessment",
+          "label": "Continuous BP, HR, ECG monitoring",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r30",
+          "kind": "assessment",
+          "label": "BPRS",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "Xe"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r31",
+          "kind": "assessment",
+          "label": "Cocaine Blood PK",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        {
+          "marker": "*",
+          "text": "Days -15 through -9 are allotted for washout of cocaine after admission.  Subjects’ urine will be tested daily to document when it becomes negative for cocaine.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "column",
+              "col": "c2"
+            }
+          ]
+        },
+        {
+          "marker": "**",
+          "text": "Blood chemistries, including liver function tests, will be performed at outpatient and inpatient screening, on days 6 and 13, at discharge (day 17) and at follow-up (day 31).",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r12"
+            }
+          ]
+        },
+        {
+          "marker": "***",
+          "text": "Pregnancy test at intake screening should be done within 72 hours before the first screening cocaine infusion.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r14"
+            }
+          ]
+        },
+        {
+          "marker": "****",
+          "text": "Cognitive assessments will be performed on day -7 and on day 11.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r19"
+            }
+          ]
+        },
+        {
+          "marker": "Xa",
+          "text": "POMS, BSCS will be performed at intake and then every other day.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r18",
+              "col": "c2"
+            }
+          ]
+        },
+        {
+          "marker": "Xb",
+          "text": "atomoxetine will be administered at 20 mg q.d. on days 0 and 1, 40 mg q.d. on days 2 and 3, 80 mg q.d. on days 4-8 and 100 mg q.d. on days 9-13.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r20",
+              "col": "c6"
+            }
+          ]
+        },
+        {
+          "marker": "Xc",
+          "text": "VAS will be performed on days -10, -9, and on all infusion days.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r27",
+              "col": "c2"
+            }
+          ]
+        },
+        {
+          "marker": "Xd",
+          "text": "ARCI  will be performed on days -10, -9, and on all non-infusion days.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r28",
+              "col": "c2"
+            }
+          ]
+        },
+        {
+          "marker": "Xe",
+          "text": "BPRS will be administered on baseline, every day during treatment with atomoxetine and on the days of all cocaine infusions.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r30",
+              "col": "c2"
+            }
+          ]
+        },
+        {
+          "marker": "Xf",
+          "text": "atomoxetine blood levels will be determined on days 6, 8, 11 and 13.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r21",
+              "col": "c7"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "ambiguities": [
+        "The 'Number of Samples per Day' study-day columns in the footnotes/blood-collection appendix (D6, D11) do not exactly match the Treatment Infusion day labels (7, 8, 12, 13) used in this table; cells were mapped positionally as printed without reconciling the day-numbering discrepancy.",
+        "The row 'Cocaine Infusion Session #' contains data values (1&2, 3, 4, 5, 6, 7, 8) rather than a pure category label; it was kept as an assessment row per its printed content.",
+        "For 'Chemistries plus liver function tests**', 'Hematology', 'Pregnancy Test***', and 'Urine toxicology screen', exact column alignment of X marks was inferred from relative position in the scanned image since the raw text layer scrambles column order; cross-checked against Appendix II sample counts for consistency."
+      ]
+    },
+    {
+      "id": "t2",
+      "title": "APPENDIX II: Schedule of Blood Collections",
+      "pages": [
+        51
+      ],
+      "columns": [
+        {
+          "id": "b1",
+          "path": [],
+          "label": "Volume Per Sample",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b2",
+          "path": [],
+          "label": "Type",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": [
+            "a"
+          ]
+        },
+        {
+          "id": "b3",
+          "path": [
+            "Number of Samples per Day"
+          ],
+          "label": "Screening",
+          "visitNumber": null,
+          "studyDay": "Screening",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b4",
+          "path": [
+            "Number of Samples per Day"
+          ],
+          "label": "D-8",
+          "visitNumber": null,
+          "studyDay": "D-8",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b5",
+          "path": [
+            "Number of Samples per Day"
+          ],
+          "label": "D-1",
+          "visitNumber": null,
+          "studyDay": "D-1",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b6",
+          "path": [
+            "Number of Samples per Day"
+          ],
+          "label": "D1",
+          "visitNumber": null,
+          "studyDay": "D1",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b7",
+          "path": [
+            "Number of Samples per Day"
+          ],
+          "label": "D2",
+          "visitNumber": null,
+          "studyDay": "D2",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b8",
+          "path": [
+            "Number of Samples per Day"
+          ],
+          "label": "D3",
+          "visitNumber": null,
+          "studyDay": "D3",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b9",
+          "path": [
+            "Number of Samples per Day"
+          ],
+          "label": "D6",
+          "visitNumber": null,
+          "studyDay": "D6",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b10",
+          "path": [
+            "Number of Samples per Day"
+          ],
+          "label": "D8",
+          "visitNumber": null,
+          "studyDay": "D8",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b11",
+          "path": [
+            "Number of Samples per Day"
+          ],
+          "label": "D11",
+          "visitNumber": null,
+          "studyDay": "D11",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b12",
+          "path": [
+            "Number of Samples per Day"
+          ],
+          "label": "D13",
+          "visitNumber": null,
+          "studyDay": "D13",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b13",
+          "path": [
+            "Number of Samples per Day"
+          ],
+          "label": "D17",
+          "visitNumber": null,
+          "studyDay": "D17",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b14",
+          "path": [
+            "Number of Samples per Day"
+          ],
+          "label": "D31",
+          "visitNumber": null,
+          "studyDay": "D31",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "b15",
+          "path": [],
+          "label": "Total Volume",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        }
+      ],
+      "rows": [
+        {
+          "id": "s1",
+          "kind": "assessment",
+          "label": "Chemistries plus liver function tests",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "b1",
+              "value": "10 mL"
+            },
+            {
+              "col": "b2",
+              "value": "S"
+            },
+            {
+              "col": "b3",
+              "value": "1"
+            },
+            {
+              "col": "b4",
+              "value": "1"
+            },
+            {
+              "col": "b9",
+              "value": "1"
+            },
+            {
+              "col": "b12",
+              "value": "1"
+            },
+            {
+              "col": "b13",
+              "value": "1"
+            },
+            {
+              "col": "b14",
+              "value": "1"
+            },
+            {
+              "col": "b15",
+              "value": "60 mL"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "kind": "assessment",
+          "label": "Hematology",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "b1",
+              "value": "10 mL"
+            },
+            {
+              "col": "b2",
+              "value": "P"
+            },
+            {
+              "col": "b3",
+              "value": "1"
+            },
+            {
+              "col": "b13",
+              "value": "1"
+            },
+            {
+              "col": "b14",
+              "value": "1"
+            },
+            {
+              "col": "b15",
+              "value": "30 mL"
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "kind": "assessment",
+          "label": "Infectious disease serology",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "b1",
+              "value": "10 mL"
+            },
+            {
+              "col": "b2",
+              "value": "S"
+            },
+            {
+              "col": "b3",
+              "value": "1"
+            },
+            {
+              "col": "b15",
+              "value": "10 mL"
+            }
+          ]
+        },
+        {
+          "id": "s4",
+          "kind": "assessment",
+          "label": "PK Samples for cocaine",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "b1",
+              "value": "5 mL"
+            },
+            {
+              "col": "b2",
+              "value": "P"
+            },
+            {
+              "col": "b5",
+              "value": "15"
+            },
+            {
+              "col": "b10",
+              "value": "15"
+            },
+            {
+              "col": "b12",
+              "value": "15"
+            },
+            {
+              "col": "b15",
+              "value": "225 mL"
+            }
+          ]
+        },
+        {
+          "id": "s5",
+          "kind": "assessment",
+          "label": "PK Samples for Atomoxetine",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "b1",
+              "value": "5 mL"
+            },
+            {
+              "col": "b2",
+              "value": "P"
+            },
+            {
+              "col": "b9",
+              "value": "2"
+            },
+            {
+              "col": "b10",
+              "value": "2"
+            },
+            {
+              "col": "b11",
+              "value": "2"
+            },
+            {
+              "col": "b12",
+              "value": "2"
+            },
+            {
+              "col": "b15",
+              "value": "40 mL"
+            }
+          ]
+        },
+        {
+          "id": "s6",
+          "kind": "assessment",
+          "label": "Pregnancy Test",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "b1",
+              "value": "5 mL"
+            },
+            {
+              "col": "b2",
+              "value": "S"
+            },
+            {
+              "col": "b3",
+              "value": "1"
+            },
+            {
+              "col": "b4",
+              "value": "1"
+            },
+            {
+              "col": "b13",
+              "value": "1"
+            },
+            {
+              "col": "b14",
+              "value": "1"
+            },
+            {
+              "col": "b15",
+              "value": "20 mL"
+            }
+          ]
+        },
+        {
+          "id": "s7",
+          "kind": "assessment",
+          "label": "Alcohol Test",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "b1",
+              "value": "5 mL"
+            },
+            {
+              "col": "b2",
+              "value": "P"
+            },
+            {
+              "col": "b3",
+              "value": "1"
+            },
+            {
+              "col": "b15",
+              "value": "5 mL"
+            }
+          ]
+        },
+        {
+          "id": "s8",
+          "kind": "assessment",
+          "label": "Total",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "b15",
+              "value": "390 mL"
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        {
+          "marker": "a",
+          "text": "S = serum, P = plasma",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "column",
+              "col": "b2"
+            }
+          ]
+        },
+        {
+          "marker": "b",
+          "text": "D = day",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "column",
+              "col": "b3"
+            },
+            {
+              "target": "column",
+              "col": "b4"
+            },
+            {
+              "target": "column",
+              "col": "b5"
+            },
+            {
+              "target": "column",
+              "col": "b6"
+            },
+            {
+              "target": "column",
+              "col": "b7"
+            },
+            {
+              "target": "column",
+              "col": "b8"
+            },
+            {
+              "target": "column",
+              "col": "b9"
+            },
+            {
+              "target": "column",
+              "col": "b10"
+            },
+            {
+              "target": "column",
+              "col": "b11"
+            },
+            {
+              "target": "column",
+              "col": "b12"
+            },
+            {
+              "target": "column",
+              "col": "b13"
+            },
+            {
+              "target": "column",
+              "col": "b14"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "ambiguities": []
+    }
+  ],
+  "model": "claude-sonnet-5",
+  "extractedAt": "2026-08-28T14:12:48.749Z",
+  "sourceFile": "protocol5.pdf"
+}

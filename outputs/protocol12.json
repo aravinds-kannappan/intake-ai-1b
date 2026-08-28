@@ -1,0 +1,1659 @@
+{
+  "tables": [
+    {
+      "id": "t1",
+      "title": "Table 3. Overview of Study Assessments",
+      "pages": [
+        48
+      ],
+      "columns": [
+        {
+          "id": "c1",
+          "path": [
+            "Screening/Baseline"
+          ],
+          "label": "Screening/Baseline",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "14-21 days prior to randomization",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "cdiv",
+          "path": [],
+          "label": "RANDOMIZATION",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c2",
+          "path": [
+            "Study Medication Administration"
+          ],
+          "label": "1-3",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "1-3",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c3",
+          "path": [
+            "Study Medication Administration"
+          ],
+          "label": "4",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "4",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c4",
+          "path": [
+            "Study Medication Administration"
+          ],
+          "label": "5-7",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "5-7",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c5",
+          "path": [
+            "Study Medication Administration"
+          ],
+          "label": "8",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "8",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c6",
+          "path": [
+            "Study Medication Administration"
+          ],
+          "label": "9-11",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "9-11",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c7",
+          "path": [
+            "Study Medication Administration"
+          ],
+          "label": "12/Term",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "12/Term",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c8",
+          "path": [
+            "Follow-up"
+          ],
+          "label": "Follow-up",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "16",
+          "window": null,
+          "markers": []
+        }
+      ],
+      "rows": [
+        {
+          "id": "r_screen_cat",
+          "kind": "category",
+          "label": "Screening",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r1",
+          "kind": "assessment",
+          "label": "Informed consent",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "kind": "assessment",
+          "label": "SCID/Psychiatric evaluation",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r3",
+          "kind": "assessment",
+          "label": "Medical history",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "kind": "assessment",
+          "label": "ACDS assessment (ADHD diagnosis)",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "kind": "assessment",
+          "label": "Meth Timeline Followback",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r6",
+          "kind": "assessment",
+          "label": "Prior medications",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "3X/week"
+            }
+          ]
+        },
+        {
+          "id": "r7",
+          "kind": "assessment",
+          "label": "Infectious disease panel/syphilis test/PPD",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r8",
+          "kind": "assessment",
+          "label": "HIV test (optional)",
+          "category": "Screening",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r9",
+          "kind": "assessment",
+          "label": "Alcohol breathalyzer",
+          "category": "Screening",
+          "markers": [
+            "Xf"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "3X/week"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "Xa"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r_safety_cat",
+          "kind": "category",
+          "label": "Safety",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r10",
+          "kind": "assessment",
+          "label": "Physical exam",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r11",
+          "kind": "assessment",
+          "label": "Vital signs**",
+          "category": "Safety",
+          "markers": [
+            "**"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "3X/week"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "Xa"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r12",
+          "kind": "assessment",
+          "label": "Hematology",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r13",
+          "kind": "assessment",
+          "label": "Blood chemistries",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r14",
+          "kind": "assessment",
+          "label": "HAM-D",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r15",
+          "kind": "assessment",
+          "label": "Medical urinalysis",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r16",
+          "kind": "assessment",
+          "label": "Pregnancy test",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "Xg"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r17",
+          "kind": "assessment",
+          "label": "ECG",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r18",
+          "kind": "assessment",
+          "label": "Adverse events",
+          "category": "Safety",
+          "markers": [
+            "Xd"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "3X/week",
+              "markers": [
+                "Xd"
+              ]
+            },
+            {
+              "col": "c2",
+              "value": "3X",
+              "markers": [
+                "Xd"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "3X",
+              "markers": [
+                "Xd"
+              ]
+            },
+            {
+              "col": "c4",
+              "value": "3X",
+              "markers": [
+                "Xd"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "3X",
+              "markers": [
+                "Xd"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "3X",
+              "markers": [
+                "Xd"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "3X",
+              "markers": [
+                "Xd"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r19",
+          "kind": "assessment",
+          "label": "Concomitant medications",
+          "category": "Safety",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "3X"
+            },
+            {
+              "col": "c3",
+              "value": "3X"
+            },
+            {
+              "col": "c4",
+              "value": "3X"
+            },
+            {
+              "col": "c5",
+              "value": "3X"
+            },
+            {
+              "col": "c6",
+              "value": "3X"
+            },
+            {
+              "col": "c7",
+              "value": "3X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r_eff_cat",
+          "kind": "category",
+          "label": "Efficacy",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r20",
+          "kind": "assessment",
+          "label": "ASI***",
+          "category": "Efficacy",
+          "markers": [
+            "***"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r21",
+          "kind": "assessment",
+          "label": "ASI-Lite Follow-up",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c4",
+              "value": "X wk 6",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X X",
+              "markers": [
+                "Xc",
+                "Xe"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r22",
+          "kind": "assessment",
+          "label": "HRBS***",
+          "category": "Efficacy",
+          "markers": [
+            "***"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r23",
+          "kind": "assessment",
+          "label": "BSCS",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "Weekly",
+              "markers": [
+                "Xi"
+              ]
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r24",
+          "kind": "assessment",
+          "label": "CGI-S",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "Weekly",
+              "markers": [
+                "Xi"
+              ]
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r25",
+          "kind": "assessment",
+          "label": "CGI-O",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "Weekly",
+              "markers": [
+                "Xi"
+              ]
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r26",
+          "kind": "assessment",
+          "label": "CANTABelect",
+          "category": "Efficacy",
+          "markers": [
+            "XJ"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "Twice"
+            },
+            {
+              "col": "c4",
+              "value": "X wk 6"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r27",
+          "kind": "assessment",
+          "label": "Barratt Impulsiveness Scale",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X wk 6"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r28",
+          "kind": "assessment",
+          "label": "ACDS",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r29",
+          "kind": "assessment",
+          "label": "AISRS assessment",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r30",
+          "kind": "assessment",
+          "label": "SUR",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "3X/week"
+            },
+            {
+              "col": "c2",
+              "value": "3X"
+            },
+            {
+              "col": "c3",
+              "value": "3X"
+            },
+            {
+              "col": "c4",
+              "value": "3X"
+            },
+            {
+              "col": "c5",
+              "value": "3X"
+            },
+            {
+              "col": "c6",
+              "value": "3X"
+            },
+            {
+              "col": "c7",
+              "value": "3X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r31",
+          "kind": "assessment",
+          "label": "Urine for meth/tox screen/creatinine",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "3X/week"
+            },
+            {
+              "col": "c2",
+              "value": "3X"
+            },
+            {
+              "col": "c3",
+              "value": "3X"
+            },
+            {
+              "col": "c4",
+              "value": "3X"
+            },
+            {
+              "col": "c5",
+              "value": "3X"
+            },
+            {
+              "col": "c6",
+              "value": "3X"
+            },
+            {
+              "col": "c7",
+              "value": "3X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r32",
+          "kind": "assessment",
+          "label": "Urine tox screen on site test device**",
+          "category": "Efficacy",
+          "markers": [
+            "**"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "3X/week"
+            }
+          ]
+        },
+        {
+          "id": "r33",
+          "kind": "assessment",
+          "label": "Medication Administration",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c4",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c5",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c6",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r34",
+          "kind": "assessment",
+          "label": "Modafinil compliance",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "3X"
+            },
+            {
+              "col": "c3",
+              "value": "3X"
+            },
+            {
+              "col": "c4",
+              "value": "3X"
+            },
+            {
+              "col": "c5",
+              "value": "3X"
+            },
+            {
+              "col": "c6",
+              "value": "3X"
+            },
+            {
+              "col": "c7",
+              "value": "3X"
+            }
+          ]
+        },
+        {
+          "id": "r35",
+          "kind": "assessment",
+          "label": "CBT compliance ****",
+          "category": "Efficacy",
+          "markers": [
+            "****",
+            "Xh"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "2X/week",
+              "markers": [
+                "Xh"
+              ]
+            },
+            {
+              "col": "c2",
+              "value": "3X"
+            },
+            {
+              "col": "c3",
+              "value": "3X"
+            },
+            {
+              "col": "c4",
+              "value": "3X"
+            },
+            {
+              "col": "c5",
+              "value": "3X"
+            },
+            {
+              "col": "c6",
+              "value": "3X"
+            },
+            {
+              "col": "c7",
+              "value": "3X"
+            }
+          ]
+        },
+        {
+          "id": "r36",
+          "kind": "assessment",
+          "label": "End of trial form",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r37",
+          "kind": "assessment",
+          "label": "Follow-up interview",
+          "category": "Efficacy",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c8",
+              "value": "X"
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        {
+          "marker": "*",
+          "text": "Screening and baseline assessments may be conducted concurrently, and both must be completed within 21-days prior to randomization.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "table"
+            }
+          ]
+        },
+        {
+          "marker": "**",
+          "text": "Vital Signs and On-site Urine Toxicology Screen are both screening and baseline measures, and will serve as a possible basis for exclusion from study.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r11"
+            },
+            {
+              "target": "row",
+              "row": "r32"
+            }
+          ]
+        },
+        {
+          "marker": "***",
+          "text": "ASI and HRBS also serve as both screening and baseline measures, but will not be used as a basis for exclusion from study.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r20"
+            },
+            {
+              "target": "row",
+              "row": "r22"
+            }
+          ]
+        },
+        {
+          "marker": "****",
+          "text": "CBT to be conducted three times a week during 12-week study medication administration period.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r35"
+            }
+          ]
+        },
+        {
+          "marker": "Xa",
+          "text": "Vital signs are taken at each visit for the first three study weeks, then weekly thereafter, preferably at the first visit of the week.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r9",
+              "col": "c2"
+            },
+            {
+              "target": "cell",
+              "row": "r11",
+              "col": "c2"
+            }
+          ]
+        },
+        {
+          "marker": "Xb",
+          "text": "Once per week preferably at the first visit of the week. If the study physician has medical concerns, blood may be drawn again to assess blood chemistry (for example, liver enzymes). In addition, at weeks 4 and 8, if female, a urine pregnancy test will be performed.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r9",
+              "col": "c3"
+            },
+            {
+              "target": "cell",
+              "row": "r9",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r9",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r9",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r11",
+              "col": "c3"
+            },
+            {
+              "target": "cell",
+              "row": "r11",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r11",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r11",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r14",
+              "col": "c3"
+            },
+            {
+              "target": "cell",
+              "row": "r14",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r16",
+              "col": "c3"
+            },
+            {
+              "target": "cell",
+              "row": "r16",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r21",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r23",
+              "col": "c2"
+            },
+            {
+              "target": "cell",
+              "row": "r23",
+              "col": "c3"
+            },
+            {
+              "target": "cell",
+              "row": "r23",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r23",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r23",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c2"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c3"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c2"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c3"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r33",
+              "col": "c2"
+            },
+            {
+              "target": "cell",
+              "row": "r33",
+              "col": "c3"
+            },
+            {
+              "target": "cell",
+              "row": "r33",
+              "col": "c4"
+            },
+            {
+              "target": "cell",
+              "row": "r33",
+              "col": "c5"
+            },
+            {
+              "target": "cell",
+              "row": "r33",
+              "col": "c6"
+            },
+            {
+              "target": "cell",
+              "row": "r33",
+              "col": "c7"
+            }
+          ]
+        },
+        {
+          "marker": "Xc",
+          "text": "At the final scheduled study visit (preferably last visit of week 12) or if the subject discontinues prematurely. If the study physician has medical concerns, additional ECGs may be performed.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r9",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r10",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r11",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r12",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r13",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r14",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r15",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r16",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r17",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r21",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r22",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r23",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r36",
+              "col": "c7"
+            }
+          ]
+        },
+        {
+          "marker": "Xd",
+          "text": "AEs will be assessed and recorded by investigative staff nurse or physician or PIs designee at every visit. A study physician will meet with the subject once a week to review the AEs and to assess for any additional AEs.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r18"
+            }
+          ]
+        },
+        {
+          "marker": "Xe",
+          "text": "If there is a clear indication that a participant will terminate early and not return for the termination interview, the ASI-Lite Follow-up interview should be conducted as soon as possible during any scheduled or unscheduled visit.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r21",
+              "col": "c7"
+            }
+          ]
+        },
+        {
+          "marker": "Xf",
+          "text": "The alcohol breathalyzer test will only be performed if the subject is suspected to be intoxicated at clinic visits in accordance with institutional and state regulations.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r9"
+            }
+          ]
+        },
+        {
+          "marker": "Xg",
+          "text": "On study day 1, prior to randomization.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r16",
+              "col": "c2"
+            }
+          ]
+        },
+        {
+          "marker": "Xh",
+          "text": "During screening/baseline, subjects will attend 2 60-minute early recovery skills sessions each week.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r35",
+              "col": "c1"
+            },
+            {
+              "target": "row",
+              "row": "r35"
+            }
+          ]
+        },
+        {
+          "marker": "Xi",
+          "text": "Obtained weekly during screening/baseline.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r23",
+              "col": "c1"
+            },
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c1"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c1"
+            }
+          ]
+        },
+        {
+          "marker": "XJ",
+          "text": "CANTABelect tests should be completed twice during the screening/baseline period. The IED test (Intra-Extra Dimensional Set Shifting) will only be done at week 12 or the termination visit, whichever comes first.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r26"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "Screening/Baseline Assessments. Prior to randomization, subjects will be screened to determine if they meet eligibility requirements. In addition, certain screening/baseline assessments that are part of determining eligibility will also provide physiological, psychological, and disease status information prior to randomization. Because the screening/baseline period can occur simultaneously, screening/baseline can be as short as 14 days or as long as 21 days. After completing the screening/baseline period and meeting all eligibility criteria, subjects can be randomized on Day 15 to Day 25 after informed consent. Subjects cannot be randomized on or before Day 14 and cannot be randomized after Day 25 (Table 3).",
+        "Screening/baseline assessments to occur over a 14 to 21-day period will include the following: 1. Urine toxicology screen using an on-site testing device. Subjects must provide at least 4 urine specimens in the 14 to 21-day period, at least one of which must be positive for urine amphetamine or methamphetamine (> 500 ng/mL). Ideally, 3 of the specimens will be obtained in one week and 3 in the next week. No more than 4 of the specimens may be obtained in one week of the screening/baseline period and no more than two specimens can be collected on consecutive days.",
+        "2. Urine methamphetamine plus creatinine measurements at a central laboratory. Note: These assays will be performed at a central laboratory only on the urine samples collected for the subjects who are randomized in the study.",
+        "3. The following must be obtained weekly for at least two weeks during the screening/baseline period: a. BSCS b. CGI-S c. CGI-O d. Urine toxicology screening at a central laboratory. Note: This assay will be performed at a central laboratory only on the urine samples collected for the subjects who are randomized in the study.",
+        "4. Daily report of methamphetamine, marijuana, nicotine, alcohol, opiates, and cocaine use will be recorded at each visit on a SUR CRF.",
+        "5. HAM-D, ASI, ACDS, AISRS, Barratt Impulsiveness Scale and HRBS assessments must be obtained once. The CANTABelect assessments must be obtained twice.",
+        "6. AEs will be assessed and recorded at each screening/baseline visit and reviewed by site investigator or study physician weekly.",
+        "Assessments During Study Medication Administration. Throughout the study medication administration period, subjects will be scheduled to return to the clinic three times per week for assessments. Some assessments will be collected three times per week (typically on a Monday, Wednesday, and Friday) and some will be collected once per week per the schedule in Table 3. Except for week 12, those assessments occurring once per week should be performed at the first clinic visit of the week whenever possible.",
+        "Assessments at End of Study (Week 12) or Early Termination. Urine methamphetamine and creatinine, SUR, concomitant medications and medication compliance are to be assessed three times during the last week of the study medication administration period. All other assessments scheduled for study week 12 (Table 3) should be completed, ideally at the final scheduled study visit. When a subject discontinues prematurely, regardless of the reason, all Table 3 week 12 assessments are to be completed. This may require requesting the subject to return specifically for final assessments.",
+        "Assessments at Follow-up (Week 16). The follow-up visit should be scheduled to occur approximately 4 weeks after the final in-clinic examination during the study medication administration period as per Table 3. Overview of Study Assessments. At the follow-up visit, record only those AEs which are serious and clinically significant; these must then be followed to resolution."
+      ],
+      "ambiguities": [
+        "The 'RANDOMIZATION' vertical text between the Screening/Baseline column and the Study Medication Administration columns is a milestone divider, not a data column; represented here as a placeholder column with no cell values.",
+        "For the ASI-Lite Follow-up, CANTABelect, and Barratt Impulsiveness Scale rows, cells under column '5-7' contain a printed value spanning two lines ('X' with superscript, and 'wk 6' below it); these have been concatenated as 'X wk 6' verbatim.",
+        "For ASI-Lite Follow-up under column '12/Term', two superscripted X's appear side by side ('Xc Xe'); represented as a single cell value 'X X' with both markers listed.",
+        "Superscript markers on row labels (e.g., 'Alcohol breathalyzerf', 'CBT compliance ****h', 'CANTABelectJ') are printed as single letters/symbols fused to the label text, but are mapped to the footnote keys as printed in the footnote list (e.g., 'Xf', 'Xh', 'XJ') per extraction convention.",
+        "The single asterisk '*' footnote has no explicit marker visible attached to any row/column in the table image; it is treated as a general table-level note."
+      ]
+    }
+  ],
+  "model": "claude-sonnet-5",
+  "extractedAt": "2026-08-28T14:17:58.681Z",
+  "sourceFile": "protocol12.pdf"
+}

@@ -1,0 +1,1111 @@
+{
+  "tables": [
+    {
+      "id": "t1",
+      "title": "Schedule of Events for Protocol H2Q-MC-LZZT(c)",
+      "pages": [
+        52,
+        53,
+        54
+      ],
+      "columns": [
+        {
+          "id": "c1",
+          "path": [
+            "Visit"
+          ],
+          "label": "1",
+          "visitNumber": "1",
+          "studyDay": null,
+          "studyWeek": "-2",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c2",
+          "path": [
+            "Visit"
+          ],
+          "label": "2",
+          "visitNumber": "2",
+          "studyDay": null,
+          "studyWeek": "-.3",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c3",
+          "path": [
+            "Visit"
+          ],
+          "label": "3",
+          "visitNumber": "3",
+          "studyDay": null,
+          "studyWeek": "0",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c4",
+          "path": [
+            "Visit"
+          ],
+          "label": "4",
+          "visitNumber": "4",
+          "studyDay": null,
+          "studyWeek": "2",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c5",
+          "path": [
+            "Visit"
+          ],
+          "label": "5",
+          "visitNumber": "5",
+          "studyDay": null,
+          "studyWeek": "4",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c6",
+          "path": [
+            "Visit"
+          ],
+          "label": "7",
+          "visitNumber": "7",
+          "studyDay": null,
+          "studyWeek": "6",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c7",
+          "path": [
+            "Visit"
+          ],
+          "label": "8",
+          "visitNumber": "8",
+          "studyDay": null,
+          "studyWeek": "8",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c8",
+          "path": [
+            "Visit"
+          ],
+          "label": "9",
+          "visitNumber": "9",
+          "studyDay": null,
+          "studyWeek": "12",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c9",
+          "path": [
+            "Visit"
+          ],
+          "label": "10",
+          "visitNumber": "10",
+          "studyDay": null,
+          "studyWeek": "16",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c10",
+          "path": [
+            "Visit"
+          ],
+          "label": "11",
+          "visitNumber": "11",
+          "studyDay": null,
+          "studyWeek": "20",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c11",
+          "path": [
+            "Visit"
+          ],
+          "label": "12",
+          "visitNumber": "12",
+          "studyDay": null,
+          "studyWeek": "24",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c12",
+          "path": [
+            "Visit"
+          ],
+          "label": "13",
+          "visitNumber": "13",
+          "studyDay": null,
+          "studyWeek": "26",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c13",
+          "path": [
+            "Visit"
+          ],
+          "label": "ET",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c14",
+          "path": [
+            "Visit"
+          ],
+          "label": "RT",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        }
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "kind": "assessment",
+          "label": "Informed consent",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "kind": "assessment",
+          "label": "Patient number assigned",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r3",
+          "kind": "assessment",
+          "label": "Hachinski ≤4",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "kind": "assessment",
+          "label": "MMSE 10-23",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "kind": "assessment",
+          "label": "Physical examination",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r6",
+          "kind": "assessment",
+          "label": "Medical History",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r7",
+          "kind": "assessment",
+          "label": "Habits",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r8",
+          "kind": "assessment",
+          "label": "Chest x-ray",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r9",
+          "kind": "assessment",
+          "label": "Apo E genotyping",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c5",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r10",
+          "kind": "assessment",
+          "label": "Patient randomized",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c3",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r11",
+          "kind": "assessment",
+          "label": "Vital signs/Temperature",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r12",
+          "kind": "assessment",
+          "label": "Ambulatory ECG placed",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r13",
+          "kind": "assessment",
+          "label": "Ambulatory ECG removed",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c3",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r14",
+          "kind": "assessment",
+          "label": "ECG",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r15",
+          "kind": "assessment",
+          "label": "Placebo TTS test",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r16",
+          "kind": "assessment",
+          "label": "CT Scan (if not within last year and patient passes all other screens)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r17",
+          "kind": "assessment",
+          "label": "Concomitant Medications",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r18",
+          "kind": "assessment",
+          "label": "Laboratory (Chem/Hemat):",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r19",
+          "kind": "assessment",
+          "label": "Laboratory (Urinalysis)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r20",
+          "kind": "assessment",
+          "label": "Plasma Specimen (Xanomeline)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r21",
+          "kind": "assessment",
+          "label": "Hemoglobin A1C",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X",
+              "markers": [
+                "Xa"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r22",
+          "kind": "assessment",
+          "label": "Study drug record Medications dispensed Medications returned",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r23",
+          "kind": "assessment",
+          "label": "TTS Acceptability Survey",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r24",
+          "kind": "assessment",
+          "label": "ADAS-Cog",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "P",
+              "markers": [
+                "P"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r25",
+          "kind": "assessment",
+          "label": "CIBIC+",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "P",
+              "markers": [
+                "P"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r26",
+          "kind": "assessment",
+          "label": "DAD",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "P",
+              "markers": [
+                "P"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r27",
+          "kind": "assessment",
+          "label": "NPI-X",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "P",
+              "markers": [
+                "P"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c9",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c10",
+              "value": "X",
+              "markers": [
+                "Xb"
+              ]
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r28",
+          "kind": "assessment",
+          "label": "Adverse events",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        {
+          "marker": "X",
+          "text": "= Performed at this visit.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "table"
+            }
+          ]
+        },
+        {
+          "marker": "Xa",
+          "text": "= Performed at this visit if patient is an insulin-dependent diabetic.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r21",
+              "col": "c1"
+            }
+          ]
+        },
+        {
+          "marker": "Xb",
+          "text": "= Performed at this visit and via telephone interview 2 weeks following this visit.",
+          "continuedAcrossPages": true,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r27",
+              "col": "c7"
+            },
+            {
+              "target": "cell",
+              "row": "r27",
+              "col": "c8"
+            },
+            {
+              "target": "cell",
+              "row": "r27",
+              "col": "c9"
+            },
+            {
+              "target": "cell",
+              "row": "r27",
+              "col": "c10"
+            }
+          ]
+        },
+        {
+          "marker": "P",
+          "text": "= Practice only - It is recommended that a sampling of the CIBIC+, ADAS-Cog, DAD, and NPI-X be administered at Visit 1.  Data from this sampling would not be considered as study data and would not be collected.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c1"
+            },
+            {
+              "target": "cell",
+              "row": "r25",
+              "col": "c1"
+            },
+            {
+              "target": "cell",
+              "row": "r26",
+              "col": "c1"
+            },
+            {
+              "target": "cell",
+              "row": "r27",
+              "col": "c1"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "Abbreviations:  CT = computed tomography; ECG = electrocardiogram",
+        "Abbreviations:  CT = computed tomography; ECG = electrocardiogram; ET = Early Termination; RT = Retrieval"
+      ],
+      "ambiguities": [
+        "Page 52 contains only a garbled/OCR-corrupted title header for this table (rendered as boxed glyphs in the image); the verbatim title was reconstructed from the accompanying text layer and repeated on page 53.",
+        "In the printed table image on page 53, a visually blank spacer appears between the '5' and '7' visit-number columns and between the '4' and '6' week values, suggesting a skipped Visit 6; however the text layer confirms only 7 actual data columns (visits 1,2,3,4,5,7,8) with no separate Visit 6 column, so the blank is treated as a rendering artifact rather than a real column.",
+        "The row labeled 'Study drug record / Medications dispensed / Medications returned' is printed as a single multi-line row label with one set of X marks per visit column; it is unclear whether this represents one combined activity or three separate activities sharing a row - represented here as a single merged row per the source layout.",
+        "The 'X = Performed at this visit.' legend line has no distinct superscript marker glyph (unlike Xa/Xb) and is treated as a table-level footnote rather than tied to a specific marker key."
+      ]
+    }
+  ],
+  "model": "claude-sonnet-5",
+  "extractedAt": "2026-08-28T14:09:42.994Z",
+  "sourceFile": "protocol1.pdf"
+}

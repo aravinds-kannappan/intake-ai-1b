@@ -1,0 +1,1325 @@
+{
+  "tables": [
+    {
+      "id": "t1",
+      "title": "Table 4. Schedule of Measures and Data Collection for Lofexidine Phase 3",
+      "pages": [
+        26,
+        27,
+        28,
+        29
+      ],
+      "columns": [
+        {
+          "id": "c1",
+          "path": [
+            "Opiate Agonist Phase (all Morphine)"
+          ],
+          "label": "1",
+          "visitNumber": null,
+          "studyDay": "1",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c2",
+          "path": [
+            "Opiate Agonist Phase (all Morphine)"
+          ],
+          "label": "2",
+          "visitNumber": null,
+          "studyDay": "2",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c3",
+          "path": [
+            "Opiate Agonist Phase (all Morphine)"
+          ],
+          "label": "3",
+          "visitNumber": null,
+          "studyDay": "3",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c4",
+          "path": [
+            "Detoxification: Medication or Placebo Phase (randomized to Lofexidine or Placebo)"
+          ],
+          "label": "4",
+          "visitNumber": null,
+          "studyDay": "4",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c5",
+          "path": [
+            "Detoxification: Medication or Placebo Phase (randomized to Lofexidine or Placebo)"
+          ],
+          "label": "5",
+          "visitNumber": null,
+          "studyDay": "5",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c6",
+          "path": [
+            "Detoxification: Medication or Placebo Phase (randomized to Lofexidine or Placebo)"
+          ],
+          "label": "6",
+          "visitNumber": null,
+          "studyDay": "6",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c7",
+          "path": [
+            "Detoxification: Medication or Placebo Phase (randomized to Lofexidine or Placebo)"
+          ],
+          "label": "7",
+          "visitNumber": null,
+          "studyDay": "7",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c8",
+          "path": [
+            "Detoxification: Medication or Placebo Phase (randomized to Lofexidine or Placebo)"
+          ],
+          "label": "8",
+          "visitNumber": null,
+          "studyDay": "8",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c9",
+          "path": [
+            "Post Med/Detox Phase (Placebo, QID)"
+          ],
+          "label": "9",
+          "visitNumber": null,
+          "studyDay": "9",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c10",
+          "path": [
+            "Post Med/Detox Phase (Placebo, QID)"
+          ],
+          "label": "10",
+          "visitNumber": null,
+          "studyDay": "10",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c11",
+          "path": [
+            "Medical Discharge"
+          ],
+          "label": "11",
+          "visitNumber": null,
+          "studyDay": "11",
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        }
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "kind": "assessment",
+          "label": "Date",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r2",
+          "kind": "assessment",
+          "label": "Day of Week",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r3",
+          "kind": "assessment",
+          "label": "Informed Consent, Screening (01), Opiate Screening (02)",
+          "category": null,
+          "markers": [
+            "01",
+            "02"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "kind": "assessment",
+          "label": "* Morphine (0600, 1100, 1630, 2200 h)",
+          "category": null,
+          "markers": [
+            "*"
+          ],
+          "cells": []
+        },
+        {
+          "id": "r5",
+          "kind": "assessment",
+          "label": "**Lofexidine or Placebo (0800, 1300, 1800, 2300 h)",
+          "category": null,
+          "markers": [
+            "**"
+          ],
+          "cells": []
+        },
+        {
+          "id": "r6",
+          "kind": "assessment",
+          "label": "Medical History (03)",
+          "category": null,
+          "markers": [
+            "03"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r7",
+          "kind": "assessment",
+          "label": "Physical Examination (04) (Study Day 1 and Exit Day)",
+          "category": null,
+          "markers": [
+            "04"
+          ],
+          "cells": []
+        },
+        {
+          "id": "r8",
+          "kind": "assessment",
+          "label": "Prior Medications (05)",
+          "category": null,
+          "markers": [
+            "05"
+          ],
+          "cells": []
+        },
+        {
+          "id": "r9",
+          "kind": "assessment",
+          "label": "Laboratory Assessments: Blood (06,07), Urine (08)",
+          "category": null,
+          "markers": [
+            "06,07",
+            "08"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c11",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r10",
+          "kind": "assessment",
+          "label": "Serum Pregnancy Test (Beta HCG) (09)",
+          "category": null,
+          "markers": [
+            "09"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r11",
+          "kind": "assessment",
+          "label": "Tuberculosis Skin Test (PPD), RPR, CD4 (10)",
+          "category": null,
+          "markers": [
+            "10"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r12",
+          "kind": "assessment",
+          "label": "HIV (optional, per separate consent)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "Prior to Day 4",
+              "colspan": 3
+            }
+          ]
+        },
+        {
+          "id": "r13",
+          "kind": "assessment",
+          "label": "Psychiatric Assessment (SCID, Axis I, DSM IV) (11)",
+          "category": null,
+          "markers": [
+            "11"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "Prior to Day 4",
+              "colspan": 3
+            }
+          ]
+        },
+        {
+          "id": "r14",
+          "kind": "assessment",
+          "label": "Addiction Severity Index (ASI) (12)",
+          "category": null,
+          "markers": [
+            "12"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "Prior to Day 4",
+              "colspan": 3
+            }
+          ]
+        },
+        {
+          "id": "r15",
+          "kind": "assessment",
+          "label": "Weight (on admission & 0630-0800h ā breakfast) (13)",
+          "category": null,
+          "markers": [
+            "13"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c2",
+              "value": "1X"
+            },
+            {
+              "col": "c3",
+              "value": "1X"
+            },
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c5",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c9",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            },
+            {
+              "col": "c11",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r16",
+          "kind": "category",
+          "label": "Primary Outcome Measure:",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r17",
+          "kind": "assessment",
+          "label": "*** Modified Himmelsbach (MHOWS), obtained at 1000h (13)",
+          "category": "Primary Outcome Measure:",
+          "markers": [
+            "***",
+            "13"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c2",
+              "value": "1X"
+            },
+            {
+              "col": "c3",
+              "value": "1X"
+            },
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c5",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c9",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r18",
+          "kind": "assessment",
+          "label": "Emesis Tracking (14)",
+          "category": "Primary Outcome Measure:",
+          "markers": [
+            "14"
+          ],
+          "cells": []
+        },
+        {
+          "id": "r19",
+          "kind": "category",
+          "label": "Secondary Outcome Measures:",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r20",
+          "kind": "assessment",
+          "label": "•Modified Himmelsbach (MHOWS) (13) Peak Effect Detox/Med Phase",
+          "category": "Secondary Outcome Measures:",
+          "markers": [
+            "•",
+            "13"
+          ],
+          "cells": []
+        },
+        {
+          "id": "r21",
+          "kind": "assessment",
+          "label": "•Objective Opiate Withdrawal Scale (15) (OOWS Handlesman) (1000h)",
+          "category": "Secondary Outcome Measures:",
+          "markers": [
+            "•",
+            "15"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c2",
+              "value": "1X"
+            },
+            {
+              "col": "c3",
+              "value": "1X"
+            },
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c5",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c9",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r22",
+          "kind": "assessment",
+          "label": "•Short Opiate Withdrawal Scale (16) (SOWS Gossop) (1000h)",
+          "category": "Secondary Outcome Measures:",
+          "markers": [
+            "•",
+            "16"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c2",
+              "value": "1X"
+            },
+            {
+              "col": "c3",
+              "value": "1X"
+            },
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c5",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c9",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r23",
+          "kind": "assessment",
+          "label": "•Modified Clinical Global Impressions Scale - Patient (17) (NIMH MCGI) ( 1000h)",
+          "category": "Secondary Outcome Measures:",
+          "markers": [
+            "•",
+            "17"
+          ],
+          "cells": [
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c5",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c9",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r24",
+          "kind": "assessment",
+          "label": "•Modified Clinical Global Impressions Scale - Rater (18) (NIMH MCGI) (1000h)",
+          "category": "Secondary Outcome Measures:",
+          "markers": [
+            "•",
+            "18"
+          ],
+          "cells": [
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c5",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c9",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r25",
+          "kind": "assessment",
+          "label": "•Subjective Opiate Withdrawal Scale (19) (SOWS Handlesman) (1000h)",
+          "category": "Secondary Outcome Measures:",
+          "markers": [
+            "•",
+            "19"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c2",
+              "value": "1X"
+            },
+            {
+              "col": "c3",
+              "value": "1X"
+            },
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c5",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c9",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r26",
+          "kind": "assessment",
+          "label": "•Visual Analog Scale (VAS-E) (20)– Efficacy of Medication for Reducing Withdrawal Sickness (1000h)",
+          "category": "Secondary Outcome Measures:",
+          "markers": [
+            "•",
+            "20"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c3",
+              "value": "1X"
+            },
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r27",
+          "kind": "assessment",
+          "label": "Medication Administration/Concomitant Medications (21)",
+          "category": "Secondary Outcome Measures:",
+          "markers": [
+            "21"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c2",
+              "value": "1X"
+            },
+            {
+              "col": "c3",
+              "value": "1X"
+            },
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c5",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c9",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            },
+            {
+              "col": "c11",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r28",
+          "kind": "assessment",
+          "label": "Drop Out Day (cf. End of Study Form (31)) (Reason for Drop Out)",
+          "category": "Secondary Outcome Measures:",
+          "markers": [
+            "31"
+          ],
+          "cells": []
+        },
+        {
+          "id": "r29",
+          "kind": "category",
+          "label": "Abuse Potential Assessment:",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r30",
+          "kind": "assessment",
+          "label": "Addiction Research Center Inventory (22) - (ARCI-MBG) (1000h)",
+          "category": "Abuse Potential Assessment:",
+          "markers": [
+            "22"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c2",
+              "value": "1X"
+            },
+            {
+              "col": "c3",
+              "value": "1X"
+            },
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c5",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c9",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r31",
+          "kind": "assessment",
+          "label": "Visual Analog Scale (VAS-High)(23) (1000h)",
+          "category": "Abuse Potential Assessment:",
+          "markers": [
+            "23"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c2",
+              "value": "1X"
+            },
+            {
+              "col": "c3",
+              "value": "1X"
+            },
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c5",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c9",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r32",
+          "kind": "category",
+          "label": "Safety Measures:",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r33",
+          "kind": "assessment",
+          "label": "(Sitting) Vital Signs (24, 33) (0800, 1000, 1100, 1300, 1800 2300h and at 0800 at day 11)",
+          "category": "Safety Measures:",
+          "markers": [
+            "24",
+            "33"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "6X"
+            },
+            {
+              "col": "c2",
+              "value": "6X"
+            },
+            {
+              "col": "c3",
+              "value": "6X"
+            },
+            {
+              "col": "c4",
+              "value": "6X"
+            },
+            {
+              "col": "c5",
+              "value": "6X"
+            },
+            {
+              "col": "c6",
+              "value": "6X"
+            },
+            {
+              "col": "c7",
+              "value": "6X"
+            },
+            {
+              "col": "c8",
+              "value": "6X"
+            },
+            {
+              "col": "c9",
+              "value": "6X"
+            },
+            {
+              "col": "c10",
+              "value": "6X"
+            },
+            {
+              "col": "c11",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r34",
+          "kind": "assessment",
+          "label": "Orthostatic (Standing) Vital Signs (24,33) (800, 1100, 1300, 1800, 2300 and only at 0800 at day 11)",
+          "category": "Safety Measures:",
+          "markers": [
+            "24",
+            "33"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5X"
+            },
+            {
+              "col": "c2",
+              "value": "5X"
+            },
+            {
+              "col": "c3",
+              "value": "5X"
+            },
+            {
+              "col": "c4",
+              "value": "5X"
+            },
+            {
+              "col": "c5",
+              "value": "5X"
+            },
+            {
+              "col": "c6",
+              "value": "5X"
+            },
+            {
+              "col": "c7",
+              "value": "5X"
+            },
+            {
+              "col": "c8",
+              "value": "5X"
+            },
+            {
+              "col": "c9",
+              "value": "5X"
+            },
+            {
+              "col": "c10",
+              "value": "5X"
+            },
+            {
+              "col": "c11",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r35",
+          "kind": "assessment",
+          "label": "Electrocardiogram (25) (1300 to 1430h)",
+          "category": "Safety Measures:",
+          "markers": [
+            "25"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r36",
+          "kind": "assessment",
+          "label": "Adverse Events & Abnormal Clinical Signs: (26) (1000h)",
+          "category": "Safety Measures:",
+          "markers": [
+            "26"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c2",
+              "value": "1X"
+            },
+            {
+              "col": "c3",
+              "value": "1X"
+            },
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c5",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c9",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            },
+            {
+              "col": "c11",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r37",
+          "kind": "assessment",
+          "label": "Tobacco Withdrawal Scale (27) (1700)",
+          "category": "Safety Measures:",
+          "markers": [
+            "27"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1X"
+            },
+            {
+              "col": "c2",
+              "value": "1X"
+            },
+            {
+              "col": "c3",
+              "value": "1X"
+            },
+            {
+              "col": "c4",
+              "value": "1X"
+            },
+            {
+              "col": "c5",
+              "value": "1X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "1X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c9",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            }
+          ]
+        },
+        {
+          "id": "r38",
+          "kind": "assessment",
+          "label": "Urine Toxicology (28)",
+          "category": "Safety Measures:",
+          "markers": [
+            "28"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "Admission, Monday, Wednesday, Friday, Discharge and As Needed",
+              "colspan": 11
+            }
+          ]
+        },
+        {
+          "id": "r39",
+          "kind": "assessment",
+          "label": "Plasma Lofexidine Pk (LCMS) (29) Total of 12 samples (10 ml of plasma each ), Day 4: 1X, 0800h; Day 6: 1X, 0800h Day 7: 8X, 0800, 0900, 1000, 1100, 1200, 1300, 1600, 1800h; 2100, 2300; Day 8: 1X:0800; Day 10: 1000h after MHOWS",
+          "category": "Safety Measures:",
+          "markers": [
+            "29"
+          ],
+          "cells": [
+            {
+              "col": "c4",
+              "value": "1 X"
+            },
+            {
+              "col": "c6",
+              "value": "1X"
+            },
+            {
+              "col": "c7",
+              "value": "8X"
+            },
+            {
+              "col": "c8",
+              "value": "1X"
+            },
+            {
+              "col": "c10",
+              "value": "1X"
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        {
+          "marker": "Detox",
+          "text": "Detox = Detoxification",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "table"
+            }
+          ]
+        },
+        {
+          "marker": "SCID",
+          "text": "SCID: The Structured Clinical Interview for DSM IV (Axis I)",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r13"
+            }
+          ]
+        },
+        {
+          "marker": "*",
+          "text": "* Morphine: study day 1 morphine administration times may vary depending upon time of admission.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r4"
+            }
+          ]
+        },
+        {
+          "marker": "**",
+          "text": "** Lofexidine: The physician may withhold a dose of study medication if the patient is experiencing symptoms of hypotension (dizziness making it difficult to stand for one minute, or syncope) or if the patient’s orthostatic blood pressure is ≤ 80 mmHg systolic immediately before the dose is due to be given. If more than two doses of study medication need to be withheld in a single day, the patient will be terminated from the study and treated for their withdrawal symptoms with standard treatment.",
+          "continuedAcrossPages": true,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r5"
+            }
+          ]
+        },
+        {
+          "marker": "***",
+          "text": "*** MHOWS = Modified Himmelsbach Opiate Withdrawal Scale (Primary Outcome Measure) time range for collection  = 0 to ±30 min for all items",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r17"
+            }
+          ]
+        },
+        {
+          "marker": "•",
+          "text": "•Measures, time range and order: These measures should start being collected at 1000, and must be completed by 1200, and shall be collected in the following order:  MHOWS, OOWS, SOWS Gossop,  MCGI (rater, patient),  SOWS (Handelsman), VAS-E, Addiction Research Center Inventory (ARCI-MBG) and Visual Analog Scale (VAS-High) for “Drug High”.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r20"
+            },
+            {
+              "target": "row",
+              "row": "r21"
+            },
+            {
+              "target": "row",
+              "row": "r22"
+            },
+            {
+              "target": "row",
+              "row": "r23"
+            },
+            {
+              "target": "row",
+              "row": "r24"
+            },
+            {
+              "target": "row",
+              "row": "r25"
+            },
+            {
+              "target": "row",
+              "row": "r26"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "Form numbers may change (small print)"
+      ],
+      "ambiguities": [
+        "Numbered footnote markers (01) through (33) appear as superscripts on many row labels (e.g., Informed Consent, Medical History, Physical Examination, Prior Medications, Laboratory Assessments, Serum Pregnancy Test, Tuberculosis Skin Test, Psychiatric Assessment, Addiction Severity Index, Weight, MHOWS, Emesis Tracking, OOWS, SOWS Gossop, MCGI Patient/Rater, VAS-E, Medication Administration, Drop Out Day, ARCI, VAS-High, Vital Signs, ECG, AE, Tobacco Withdrawal, Urine Toxicology, Plasma Lofexidine Pk) but no corresponding numbered footnote text block was found on the extracted pages (only 'Detox', 'SCID', '*', '**', '***', and '•' footnotes have printed definitions). These numbered markers could not be resolved to footnote text.",
+        "Several rows (Morphine row days 1-3; Lofexidine row days 4-10; Physical Examination days 1 and 11; Prior Medications day 1; Emesis Tracking days 1-10; Drop Out Day all days 1-11) show shaded/grey-filled cells with no printed 'X' or numeric text inside them. These shaded cells were left out of the 'cells' array per the no-invented-content rule, but the shading likely indicates the activity/assessment occurs on those days without an explicit quantity marker printed.",
+        "The 'Prior to Day 4' text for HIV, Psychiatric Assessment, and Addiction Severity Index rows visually appears once under the Day 1 column region; it was interpreted as spanning columns 1-3 (colspan=3) since no vertical dividers appear to interrupt the phrase, but the exact column span is not fully certain from the image alone.",
+        "The Urine Toxicology row value 'Admission, Monday, Wednesday, Friday, Discharge and As Needed' spans the full width of the day columns; it was assigned colspan=11 across c1-c11, but the exact column boundaries of this span are not fully certain.",
+        "The bullet symbol '•' preceding several Secondary Outcome Measures row labels (MHOWS Peak, OOWS, SOWS Gossop, MCGI Patient, MCGI Rater, SOWS Subjective, VAS-E) was interpreted as a footnote marker linking to the '•Measures, time range and order...' footnote on page 29, based on matching bullet usage; this interpretation may not be certain.",
+        "Table title on page 26 lacks the word 'Continued' while pages 27-28 are titled 'Table 4, Continued'; treated as one continuous table across pages 26-29."
+      ]
+    }
+  ],
+  "model": "claude-sonnet-5",
+  "extractedAt": "2026-08-28T14:16:03.693Z",
+  "sourceFile": "protocol9.pdf"
+}
