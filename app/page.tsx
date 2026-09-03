@@ -4,29 +4,23 @@ import { useCallback, useRef, useState } from 'react';
 import { locateSoA, textLooksScanned } from '@/lib/locator';
 import { parseExtraction } from '@/lib/extraction';
 import { chunkPages, mergeExtractions } from '@/lib/merge';
+import { trimCandidatePages } from '@/lib/pages';
+import {
+  ACCEPT_ATTR,
+  ingestFiles,
+  type IngestedDoc,
+} from '@/lib/ingest';
 import type { PageSignal, SoACandidate, SoAExtraction } from '@/lib/soa-types';
 import SoATable from '@/components/SoATable';
 
 type Phase = 'idle' | 'parsing' | 'located' | 'extracting' | 'done';
 
-interface ParsedPdf {
-  fileName: string;
-  numPages: number;
-  pageTexts: string[];
-}
-
 const SAMPLES = ['protocol1', 'protocol5', 'protocol9', 'protocol12', 'protocol15'];
-
-async function loadPdfjs() {
-  const pdfjs = await import('pdfjs-dist');
-  pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
-  return pdfjs;
-}
 
 export default function Home() {
   const [phase, setPhase] = useState<Phase>('idle');
   const [error, setError] = useState<string | null>(null);
-  const [parsed, setParsed] = useState<ParsedPdf | null>(null);
+  const [parsed, setParsed] = useState<IngestedDoc | null>(null);
   const [signals, setSignals] = useState<PageSignal[]>([]);
   const [candidates, setCandidates] = useState<SoACandidate[]>([]);
   const [manualRange, setManualRange] = useState('');
@@ -37,9 +31,8 @@ export default function Home() {
   const [pageImages, setPageImages] = useState<Record<number, string>>({});
   const [showSource, setShowSource] = useState(false);
   const [sampleName, setSampleName] = useState('');
-  const [useOpus, setUseOpus] = useState(false);
+  const [useQuality, setUseQuality] = useState(false);
   const [scannedHint, setScannedHint] = useState(false);
-  const pdfDocRef = useRef<unknown>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const reset = () => {
@@ -54,63 +47,48 @@ export default function Home() {
     setProgress('');
     setSampleName('');
     setScannedHint(false);
-    pdfDocRef.current = null;
   };
 
-  const handleFile = useCallback(async (file: File) => {
+  const handleFiles = useCallback(async (files: FileList | File[]) => {
+    const list = Array.from(files);
+    if (!list.length) return;
     reset();
     setPhase('parsing');
-    setProgress('Reading PDF...');
+    setProgress('Reading document...');
     try {
-      const pdfjs = await loadPdfjs();
-      const buf = await file.arrayBuffer();
-      const doc = await pdfjs.getDocument({ data: buf }).promise;
-      pdfDocRef.current = doc;
-      const pageTexts: string[] = [];
-      for (let i = 1; i <= doc.numPages; i++) {
-        setProgress(`Extracting text: page ${i}/${doc.numPages}`);
-        const page = await doc.getPage(i);
-        const tc = await page.getTextContent();
-        const items = (tc.items as { str: string; transform: number[] }[])
-          .filter((it) => it.str !== undefined)
-          .map((it) => ({ str: it.str, x: it.transform[4], y: it.transform[5] }));
-        items.sort((a, b) => b.y - a.y || a.x - b.x);
-        const lines: string[] = [];
-        let curY: number | null = null;
-        let cur: string[] = [];
-        for (const it of items) {
-          if (curY === null || Math.abs(it.y - curY) > 4) {
-            if (cur.length) lines.push(cur.join(' '));
-            cur = [];
-            curY = it.y;
-          }
-          if (it.str.trim()) cur.push(it.str);
-        }
-        if (cur.length) lines.push(cur.join(' '));
-        pageTexts.push(lines.join('\n'));
-      }
-      const { pageSignals, candidates: cands } = locateSoA(pageTexts);
-      const scanned = textLooksScanned(pageTexts);
-      setParsed({ fileName: file.name, numPages: doc.numPages, pageTexts });
+      const doc = await ingestFiles(list, setProgress);
+      const { pageSignals, candidates: cands } = locateSoA(doc.pageTexts);
+      const scanned =
+        doc.kind === 'image' ||
+        (doc.kind === 'pdf' && textLooksScanned(doc.pageTexts));
+      setParsed(doc);
       setSignals(pageSignals);
       setCandidates(cands);
       setScannedHint(scanned);
+      if (doc.pageDataUrls) setPageImages(doc.pageDataUrls);
       setPhase('located');
       setProgress('');
     } catch (e) {
-      setError(`Failed to parse PDF: ${e instanceof Error ? e.message : String(e)}`);
+      setError(`Failed to read file: ${e instanceof Error ? e.message : String(e)}`);
       setPhase('idle');
     }
   }, []);
 
   const renderPages = useCallback(
     async (pages: number[], quality: number, maxDim: number) => {
-      const doc = pdfDocRef.current as {
+      if (!parsed) return [] as { page: number; dataUrl: string }[];
+      if (parsed.pageDataUrls) {
+        return pages
+          .filter((p) => parsed.pageDataUrls![p])
+          .map((p) => ({ page: p, dataUrl: parsed.pageDataUrls![p] }));
+      }
+      const doc = parsed.pdfDoc as {
         getPage: (n: number) => Promise<{
           getViewport: (o: { scale: number }) => { width: number; height: number };
           render: (o: unknown) => { promise: Promise<void> };
         }>;
       };
+      if (!doc) return [];
       const out: { page: number; dataUrl: string }[] = [];
       for (const p of pages) {
         setProgress(`Rendering page ${p}...`);
@@ -127,37 +105,49 @@ export default function Home() {
       }
       return out;
     },
-    []
+    [parsed]
   );
 
   const extract = useCallback(
-    async (pages: number[]) => {
+    async (pagesIn: number[]) => {
       if (!parsed) return;
       setError(null);
       setExtraction(null);
       setPhase('extracting');
       try {
-        let rendered = await renderPages(pages, 0.8, 1600);
+        const pages = trimCandidatePages(pagesIn, signals);
+        // Smaller images = fewer input tokens and faster upload.
+        let rendered = await renderPages(pages, 0.55, 1000);
+        if (!rendered.length && parsed.kind === 'text') {
+          // Text-only extraction: no images.
+          rendered = pages.map((p) => ({ page: p, dataUrl: '' }));
+        }
         let total = rendered.reduce((a, r) => a + r.dataUrl.length, 0);
-        if (total > 3_800_000) rendered = await renderPages(pages, 0.6, 1300);
-        total = rendered.reduce((a, r) => a + r.dataUrl.length, 0);
-        if (total > 3_800_000) rendered = await renderPages(pages, 0.5, 1100);
+        if (total > 3_800_000) rendered = await renderPages(pages, 0.45, 900);
 
-        const imgs: Record<number, string> = {};
-        rendered.forEach((r) => (imgs[r.page] = r.dataUrl));
+        const imgs: Record<number, string> = { ...(parsed.pageDataUrls || {}) };
+        rendered.forEach((r) => {
+          if (r.dataUrl) imgs[r.page] = r.dataUrl;
+        });
         setPageImages(imgs);
         setExtractedPages(pages);
 
-        const payloadPages = rendered.map((r) => ({
-          page: r.page,
-          imageBase64: r.dataUrl.split(',')[1],
-          mediaType: 'image/jpeg',
-          text: parsed.pageTexts[r.page - 1],
-        }));
-        const chunks = chunkPages(payloadPages, 2);
-        const model = useOpus ? 'claude-opus-5' : 'claude-sonnet-5';
+        const payloadPages = pages.map((p) => {
+          const r = rendered.find((x) => x.page === p);
+          const dataUrl = r?.dataUrl || imgs[p] || '';
+          return {
+            page: p,
+            imageBase64: dataUrl.includes(',') ? dataUrl.split(',')[1] : undefined,
+            mediaType: dataUrl.startsWith('data:image/png') ? 'image/png' : 'image/jpeg',
+            text: parsed.pageTexts[p - 1] || undefined,
+          };
+        });
+
+        // 1 page per call → max parallelism; wall time ≈ slowest page.
+        const chunks = chunkPages(payloadPages, 1);
+        const model = useQuality ? 'claude-sonnet-5' : 'claude-haiku-4-5';
         setProgress(
-          `Extracting ${chunks.length} chunk${chunks.length === 1 ? '' : 's'} in parallel with ${model}...`
+          `Fast extract: ${chunks.length} page${chunks.length === 1 ? '' : 's'} in parallel (${model})...`
         );
 
         const parts = await Promise.all(
@@ -165,7 +155,12 @@ export default function Home() {
             const res = await fetch('/api/extract', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ pages: chunk, quality: useOpus, model }),
+              body: JSON.stringify({
+                pages: chunk,
+                quality: useQuality,
+                model,
+                chunkSize: 1,
+              }),
             });
             if (!res.ok) {
               const j = await res.json().catch(() => null);
@@ -180,7 +175,7 @@ export default function Home() {
               raw += decoder.decode(value, { stream: true });
               const statuses = [...raw.matchAll(/\[\[STATUS: ([^\]]+)\]\]/g)].map((m) => m[1]);
               if (statuses.length) {
-                setProgress(`Chunk ${i + 1}/${chunks.length}: ${statuses[statuses.length - 1]}`);
+                setProgress(`Page chunk ${i + 1}/${chunks.length}: ${statuses[statuses.length - 1]}`);
               }
             }
             const errMatch = raw.match(/\[\[ERROR: ([\s\S]*?)\]\]\s*$/);
@@ -202,7 +197,7 @@ export default function Home() {
         setProgress('');
       }
     },
-    [parsed, renderPages, useOpus]
+    [parsed, renderPages, useQuality, signals]
   );
 
   const extractManual = () => {
@@ -243,7 +238,10 @@ export default function Home() {
       ]);
       const pages = Array.from(sampled).sort((a, b) => a - b).slice(0, 60);
       setProgress(`Vision-locating over ${pages.length} page thumbnails...`);
-      const thumbs = await renderPages(pages, 0.45, 900);
+      const thumbs = await renderPages(pages, 0.4, 800);
+      if (!thumbs.length) {
+        throw new Error('No page images available for vision locate (text-only file). Use a manual range or upload a PDF/image.');
+      }
       const batches = chunkPages(thumbs, 16);
       const found = new Set<number>();
       for (let i = 0; i < batches.length; i++) {
@@ -311,7 +309,7 @@ export default function Home() {
     });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `${(extraction.sourceFile || sampleName || 'soa').replace(/\.pdf$/i, '')}-soa.json`;
+    a.download = `${(extraction.sourceFile || sampleName || 'soa').replace(/\.[^.]+$/i, '')}-soa.json`;
     a.click();
   };
 
@@ -320,10 +318,10 @@ export default function Home() {
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-slate-900">SoA Extractor</h1>
         <p className="mt-1 max-w-3xl text-sm text-slate-600">
-          Upload any clinical trial protocol PDF. A deterministic locator finds
-          Schedule of Activities tables under whatever name the sponsor used;
-          Claude then extracts a faithful structured grid: verbatim cells,
-          hierarchical headers, and footnotes linked to the cells they modify.
+          Upload any clinical trial protocol (PDF, Word, images, or text). A
+          locator finds the Schedule of Activities under whatever name the
+          sponsor used; Claude extracts a faithful structured grid in parallel
+          one-page chunks.
         </p>
       </header>
 
@@ -332,29 +330,28 @@ export default function Home() {
           onDragOver={(e) => e.preventDefault()}
           onDrop={(e) => {
             e.preventDefault();
-            const f = e.dataTransfer.files?.[0];
-            if (f) handleFile(f);
+            if (e.dataTransfer.files?.length) handleFiles(e.dataTransfer.files);
           }}
           onClick={() => fileRef.current?.click()}
-          className="flex h-24 flex-1 min-w-[280px] cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-slate-300 bg-white text-sm text-slate-500 hover:border-blue-400 hover:text-blue-600"
+          className="flex h-24 flex-1 min-w-[280px] cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-slate-300 bg-white px-4 text-center text-sm text-slate-500 hover:border-blue-400 hover:text-blue-600"
         >
           {parsed
-            ? `${parsed.fileName} · ${parsed.numPages} pages`
-            : 'Drop a protocol PDF here, or click to choose'}
+            ? `${parsed.fileName} · ${parsed.numPages} page${parsed.numPages === 1 ? '' : 's'} · ${parsed.kind}`
+            : 'Drop PDF / DOCX / images / text here, or click to choose'}
           <input
             ref={fileRef}
             type="file"
-            accept="application/pdf"
+            accept={ACCEPT_ATTR}
+            multiple
             className="hidden"
             onChange={(e) => {
-              const f = e.target.files?.[0];
-              if (f) handleFile(f);
+              if (e.target.files?.length) handleFiles(e.target.files);
             }}
           />
         </div>
         <div className="text-sm text-slate-500">
           <div className="mb-1 font-medium text-slate-600">
-            Or view a pre-computed output (produced by this same pipeline):
+            Or view a pre-computed output:
           </div>
           <div className="flex flex-wrap gap-2">
             {SAMPLES.map((s) => (
@@ -397,10 +394,10 @@ export default function Home() {
               <label className="flex items-center gap-1.5 text-xs text-slate-600">
                 <input
                   type="checkbox"
-                  checked={useOpus}
-                  onChange={(e) => setUseOpus(e.target.checked)}
+                  checked={useQuality}
+                  onChange={(e) => setUseQuality(e.target.checked)}
                 />
-                Use Opus 5 (slower, better on unusual layouts)
+                Higher quality (Sonnet — slower)
               </label>
               <button
                 onClick={() => setShowSignals((v) => !v)}
@@ -412,14 +409,12 @@ export default function Home() {
           </div>
           {scannedHint && (
             <p className="mb-2 text-sm text-amber-800">
-              This PDF has almost no text layer (likely scanned). The text locator
-              cannot find the table. Use vision locate or a manual page range.
+              Little or no text layer. Use vision locate or a manual page range.
             </p>
           )}
           {candidates.length === 0 && (
             <p className="text-sm text-slate-600">
-              No pages scored high enough for an automatic SoA hit. Try vision
-              locate (works on unseen titles and scans) or force a page range.
+              No automatic SoA hit. Try vision locate or force a page range.
             </p>
           )}
           <div className="mb-3 flex flex-wrap gap-2">
@@ -434,10 +429,10 @@ export default function Home() {
             )}
             <button
               onClick={visionLocate}
-              disabled={phase === 'extracting'}
+              disabled={phase === 'extracting' || parsed.kind === 'text'}
               className="rounded border border-slate-300 bg-white px-3 py-1.5 text-xs hover:bg-slate-50 disabled:opacity-50"
             >
-              Vision locate (any layout)
+              Vision locate
             </button>
           </div>
           <ul className="space-y-2">
@@ -550,10 +545,9 @@ export default function Home() {
       )}
 
       <footer className="mt-10 border-t border-slate-200 pt-4 text-xs text-slate-400">
-        Take-home 1b for Intake AI. Locator is deterministic over the text layer
-        with an optional vision fallback; extraction uses Claude on rendered
-        page images in parallel 2-page chunks. Cell values are reproduced
-        verbatim; nothing is normalized.
+        Accepts PDF, DOCX, images, and text. Default extractor is Haiku on
+        parallel 1-page chunks with a compact JSON wire format. Toggle Sonnet
+        for harder layouts.
       </footer>
     </main>
   );

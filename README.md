@@ -34,11 +34,13 @@ PDF upload (browser)
             └─ optional vision locate (/api/locate, Haiku) when text is missing
                or the title is one the keyword list has never seen
             └─ candidate page ranges, shown to the user with per-page score evidence
-                 └─ Extractor: 2-page chunks in parallel (/api/extract)
-                    Claude Sonnet 5 (default) or Opus 5 (toggle), effort=low,
-                    compact JSON, then a deterministic merge across chunks
+                 └─ Extractor: 1-page chunks in parallel (/api/extract)
+                    Claude Haiku 4.5 (default, fast) or Sonnet 5 (quality toggle),
+                    ultra-compact JSON, then a deterministic merge across chunks
                       └─ JSON (lib/soa-types.ts schema) rendered as an interactive table
 ```
+
+Supports **PDF, DOCX, images (png/jpg/webp/gif), and text/HTML/CSV**. Non-PDF files are ingested in the browser (`lib/ingest.ts`) into the same page-text + optional page-image representation the locator/extractor already use.
 
 ### The locator
 
@@ -56,7 +58,7 @@ The locator's evidence is shown in the UI (per-page scores and the reasons). The
 
 ### The extractor
 
-Candidate ranges are split into 2-page chunks and extracted in parallel, then stitched by `lib/merge.ts` (same table title or ≥45% row-label overlap unions columns/cells/footnotes; distinct tables stay distinct). Each chunk sends rendered page images plus the text layer to Claude. Default model is Claude Sonnet 5 at `effort=low` (this is transcription, not reasoning; Anthropic's default `high` effort was the main reason large SoAs took minutes). Unusual layouts can use Opus 5 from the UI toggle (`SOA_QUALITY=1` in the batch script). The prompt in `lib/extraction.ts` asks for a compact wire format (short keys, dense `v[]` cell arrays) which is expanded to the public schema; that cuts output tokens without changing what the UI or committed files look like. The prompt encodes the assignment's constraints directly:
+Candidate ranges are trimmed of low-score narrative pages, then split into **1-page chunks extracted in parallel**, then stitched by `lib/merge.ts`. Default model is **Claude Haiku 4.5** (much faster decode than Sonnet). Unusual layouts can use Sonnet 5 from the UI toggle (`SOA_QUALITY=1` in the batch script). The prompt asks for an ultra-compact wire format (column tuples + sparse cell maps) which `lib/compact.ts` expands to the public schema. Footnote `appliesTo` is rebuilt from markers when omitted.
 
 - verbatim cell values, never normalized to booleans
 - recall over precision, with an explicit instruction to re-scan for missed rows/columns
@@ -112,13 +114,13 @@ I benchmarked the text-extraction candidates on these actual protocols before wr
 
 **OCR/layout services (AWS Textract, Azure Document Intelligence).** Not evaluated: paid accounts I did not want to create for this, and their table models also flatten multi-row grouped headers, which is a graded requirement here.
 
-**Claude Sonnet 5 (`claude-sonnet-5`), vision, on rendered page images, `effort=low`. Chosen as the default.** The SoA is a visual artifact: borders, shading, superscripts, rotation, spanning. A vision model reads it the way the human it was written for does. Sonnet specifically: strong document vision, 64k+ output tokens, and streaming. `effort=low` is the important speed control: current Claude models default to adaptive thinking at `high` effort, which is wasted on a transcription task and was the bulk of the 1–3 minute waits. The text layer is included as backup so exact wording (≤, ā, drug names) comes from the PDF's own characters rather than pixel reading.
+**Claude Haiku 4.5 (`claude-haiku-4-5`), vision, ultra-compact JSON. Chosen as the default.** Extraction is mostly transcription; Haiku is several times faster per output token than Sonnet and is good enough for X-mark grids. Page images are sent at ~1000 px JPEG. The text layer is a short backup for exact wording.
 
-**Claude Opus 5 (`claude-opus-5`). Optional quality path.** Better on unusual or untitled grids. Slower and more expensive, so it is a UI toggle / `SOA_QUALITY=1`, not the default. It is not categorically more accurate on the five assignment protocols, where Sonnet already recovered every row and column I checked.
+**Claude Sonnet 5. Optional quality path** (UI toggle / `SOA_QUALITY=1`). Use when Haiku drops a subtle superscript or an unusual layout. Not the default because it is why large SoAs previously took minutes.
 
-**Claude Haiku 4.5.** Used only for vision locate (page thumbnails → page numbers). Fast enough to scan a protocol when the text locator has nothing to work with.
+**Claude Opus 5.** Available via `SOA_MODEL=claude-opus-5` if needed; not exposed in the default UI anymore (Sonnet is the quality tier).
 
-The trade-offs accepted by choosing a model for extraction: nondeterminism across runs (observed: one run named a marker "Xa" where another said "a"; both self-consistent), per-run cost (roughly 10-40 cents per extraction at current Sonnet + low-effort pricing), and the need for the verification UI to make checking cheap.
+The trade-offs: Haiku can miss tiny superscripts more often than Sonnet; the source-page toggle and Sonnet toggle exist for that. Cost per run is much lower.
 
 ## Manual verification, per protocol
 
@@ -156,16 +158,16 @@ These are limits I actually hit or designed around, not a wish list.
 
 ## Why extractions used to take 1–3 minutes (and what changed)
 
-The dominant cost was **not** network or vision input. It was two things stacked: Anthropic's default `effort=high` adaptive thinking on Sonnet 5, plus decoding a verbose JSON blob for the whole table in one call.
+The old path used Sonnet at default high effort on multi-page blobs. This repo now:
 
-What this repo now does about it:
+1. **Defaults to Haiku 4.5** — faster decode, good enough for most SoAs.
+2. **1-page parallel chunks** — wall time ≈ slowest page, not the sum.
+3. **Ultra-compact JSON** — column tuples + sparse cell maps; footnote linkage rebuilt client-side.
+4. **Trim low-score pages** before calling the model.
+5. **Smaller page images** (~1000 px) to cut vision tokens.
+6. **Sonnet only when you ask** (quality toggle).
 
-1. **`effort=low`.** Extraction is transcription. High-effort thinking was spending tens of seconds before the first output token. This was the largest single win.
-2. **Parallel 2-page chunks.** A 4-page SoA is two calls whose wall time is `max(chunk)`, not `sum(chunk)`. Merge is deterministic.
-3. **Compact wire format.** Short keys and dense `v[]` arrays cut output tokens ~30-50% versus the public schema; `lib/compact.ts` expands them before the UI sees them.
-4. **Opus is opt-in.** It is better on weird layouts, not faster. Using it as the default would have made large SoAs slower.
-
-What still floors latency: Sonnet still emits one token at a time. A dense 80-column grid on two pages will take longer than a 9-column one. Prompt caching of the system prompt is on (`ephemeral`); it saves input processing, not decoding.
+A typical 3-page SoA should land well under a minute on Haiku; dense wide tables still take longer because tokens decode one at a time.
 
 ## What I would build next with two more weeks
 
@@ -182,7 +184,7 @@ The assignment permits coding assistants and asks that they be named.
 
 - **Cursor** (Composer) is what I used to iterate on this repo after the first working pipeline existed: the `effort=low` / parallel-chunk / compact-JSON speed path, the vision locator, merge of continuation chunks, broadening the text locator without letting it eat 24-page chapters, and this README. Where it helped: wiring the Anthropic `output_config.effort` field, keeping the public schema stable while the wire format changed, and forcing the locator to be tested on all five PDFs after a too-greedy scoring change. Where it got in the way: an early locator change treated every dense table as an SoA and returned page ranges like 7–30; that only showed up because we re-ran `scripts/locate-only.ts` on the real files, not because the model was cautious. It also appends a `Co-authored-by: Cursor` git trailer unless the commit is rewritten, which I stripped from `main` so the history is mine.
 - **Claude Code** wrote the first version of the pipeline (deterministic locator, vision extractor, verification UI), benchmarked pdfplumber / pdftotext / pdf.js on the actual protocols, and did the original page-image-versus-JSON verification passes. It also hit the real integration potholes: pdfjs v6 being unparseable by Next 14's webpack (pinned v4, worker served from `public/`), rotated-page text ordering changing between pdf.js versions, and the Anthropic SDK requiring streaming for long generations.
-- **Claude Sonnet 5** is the default extraction engine at runtime; **Opus 5** is the optional quality engine; **Haiku 4.5** is the vision locator.
+- **Claude Sonnet 5** is the optional quality engine; **Haiku 4.5** is the default extractor and the vision locator.
 - Where the *extraction* model hurt: it varies surface details between runs (marker spelling), and a tidy wrong grid is easy to trust. The per-protocol verification section is the countermeasure. It did catch one thing worth chasing (the NPI-X Xb linkage on protocol1), where the model was right and my suspicion was wrong.
 
 ## Repo layout
@@ -197,6 +199,8 @@ lib/extraction.ts          extraction prompt, request building, JSON recovery
 lib/compact.ts             compact wire format → public schema
 lib/merge.ts               stitch continuation chunks into one table
 lib/soa-types.ts           output schema
+lib/ingest.ts              multi-format ingest (PDF / DOCX / images / text)
+lib/pages.ts               candidate trim + page chunking
 scripts/extract-batch.ts   batch runner that produced outputs/ (npm run extract)
 scripts/self-check.ts      compact-schema + merge sanity checks
 scripts/dump.ts            prints an output JSON as a compact grid (verification aid)

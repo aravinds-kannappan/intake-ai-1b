@@ -16,17 +16,19 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, writeFileSync, readdirSync, rmSync } from 'node:fs';
 import { basename, join } from 'node:path';
 import Anthropic from '@anthropic-ai/sdk';
-import { locateSoA } from '../lib/locator';
 import {
   DEFAULT_EFFORT,
   DEFAULT_MODEL,
   EXTRACTION_SYSTEM_BLOCKS,
   QUALITY_MODEL,
   buildUserContent,
+  modelSupportsEffort,
   parseExtraction,
 } from '../lib/extraction';
 import { chunkPages, mergeExtractions } from '../lib/merge';
+import { trimCandidatePages } from '../lib/pages';
 import type { SoAExtraction } from '../lib/soa-types';
+import { locateSoA } from '../lib/locator';
 
 interface CandTiming {
   pages: number[];
@@ -102,7 +104,7 @@ async function extractOne(pdfPath: string): Promise<{ result: SoAExtraction; tim
   const texts = await pageTextsOf(pdfPath);
   const parseTextMs = Date.now() - tText0;
   const tLoc0 = Date.now();
-  const { candidates } = locateSoA(texts);
+  const { candidates, pageSignals } = locateSoA(texts);
   const locateMs = Date.now() - tLoc0;
   console.log(
     `locator: ${candidates.length} candidates (text extract ${parseTextMs}ms, locate ${locateMs}ms):`,
@@ -129,14 +131,21 @@ async function extractOne(pdfPath: string): Promise<{ result: SoAExtraction; tim
       const renderMs = Date.now() - tRender0;
       const imageBytes = images.reduce((a, i) => a + i.imageBase64.length, 0);
       const pages = textOnly
-        ? cand.pages.map((p) => ({ page: p, text: texts[p - 1] }))
-        : images.map((img) => ({
-            ...img,
-            text: texts[img.page - 1],
-          }));
-      const chunks = chunkPages(pages, 2);
+        ? trimCandidatePages(cand.pages, pageSignals).map((p) => ({
+            page: p,
+            text: texts[p - 1],
+          }))
+        : (() => {
+            const kept = trimCandidatePages(cand.pages, pageSignals);
+            const imgsKept = images.filter((img) => kept.includes(img.page));
+            return imgsKept.map((img) => ({
+              ...img,
+              text: texts[img.page - 1],
+            }));
+          })();
+      const chunks = chunkPages(pages, 1);
       console.log(
-        `  ${model} effort=${DEFAULT_EFFORT} on pages ${cand.pages.join(',')} ` +
+        `  ${model} on pages ${pages.map((p) => p.page).join(',')} ` +
         `(${chunks.length} chunk(s), render ${renderMs}ms, ${(imageBytes / 1024).toFixed(0)}KB base64) ...`
       );
 
@@ -148,15 +157,17 @@ async function extractOne(pdfPath: string): Promise<{ result: SoAExtraction; tim
       let cachedInputTokens = 0;
       const chunkResults = await Promise.all(
         chunks.map(async (chunk) => {
-          const stream = client.messages.stream({
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const params: any = {
             model,
-            max_tokens: 64000,
-            output_config: { effort: DEFAULT_EFFORT },
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            system: EXTRACTION_SYSTEM_BLOCKS as any,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            messages: [{ role: 'user', content: buildUserContent(chunk) as any }],
-          });
+            max_tokens: 16000,
+            system: EXTRACTION_SYSTEM_BLOCKS,
+            messages: [{ role: 'user', content: buildUserContent(chunk) }],
+          };
+          if (modelSupportsEffort(model)) {
+            params.output_config = { effort: DEFAULT_EFFORT };
+          }
+          const stream = client.messages.stream(params);
           for await (const event of stream) {
             if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
               if (firstByteMs < 0) firstByteMs = Date.now() - tSend;

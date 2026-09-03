@@ -157,11 +157,4 @@ export function mergeExtractions(parts: SoAExtraction[]): SoAExtraction {
   return { tables };
 }
 
-export function chunkPages<T>(pages: T[], size = 2): T[][] {
-  if (pages.length <= size) return [pages];
-  const chunks: T[][] = [];
-  for (let i = 0; i < pages.length; i += size) {
-    chunks.push(pages.slice(i, i + size));
-  }
-  return chunks;
-}
+export { chunkPages, trimCandidatePages } from './pages';

@@ -5,6 +5,7 @@ import {
   EXTRACTION_SYSTEM_BLOCKS,
   QUALITY_MODEL,
   buildUserContent,
+  modelSupportsEffort,
   parseExtraction,
 } from '@/lib/extraction';
 import { chunkPages, mergeExtractions } from '@/lib/merge';
@@ -14,42 +15,55 @@ export const runtime = 'nodejs';
 export const maxDuration = 300;
 
 interface ExtractRequest {
-  pages: { page: number; imageBase64: string; mediaType: string; text?: string }[];
+  pages: { page: number; imageBase64?: string; mediaType?: string; text?: string }[];
   quality?: boolean;
   model?: string;
+  /** 1 = max parallelism (default). */
+  chunkSize?: number;
 }
 
-function allowedModel(name: string | undefined): string {
-  if (name === 'claude-opus-5' || name === QUALITY_MODEL) return QUALITY_MODEL;
-  if (name === 'claude-sonnet-5' || name === DEFAULT_MODEL) return name;
+function allowedModel(name: string | undefined, quality?: boolean): string {
+  if (quality) return QUALITY_MODEL;
+  if (!name) return DEFAULT_MODEL;
+  if (
+    name === 'claude-haiku-4-5' ||
+    name === 'claude-haiku-4-5-20251001' ||
+    name === 'claude-sonnet-5' ||
+    name === 'claude-opus-5' ||
+    name === DEFAULT_MODEL ||
+    name === QUALITY_MODEL
+  ) {
+    return name;
+  }
   return DEFAULT_MODEL;
 }
 
 async function extractChunk(
   client: Anthropic,
   model: string,
-  pages: ExtractRequest['pages'],
-  onDelta: (text: string) => void
+  pages: ExtractRequest['pages']
 ): Promise<SoAExtraction> {
-  const stream = client.messages.stream({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const params: any = {
     model,
-    max_tokens: 64000,
-    output_config: { effort: DEFAULT_EFFORT },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    system: EXTRACTION_SYSTEM_BLOCKS as any,
+    max_tokens: 16000,
+    system: EXTRACTION_SYSTEM_BLOCKS,
     messages: [
       {
         role: 'user',
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        content: buildUserContent(pages) as any,
+        content: buildUserContent(pages),
       },
     ],
-  });
+  };
+  if (modelSupportsEffort(model)) {
+    params.output_config = { effort: DEFAULT_EFFORT };
+  }
+
+  const stream = client.messages.stream(params);
   let raw = '';
   for await (const event of stream) {
     if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
       raw += event.delta.text;
-      onDelta(event.delta.text);
     }
   }
   const final = await stream.finalMessage();
@@ -86,24 +100,25 @@ export async function POST(req: Request) {
     );
   }
 
-  const model = allowedModel(body.quality ? QUALITY_MODEL : body.model);
+  const model = allowedModel(body.model, body.quality);
   const client = new Anthropic();
   const encoder = new TextEncoder();
-  const chunks = chunkPages(body.pages, 2);
+  const chunkSize = Math.max(1, Math.min(3, body.chunkSize ?? 1));
+  const chunks = chunkPages(body.pages, chunkSize);
 
   const stream = new ReadableStream({
     async start(controller) {
       const send = (s: string) => controller.enqueue(encoder.encode(s));
       try {
         send(
-          `[[STATUS: ${chunks.length} parallel chunk${chunks.length === 1 ? '' : 's'} on ${model}, effort=${DEFAULT_EFFORT}]]\n`
+          `[[STATUS: ${chunks.length} parallel chunk${chunks.length === 1 ? '' : 's'} on ${model}]]\n`
         );
         const parts = await Promise.all(
           chunks.map(async (pages, i) => {
-            send(`[[STATUS: chunk ${i + 1}/${chunks.length} pages ${pages.map((p) => p.page).join(',')} started]]\n`);
-            const extracted = await extractChunk(client, model, pages, () => {
-              // Keep the connection alive; the UI keys off STATUS lines.
-            });
+            send(
+              `[[STATUS: chunk ${i + 1}/${chunks.length} pages ${pages.map((p) => p.page).join(',')} started]]\n`
+            );
+            const extracted = await extractChunk(client, model, pages);
             send(
               `[[STATUS: chunk ${i + 1}/${chunks.length} done · ${extracted.tables.length} table(s)]]\n`
             );

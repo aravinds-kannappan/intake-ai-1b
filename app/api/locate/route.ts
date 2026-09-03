@@ -51,7 +51,6 @@ export async function POST(req: Request) {
   const msg = await client.messages.create({
     model: LOCATE_MODEL,
     max_tokens: 1024,
-    output_config: { effort: 'low' },
     system: VISION_LOCATE_PROMPT,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     messages: [{ role: 'user', content: content as any }],
