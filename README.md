@@ -132,7 +132,37 @@ Overall: across the five protocols I found no dropped assessment rows and no dro
 - **Nondeterminism.** Two runs on the same pages produce the same grid but can differ in marker spelling ("Xa" vs "a") and in ambiguity phrasing. Within any single output the linkage is self-consistent, which is what the UI relies on.
 - **Small-superscript misreads remain possible.** Vision at 150 dpi on 8 pt superscripts is the sharpest edge of this design. I did not catch one in the five committed outputs, but I would not claim the rate is zero; the source-page toggle in the UI exists precisely to make this cheap to check.
 - **Vercel limits.** Extraction requests are capped at 300 s (`maxDuration`); a pathological table could exceed it and the client surfaces the failure. Payloads auto-downscale image quality to fit under 4.5 MB, which slightly increases misread risk on very long ranges.
+- **Latency ceiling.** Even the fast path takes 60-90 seconds and dense tables take 150-240 seconds. This is a property of vision-language model output-token throughput, not this tool; see the dedicated section below on why and what would actually change it.
 - **The locator is heuristic.** On protocols far outside these idioms (a schedule with no X-style marks and no recognizable title, for example an EU dossier in another language) it may find nothing; the per-page score panel shows you what it saw, and the manual range is the escape hatch.
+
+## Why extractions take 1–3 minutes (and what would actually help)
+
+The dominant cost is **output-token decoding**, not network, not vision input, not prompt caching. A quick decomposition of a typical run:
+
+| Phase | Share of wall time | Why |
+|---|---|---|
+| Model decoding the JSON output | 60–90% | Sonnet outputs at ~40–80 tokens/sec. These tables serialize to 7K–13K tokens (measured across the committed outputs: NEAT 4.6K, protocol1 6.3K, protocol9 8.5K, protocol12 10.8K, CTN0052 12.3K). At 60 tok/s, 10K tokens = ~170 s of pure decoding. |
+| Vision input tokenization | 10–20% | Each 1600 px JPEG is ~1,200–1,600 input tokens; 3-4 pages per request = 4-6K input tokens. Real, but not the ceiling. |
+| Prompt processing + streaming + client | < 5% | System prompt is ~2 KB and is cached via an `ephemeral` `cache_control` block in [lib/extraction.ts](lib/extraction.ts), so within the 5-min TTL repeated requests skip re-tokenizing it. This saves ~100-300 ms, not minutes. |
+
+Concretely: a small, single-table protocol (NEAT, 4.6K output tokens) finishes in roughly 60–90 s; a dense multi-visit / multi-footnote table (CTN0052 or protocol12, 11-13K output tokens) is closer to 150-240 s. Both are floored by the model's own decoding rate.
+
+What does NOT help meaningfully:
+
+- Tighter prompt caching (the input side is already tiny compared to the output).
+- Switching Anthropic endpoints — model tier is the ceiling.
+- Turning off extended thinking (it's already off; the extraction is a straight `messages.stream`, no thinking budget).
+- Bigger `max_tokens` (doesn't help; the model still generates one token at a time).
+
+What WOULD help, ranked by expected payoff:
+
+1. **Trim over-included candidate pages before sending.** The locator sometimes over-includes by design (better to send an extra narrative page than to miss a footnote block). If a range includes pages the model demonstrably takes nothing from (protocol15's page 26 is narrative, protocol1's page 52 is a title-only cover), auto-trimming them would cut input tokens ~30% and vision preprocessing time linearly. Estimate: 15-25% wall-time reduction on those documents.
+2. **Two-tier extraction: Haiku 4.5 first, Sonnet only for cells Haiku flags.** Haiku is ~4-5× faster per token; for the many empty-or-plain-X cells this is enough on its own. Sonnet re-runs only the visually ambiguous cells. Estimate: 3-5× median speedup, at the cost of a real week of engineering and a new failure mode (Haiku missing a subtle marker).
+3. **Split multi-table requests.** protocol5 has two independent tables in one candidate range. Sending them as two parallel calls halves wall time on that class. Estimate: 1.5-2× on multi-table protocols.
+4. **Structured output / stricter JSON schema mode** to eliminate repeated key/wrapper tokens. Estimate: 10-15%.
+5. **Lower page-image resolution (1000 px vs 1600 px)** trades 5-10% latency against a real risk of misreading small superscripts. Not worth it without a golden-set regression harness in place to catch the misreads.
+
+Two things worth being explicit about in a production setting: (a) the batch script in [scripts/extract-batch.ts](scripts/extract-batch.ts) processes protocols serially — running them in parallel across PDFs is a one-line change and gets a linear speedup on a batch job; (b) [scripts/latency-probe.ts](scripts/latency-probe.ts) exists for measuring these numbers on a target machine rather than trusting the estimates above.
 
 ## What I would build next with two more weeks
 
