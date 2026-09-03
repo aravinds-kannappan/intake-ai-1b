@@ -1,0 +1,1544 @@
+{
+  "tables": [
+    {
+      "id": "t1",
+      "title": "Table 2 Overview of Study Assessments and Procedures",
+      "pages": [
+        24,
+        25
+      ],
+      "columns": [
+        {
+          "id": "c1",
+          "path": [
+            "Assessment/Procedure"
+          ],
+          "label": "Time Est. (Min)",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c2",
+          "path": [
+            "Assessment/Procedure"
+          ],
+          "label": "Screen/Base",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c3",
+          "path": [
+            "O-MPH/Placebo Stabilization"
+          ],
+          "label": "1",
+          "visitNumber": "1",
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c4",
+          "path": [
+            "O-MPH/Placebo Stabilization"
+          ],
+          "label": "2",
+          "visitNumber": "2",
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c5",
+          "path": [
+            "O-MPH/Placebo Stabilization"
+          ],
+          "label": "3",
+          "visitNumber": "3",
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c6",
+          "path": [
+            "O-MPH/Placebo Stabilization"
+          ],
+          "label": "4",
+          "visitNumber": "4",
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c7",
+          "path": [
+            "O-MPH/Placebo & Standard Smoking Treatment"
+          ],
+          "label": "5",
+          "visitNumber": "5",
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c8",
+          "path": [
+            "O-MPH/Placebo & Standard Smoking Treatment"
+          ],
+          "label": "6",
+          "visitNumber": "6",
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c9",
+          "path": [
+            "O-MPH/Placebo & Standard Smoking Treatment"
+          ],
+          "label": "7",
+          "visitNumber": "7",
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c10",
+          "path": [
+            "O-MPH/Placebo & Standard Smoking Treatment"
+          ],
+          "label": "8",
+          "visitNumber": "8",
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c11",
+          "path": [
+            "O-MPH/Placebo & Standard Smoking Treatment"
+          ],
+          "label": "9",
+          "visitNumber": "9",
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c12",
+          "path": [
+            "O-MPH/Placebo & Standard Smoking Treatment"
+          ],
+          "label": "10",
+          "visitNumber": "10",
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c13",
+          "path": [
+            "O-MPH/Placebo & Standard Smoking Treatment"
+          ],
+          "label": "11",
+          "visitNumber": "11",
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c14",
+          "path": [
+            "FU"
+          ],
+          "label": "15",
+          "visitNumber": "15",
+          "studyDay": null,
+          "studyWeek": null,
+          "window": null,
+          "markers": []
+        }
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "kind": "category",
+          "label": "Treatment",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r2",
+          "kind": "assessment",
+          "label": "OROS-MPH /Placebo",
+          "category": "Treatment",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X",
+              "markers": [
+                "+"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r3",
+          "kind": "assessment",
+          "label": "Smoking Cessation Counseling",
+          "category": "Treatment",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "10"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "kind": "assessment",
+          "label": "Nicotine Patch",
+          "category": "Treatment",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "2"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "kind": "assessment",
+          "label": "Taper Nicotine Patch",
+          "category": "Treatment",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c13",
+              "value": "X",
+              "markers": [
+                "++"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r6",
+          "kind": "category",
+          "label": "Screening Assessments",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r7",
+          "kind": "assessment",
+          "label": "Informed Consent",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "30"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r8",
+          "kind": "assessment",
+          "label": "Demographics",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r9",
+          "kind": "assessment",
+          "label": "ASRS-V1.1 Screener",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r10",
+          "kind": "assessment",
+          "label": "Smoking History Survey",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "10"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r11",
+          "kind": "assessment",
+          "label": "Urine Toxicology Screen",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r12",
+          "kind": "assessment",
+          "label": "ECG",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "15"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r13",
+          "kind": "assessment",
+          "label": "CIDI",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "75"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r14",
+          "kind": "assessment",
+          "label": "Medical History and Addendum",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "15"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r15",
+          "kind": "assessment",
+          "label": "ACDS v. 1.2",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "40"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r16",
+          "kind": "assessment",
+          "label": "Thoughts about Abstinence",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "2"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r17",
+          "kind": "assessment",
+          "label": "Prior/Concomitant Medications",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r18",
+          "kind": "assessment",
+          "label": "Screen for Antisocial Personality",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "10"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r19",
+          "kind": "assessment",
+          "label": "Brief Physical Exam",
+          "category": "Screening Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "20"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r20",
+          "kind": "category",
+          "label": "Safety Assessments",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r21",
+          "kind": "assessment",
+          "label": "Vital Signs",
+          "category": "Safety Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r22",
+          "kind": "assessment",
+          "label": "Weight",
+          "category": "Safety Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r23",
+          "kind": "assessment",
+          "label": "Urine Pregnancy Test",
+          "category": "Safety Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r24",
+          "kind": "assessment",
+          "label": "Adverse Events",
+          "category": "Safety Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r25",
+          "kind": "assessment",
+          "label": "Prior/Concom Meds",
+          "category": "Safety Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r26",
+          "kind": "assessment",
+          "label": "BDI-II",
+          "category": "Safety Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r27",
+          "kind": "assessment",
+          "label": "Beck Anxiety Inventory",
+          "category": "Safety Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r28",
+          "kind": "assessment",
+          "label": "PRISM Suicide and Homicide Questions",
+          "category": "Safety Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r29",
+          "kind": "category",
+          "label": "Efficacy Assessments",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r30",
+          "kind": "assessment",
+          "label": "Tobacco Use Assessment",
+          "category": "Efficacy Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "10"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r31",
+          "kind": "assessment",
+          "label": "DSM-IV ADHD Sx",
+          "category": "Efficacy Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "15"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r32",
+          "kind": "assessment",
+          "label": "ADHD CGI-Severity",
+          "category": "Efficacy Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "1"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r33",
+          "kind": "assessment",
+          "label": "Urine for Cotinine Level",
+          "category": "Efficacy Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "3"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r34",
+          "kind": "assessment",
+          "label": "Withdrawal Scale Tobacco",
+          "category": "Efficacy Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "2"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r35",
+          "kind": "category",
+          "label": "Other Assessments",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r36",
+          "kind": "assessment",
+          "label": "Fagerström (FTND)",
+          "category": "Other Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "2"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r37",
+          "kind": "assessment",
+          "label": "Locator Information",
+          "category": "Other Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "10"
+            },
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "*"
+              ]
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r38",
+          "kind": "assessment",
+          "label": "Study Questionnaire",
+          "category": "Other Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r39",
+          "kind": "assessment",
+          "label": "Drug Rating Questionnaire",
+          "category": "Other Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r40",
+          "kind": "assessment",
+          "label": "Compliance – Medication",
+          "category": "Other Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r41",
+          "kind": "assessment",
+          "label": "Compliance - Counseling",
+          "category": "Other Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "0"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r42",
+          "kind": "assessment",
+          "label": "Check on Blind - Participant",
+          "category": "Other Assessments",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "5"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r43",
+          "kind": "assessment",
+          "label": "Approximate Length (minutes)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "330"
+            },
+            {
+              "col": "c3",
+              "value": "59"
+            },
+            {
+              "col": "c4",
+              "value": "64"
+            },
+            {
+              "col": "c5",
+              "value": "64"
+            },
+            {
+              "col": "c6",
+              "value": "61"
+            },
+            {
+              "col": "c7",
+              "value": "47"
+            },
+            {
+              "col": "c8",
+              "value": "55"
+            },
+            {
+              "col": "c9",
+              "value": "65"
+            },
+            {
+              "col": "c10",
+              "value": "44"
+            },
+            {
+              "col": "c11",
+              "value": "63"
+            },
+            {
+              "col": "c12",
+              "value": "37"
+            },
+            {
+              "col": "c13",
+              "value": "110"
+            },
+            {
+              "col": "c14",
+              "value": "32"
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        {
+          "marker": "*",
+          "text": "\"X*\" = once during phase; \"X\" represents a procedure or assessment performed once per Visit.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "table"
+            }
+          ]
+        },
+        {
+          "marker": "+",
+          "text": "At the week 11 visit the participant will be reminded that there is no longer any need to take the OROS-MPD/Placebo and will be encouraged to return the remaining unused pills from week-11 along with those of week 10.  Note that the week 11 visit should ideally not be delayed beyond the end of week 11.",
+          "continuedAcrossPages": true,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r2",
+              "col": "c13"
+            }
+          ]
+        },
+        {
+          "marker": "++",
+          "text": "Patches for three weeks of taper will be dispensed at this visit.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r5",
+              "col": "c13"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "Notes: \"X*\" = once during phase; \"X\" represents a procedure or assessment performed once per Visit."
+      ],
+      "ambiguities": [
+        "The blank row between the 'Treatment' header/visit-number row and 'Efficacy Assessments' category header on page 25 appears to be an empty spacer row with no label or cell content; it was omitted from the rows list since it carries no printed content.",
+        "The asterisk marker on many 'Screen/Base' cells (printed as 'X*') is explained by a general table note rather than a discrete footnote reference list; the marker '*' was applied uniformly to all such cells based on that note.",
+        "Column header for row 43 'Approximate Length (minutes)' is styled differently (shaded/bold) in the source, possibly intended as a summary/category-like row rather than a standard assessment row; represented here as an assessment row with category null."
+      ]
+    }
+  ],
+  "model": "claude-sonnet-5",
+  "extractedAt": "2026-09-03T02:04:40.676Z",
+  "sourceFile": "CTN0029_oros_methylphenidate_smokers_adhd.pdf"
+}

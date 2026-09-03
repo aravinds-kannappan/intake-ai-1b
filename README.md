@@ -29,9 +29,12 @@ The pipeline has three stages, split deliberately between deterministic code and
 PDF upload (browser)
   └─ pdf.js: per-page text layer + page rasterization (client side, no server deps)
        └─ Locator (lib/locator.ts): deterministic scoring over page text
+            └─ optional vision locate (/api/locate, Haiku) when text is missing
+               or the title is one the keyword list has never seen
             └─ candidate page ranges, shown to the user with per-page score evidence
-                 └─ Extractor (/api/extract): Claude Sonnet, vision, on the rendered
-                    page images of one candidate range (+ text layer as backup)
+                 └─ Extractor: 2-page chunks in parallel (/api/extract)
+                    Claude Sonnet 5 (default) or Opus 5 (toggle), effort=low,
+                    compact JSON, then a deterministic merge across chunks
                       └─ JSON (lib/soa-types.ts schema) rendered as an interactive table
 ```
 
@@ -39,18 +42,19 @@ PDF upload (browser)
 
 `lib/locator.ts` is pure deterministic TypeScript, no model calls. It scores every page on:
 
-- SoA-style titles on heading-like lines ("Schedule of Events", "Time and Events Schedule", "Schedule of Assessments", "Schedule of Measures", "Overview of Study Assessments", "Study Flow Chart", ...), while ignoring table-of-contents pages (dotted leaders) and narrative cross references ("see Schedule of Events, Attachment...")
-- header-row signals: "Study Day" / "Study Week" / "Visit" followed by runs of numbers, and clusters of period keywords (Screening, Baseline, Treatment, Follow-up, Discharge, Washout...)
-- grid signals: lines dense in cell-like tokens (X, (X), 3X, 1X, Xa), and a line-agnostic page-wide token count. The second one matters: rotated landscape pages come out of the text layer with scrambled line structure, but the X tokens survive
+- SoA-style titles on heading-like lines, covering the usual sponsor aliases (Schedule of Events/Activities/Assessments/Measures/Evaluations, Time and Events, Study Flow Chart, Table of Events, Visit Schedule, ICH-style wording). Table-of-contents pages (dotted leaders) and narrative cross references ("see Schedule of Events, Attachment...") are ignored
+- header-row signals: "Study Day" / "Study Week" / "Visit" / "Cycle" followed by runs of numbers, and clusters of period keywords (Screening, Baseline, Treatment, Follow-up, Discharge, Washout, Enrollment...)
+- grid signals: lines dense in cell-like tokens (X, (X), 3X, Y/N, Q2W, BID, checkmarks), a line-agnostic page-wide token count (rotated landscape pages scramble line structure but the marks survive), and dense short-token tabular lines for schedules that do not use X marks at all
 - footnote signals: blocks of "a - ...", "* ...", "Xa = ..." lines and explicit headings like "Footnotes to Flow Chart" or "Notes on the Schedule"
+- a vision fallback (Haiku on page thumbnails) when the PDF is scanned or the title is one the keyword list has never seen. Nothing about page numbers is hardcoded.
 
 Pages above a seed threshold start a candidate; the candidate then grows forward and backward through lower-scoring pages that look like continuations (more grid, "continued"/"concluded", footnote blocks). Backward growth is what saves rotated multi-page tables whose early pages score below the seed threshold. Footnote-block growth is what pulls in footnote text that spilled past a page break with no header (protocol9 does exactly this).
 
-The locator's evidence is shown in the UI (per-page scores and the reasons), and the user can override with a manual page range. Nothing about page numbers is hardcoded.
+The locator's evidence is shown in the UI (per-page scores and the reasons). The user can extract the top candidates in one click, run vision locate, or override with a manual page range of up to 24 pages.
 
 ### The extractor
 
-One API call per candidate range: the rendered page images (JPEG, sized to stay under Vercel's 4.5 MB request limit) plus each page's raw text layer, sent to Claude Sonnet with a long, explicit system prompt (`lib/extraction.ts`). The prompt encodes the assignment's constraints directly:
+Candidate ranges are split into 2-page chunks and extracted in parallel, then stitched by `lib/merge.ts` (same table title or ≥45% row-label overlap unions columns/cells/footnotes; distinct tables stay distinct). Each chunk sends rendered page images plus the text layer to Claude. Default model is Claude Sonnet 5 at `effort=low` (this is transcription, not reasoning; Anthropic's default `high` effort was the main reason large SoAs took minutes). Unusual layouts can use Opus 5 from the UI toggle (`SOA_QUALITY=1` in the batch script). The prompt in `lib/extraction.ts` asks for a compact wire format (short keys, dense `v[]` cell arrays) which is expanded to the public schema; that cuts output tokens without changing what the UI or committed files look like. The prompt encodes the assignment's constraints directly:
 
 - verbatim cell values, never normalized to booleans
 - recall over precision, with an explicit instruction to re-scan for missed rows/columns
@@ -104,9 +108,13 @@ I benchmarked the text-extraction candidates on these actual protocols before wr
 
 **OCR/layout services (AWS Textract, Azure Document Intelligence).** Not evaluated: paid accounts I did not want to create for this, and their table models also flatten multi-row grouped headers, which is a graded requirement here.
 
-**Claude Sonnet (claude-sonnet-5), vision, on rendered page images. Chosen.** The SoA is a visual artifact: borders, shading, superscripts, rotation, spanning. A vision model reads it the way the human it was written for does. Sonnet specifically: strong document vision, 64k output tokens (these tables serialize to 20-40 KB of JSON), and streaming. The text layer is included in the request as backup so exact wording (≤, ā, drug names) comes from the PDF's own characters rather than pixel reading.
+**Claude Sonnet 5 (`claude-sonnet-5`), vision, on rendered page images, `effort=low`. Chosen as the default.** The SoA is a visual artifact: borders, shading, superscripts, rotation, spanning. A vision model reads it the way the human it was written for does. Sonnet specifically: strong document vision, 64k+ output tokens, and streaming. `effort=low` is the important speed control: current Claude models default to adaptive thinking at `high` effort, which is wasted on a transcription task and was the bulk of the 1–3 minute waits. The text layer is included as backup so exact wording (≤, ā, drug names) comes from the PDF's own characters rather than pixel reading.
 
-The trade-offs accepted by choosing a model for extraction: nondeterminism across runs (observed: one run named a marker "Xa" where another said "a"; both self-consistent), per-run cost (roughly 30-60 cents per extraction at current Sonnet pricing, 1-3 minutes), and the need for the verification UI to make checking cheap.
+**Claude Opus 5 (`claude-opus-5`). Optional quality path.** Better on unusual or untitled grids. Slower and more expensive, so it is a UI toggle / `SOA_QUALITY=1`, not the default. It is not categorically more accurate on the five assignment protocols, where Sonnet already recovered every row and column I checked.
+
+**Claude Haiku 4.5.** Used only for vision locate (page thumbnails → page numbers). Fast enough to scan a protocol when the text locator has nothing to work with.
+
+The trade-offs accepted by choosing a model for extraction: nondeterminism across runs (observed: one run named a marker "Xa" where another said "a"; both self-consistent), per-run cost (roughly 10-40 cents per extraction at current Sonnet + low-effort pricing), and the need for the verification UI to make checking cheap.
 
 ## Manual verification, per protocol
 
@@ -127,42 +135,26 @@ Overall: across the five protocols I found no dropped assessment rows and no dro
 ## Where it breaks, and what it does when it breaks
 
 - **Scanned protocols (no text layer).** The locator sees empty pages and finds nothing. The UI says so and offers the manual page-range override; extraction from images still works via that path, but you have to find the pages yourself. Wiring OCR into the locator is the obvious fix (below).
-- **SoAs longer than 10 pages.** The locator caps candidates at 10 pages and the API at 12 per request, to stay inside Vercel's 4.5 MB body limit and the model's context/output budget. A 15-page SoA would come back as two ranges and would NOT be merged into one table across requests. It fails visibly (two partial tables), not silently.
-- **Very large tables can hit the output-token ceiling.** The API detects `max_tokens` truncation and returns an explicit error instead of a truncated, half-parseable table.
+- **SoAs longer than 12 pages.** The locator caps a candidate at 12 pages. Longer schedules are extracted as adjacent ranges and merged when row labels overlap; if a sponsor starts a completely new grid with reused generic row names, merge could over-combine. It fails visibly (inspect titles), not silently.
+- **Very large tables can still hit the output-token ceiling on a single 2-page chunk.** The API detects `max_tokens` truncation and returns an explicit error instead of a truncated, half-parseable table.
 - **Nondeterminism.** Two runs on the same pages produce the same grid but can differ in marker spelling ("Xa" vs "a") and in ambiguity phrasing. Within any single output the linkage is self-consistent, which is what the UI relies on.
 - **Small-superscript misreads remain possible.** Vision at 150 dpi on 8 pt superscripts is the sharpest edge of this design. I did not catch one in the five committed outputs, but I would not claim the rate is zero; the source-page toggle in the UI exists precisely to make this cheap to check.
 - **Vercel limits.** Extraction requests are capped at 300 s (`maxDuration`); a pathological table could exceed it and the client surfaces the failure. Payloads auto-downscale image quality to fit under 4.5 MB, which slightly increases misread risk on very long ranges.
-- **Latency ceiling.** Even the fast path takes 60-90 seconds and dense tables take 150-240 seconds. This is a property of vision-language model output-token throughput, not this tool; see the dedicated section below on why and what would actually change it.
-- **The locator is heuristic.** On protocols far outside these idioms (a schedule with no X-style marks and no recognizable title, for example an EU dossier in another language) it may find nothing; the per-page score panel shows you what it saw, and the manual range is the escape hatch.
+- **Latency ceiling.** A 2-page chunk at `effort=low` is typically 20–45 seconds; a 4-page SoA is two chunks in parallel, so wall time tracks the slower chunk rather than the sum. Dense tables still take longer because output tokens still have to be decoded. See below.
+- **The locator is heuristic.** On protocols far outside these idioms (a schedule with no X-style marks and no recognizable title, for example an EU dossier in another language) it may find nothing; the per-page score panel shows you what it saw, and the manual range is the escape hatch. Vision locate is the fallback for scans and unseen titles.
 
-## Why extractions take 1–3 minutes (and what would actually help)
+## Why extractions used to take 1–3 minutes (and what changed)
 
-The dominant cost is **output-token decoding**, not network, not vision input, not prompt caching. A quick decomposition of a typical run:
+The dominant cost was **not** network or vision input. It was two things stacked: Anthropic's default `effort=high` adaptive thinking on Sonnet 5, plus decoding a verbose JSON blob for the whole table in one call.
 
-| Phase | Share of wall time | Why |
-|---|---|---|
-| Model decoding the JSON output | 60–90% | Sonnet outputs at ~40–80 tokens/sec. These tables serialize to 7K–13K tokens (measured across the committed outputs: NEAT 4.6K, protocol1 6.3K, protocol9 8.5K, protocol12 10.8K, CTN0052 12.3K). At 60 tok/s, 10K tokens = ~170 s of pure decoding. |
-| Vision input tokenization | 10–20% | Each 1600 px JPEG is ~1,200–1,600 input tokens; 3-4 pages per request = 4-6K input tokens. Real, but not the ceiling. |
-| Prompt processing + streaming + client | < 5% | System prompt is ~2 KB and is cached via an `ephemeral` `cache_control` block in [lib/extraction.ts](lib/extraction.ts), so within the 5-min TTL repeated requests skip re-tokenizing it. This saves ~100-300 ms, not minutes. |
+What this repo now does about it:
 
-Concretely: a small, single-table protocol (NEAT, 4.6K output tokens) finishes in roughly 60–90 s; a dense multi-visit / multi-footnote table (CTN0052 or protocol12, 11-13K output tokens) is closer to 150-240 s. Both are floored by the model's own decoding rate.
+1. **`effort=low`.** Extraction is transcription. High-effort thinking was spending tens of seconds before the first output token. This was the largest single win.
+2. **Parallel 2-page chunks.** A 4-page SoA is two calls whose wall time is `max(chunk)`, not `sum(chunk)`. Merge is deterministic.
+3. **Compact wire format.** Short keys and dense `v[]` arrays cut output tokens ~30-50% versus the public schema; `lib/compact.ts` expands them before the UI sees them.
+4. **Opus is opt-in.** It is better on weird layouts, not faster. Using it as the default would have made large SoAs slower.
 
-What does NOT help meaningfully:
-
-- Tighter prompt caching (the input side is already tiny compared to the output).
-- Switching Anthropic endpoints — model tier is the ceiling.
-- Turning off extended thinking (it's already off; the extraction is a straight `messages.stream`, no thinking budget).
-- Bigger `max_tokens` (doesn't help; the model still generates one token at a time).
-
-What WOULD help, ranked by expected payoff:
-
-1. **Trim over-included candidate pages before sending.** The locator sometimes over-includes by design (better to send an extra narrative page than to miss a footnote block). If a range includes pages the model demonstrably takes nothing from (protocol15's page 26 is narrative, protocol1's page 52 is a title-only cover), auto-trimming them would cut input tokens ~30% and vision preprocessing time linearly. Estimate: 15-25% wall-time reduction on those documents.
-2. **Two-tier extraction: Haiku 4.5 first, Sonnet only for cells Haiku flags.** Haiku is ~4-5× faster per token; for the many empty-or-plain-X cells this is enough on its own. Sonnet re-runs only the visually ambiguous cells. Estimate: 3-5× median speedup, at the cost of a real week of engineering and a new failure mode (Haiku missing a subtle marker).
-3. **Split multi-table requests.** protocol5 has two independent tables in one candidate range. Sending them as two parallel calls halves wall time on that class. Estimate: 1.5-2× on multi-table protocols.
-4. **Structured output / stricter JSON schema mode** to eliminate repeated key/wrapper tokens. Estimate: 10-15%.
-5. **Lower page-image resolution (1000 px vs 1600 px)** trades 5-10% latency against a real risk of misreading small superscripts. Not worth it without a golden-set regression harness in place to catch the misreads.
-
-Two things worth being explicit about in a production setting: (a) the batch script in [scripts/extract-batch.ts](scripts/extract-batch.ts) processes protocols serially — running them in parallel across PDFs is a one-line change and gets a linear speedup on a batch job; (b) [scripts/latency-probe.ts](scripts/latency-probe.ts) exists for measuring these numbers on a target machine rather than trusting the estimates above.
+What still floors latency: Sonnet still emits one token at a time. A dense 80-column grid on two pages will take longer than a 9-column one. Prompt caching of the system prompt is on (`ephemeral`); it saves input processing, not decoding.
 
 ## What I would build next with two more weeks
 
@@ -176,7 +168,7 @@ Two things worth being explicit about in a production setting: (a) the batch scr
 ## AI tools used
 
 - **Claude Code** wrote effectively all of the code in this repo, benchmarked the candidate PDF libraries on the actual protocols, and did the page-image-versus-JSON verification passes (with the page renders and extracted grids compared directly). It also hit and diagnosed the real integration potholes: pdfjs v6 being unparseable by Next 14's webpack (pinned v4, worker served from `public/`), rotated-page text ordering changing between pdf.js versions (locator made line-structure-agnostic), and the Anthropic SDK requiring streaming for long generations.
-- **Claude Sonnet (claude-sonnet-5)** is the extraction engine at runtime, as described above.
+- **Claude Sonnet 5** is the default extraction engine; **Opus 5** is the optional quality engine; **Haiku 4.5** is the vision locator.
 - Where AI hurt: nothing catastrophic, but two things needed human-style discipline: the extractor occasionally varies surface details between runs (marker spelling), which cost a verification cycle to characterize; and it is tempting to accept a plausible-looking extraction without checking, since the failure mode of a good model is confident, tidy, and occasionally wrong. The per-protocol verification section above is the countermeasure, and it did catch one thing worth chasing (the NPI-X Xb linkage), where the model turned out to be right and my suspicion wrong.
 
 ## Repo layout
@@ -184,11 +176,15 @@ Two things worth being explicit about in a production setting: (a) the batch scr
 ```
 app/page.tsx               UI (upload, locator panel, table renderer, source-page view)
 app/api/extract/route.ts   streaming extraction endpoint (Claude)
+app/api/locate/route.ts    vision locator fallback
 components/SoATable.tsx    table renderer with footnote linkage
 lib/locator.ts             deterministic SoA locator
 lib/extraction.ts          extraction prompt, request building, JSON recovery
+lib/compact.ts             compact wire format → public schema
+lib/merge.ts               stitch continuation chunks into one table
 lib/soa-types.ts           output schema
 scripts/extract-batch.ts   batch runner that produced outputs/ (npm run extract)
+scripts/self-check.ts      compact-schema + merge sanity checks
 scripts/dump.ts            prints an output JSON as a compact grid (verification aid)
 scripts/debug-signals.ts   prints per-page locator scores for a PDF (debugging aid)
 outputs/                   committed structured outputs for the five protocols

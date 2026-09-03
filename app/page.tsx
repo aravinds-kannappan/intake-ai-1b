@@ -1,8 +1,9 @@
 'use client';
 
 import { useCallback, useRef, useState } from 'react';
-import { locateSoA } from '@/lib/locator';
+import { locateSoA, textLooksScanned } from '@/lib/locator';
 import { parseExtraction } from '@/lib/extraction';
+import { chunkPages, mergeExtractions } from '@/lib/merge';
 import type { PageSignal, SoACandidate, SoAExtraction } from '@/lib/soa-types';
 import SoATable from '@/components/SoATable';
 
@@ -12,14 +13,12 @@ interface ParsedPdf {
   fileName: string;
   numPages: number;
   pageTexts: string[];
-  // lazily rendered page images keyed by 1-based page number
 }
 
 const SAMPLES = ['protocol1', 'protocol5', 'protocol9', 'protocol12', 'protocol15'];
 
 async function loadPdfjs() {
   const pdfjs = await import('pdfjs-dist');
-  // Worker is served from public/ so the bundler never has to parse it.
   pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
   return pdfjs;
 }
@@ -38,6 +37,8 @@ export default function Home() {
   const [pageImages, setPageImages] = useState<Record<number, string>>({});
   const [showSource, setShowSource] = useState(false);
   const [sampleName, setSampleName] = useState('');
+  const [useOpus, setUseOpus] = useState(false);
+  const [scannedHint, setScannedHint] = useState(false);
   const pdfDocRef = useRef<unknown>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -52,6 +53,7 @@ export default function Home() {
     setPageImages({});
     setProgress('');
     setSampleName('');
+    setScannedHint(false);
     pdfDocRef.current = null;
   };
 
@@ -69,7 +71,6 @@ export default function Home() {
         setProgress(`Extracting text: page ${i}/${doc.numPages}`);
         const page = await doc.getPage(i);
         const tc = await page.getTextContent();
-        // Rebuild reading order: group items into lines by y, sort by x.
         const items = (tc.items as { str: string; transform: number[] }[])
           .filter((it) => it.str !== undefined)
           .map((it) => ({ str: it.str, x: it.transform[4], y: it.transform[5] }));
@@ -89,9 +90,11 @@ export default function Home() {
         pageTexts.push(lines.join('\n'));
       }
       const { pageSignals, candidates: cands } = locateSoA(pageTexts);
+      const scanned = textLooksScanned(pageTexts);
       setParsed({ fileName: file.name, numPages: doc.numPages, pageTexts });
       setSignals(pageSignals);
       setCandidates(cands);
+      setScannedHint(scanned);
       setPhase('located');
       setProgress('');
     } catch (e) {
@@ -110,7 +113,7 @@ export default function Home() {
       };
       const out: { page: number; dataUrl: string }[] = [];
       for (const p of pages) {
-        setProgress(`Rendering page ${p} for extraction...`);
+        setProgress(`Rendering page ${p}...`);
         const page = await doc.getPage(p);
         const vp1 = page.getViewport({ scale: 1 });
         const scale = maxDim / Math.max(vp1.width, vp1.height);
@@ -134,8 +137,6 @@ export default function Home() {
       setExtraction(null);
       setPhase('extracting');
       try {
-        // Render pages, shrinking quality until the payload fits under
-        // Vercel's 4.5 MB request body limit.
         let rendered = await renderPages(pages, 0.8, 1600);
         let total = rendered.reduce((a, r) => a + r.dataUrl.length, 0);
         if (total > 3_800_000) rendered = await renderPages(pages, 0.6, 1300);
@@ -147,40 +148,51 @@ export default function Home() {
         setPageImages(imgs);
         setExtractedPages(pages);
 
-        const body = {
-          pages: rendered.map((r) => ({
-            page: r.page,
-            imageBase64: r.dataUrl.split(',')[1],
-            mediaType: 'image/jpeg',
-            text: parsed.pageTexts[r.page - 1],
-          })),
-        };
-        setProgress('Extracting with Claude (this can take 1-3 minutes for large tables)...');
-        const res = await fetch('/api/extract', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body),
-        });
-        if (!res.ok) {
-          const j = await res.json().catch(() => null);
-          throw new Error(j?.error || `Server error ${res.status}`);
-        }
-        const reader = res.body!.getReader();
-        const decoder = new TextDecoder();
-        let raw = '';
-        for (;;) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          raw += decoder.decode(value, { stream: true });
-          setProgress(
-            `Extracting with Claude... ${(raw.length / 1000).toFixed(1)} KB of structured output received`
-          );
-        }
-        const errMatch = raw.match(/\[\[ERROR: ([\s\S]*?)\]\]\s*$/);
-        if (errMatch) throw new Error(errMatch[1]);
-        const parsedOut = parseExtraction(raw);
+        const payloadPages = rendered.map((r) => ({
+          page: r.page,
+          imageBase64: r.dataUrl.split(',')[1],
+          mediaType: 'image/jpeg',
+          text: parsed.pageTexts[r.page - 1],
+        }));
+        const chunks = chunkPages(payloadPages, 2);
+        const model = useOpus ? 'claude-opus-5' : 'claude-sonnet-5';
+        setProgress(
+          `Extracting ${chunks.length} chunk${chunks.length === 1 ? '' : 's'} in parallel with ${model}...`
+        );
+
+        const parts = await Promise.all(
+          chunks.map(async (chunk, i) => {
+            const res = await fetch('/api/extract', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ pages: chunk, quality: useOpus, model }),
+            });
+            if (!res.ok) {
+              const j = await res.json().catch(() => null);
+              throw new Error(j?.error || `Server error ${res.status} on chunk ${i + 1}`);
+            }
+            const reader = res.body!.getReader();
+            const decoder = new TextDecoder();
+            let raw = '';
+            for (;;) {
+              const { done, value } = await reader.read();
+              if (done) break;
+              raw += decoder.decode(value, { stream: true });
+              const statuses = [...raw.matchAll(/\[\[STATUS: ([^\]]+)\]\]/g)].map((m) => m[1]);
+              if (statuses.length) {
+                setProgress(`Chunk ${i + 1}/${chunks.length}: ${statuses[statuses.length - 1]}`);
+              }
+            }
+            const errMatch = raw.match(/\[\[ERROR: ([\s\S]*?)\]\]\s*$/);
+            if (errMatch) throw new Error(errMatch[1]);
+            return parseExtraction(raw);
+          })
+        );
+
+        const parsedOut = mergeExtractions(parts);
         parsedOut.sourceFile = parsed.fileName;
         parsedOut.extractedAt = new Date().toISOString();
+        parsedOut.model = model;
         setExtraction(parsedOut);
         setPhase('done');
         setProgress('');
@@ -190,7 +202,7 @@ export default function Home() {
         setProgress('');
       }
     },
-    [parsed, renderPages]
+    [parsed, renderPages, useOpus]
   );
 
   const extractManual = () => {
@@ -201,13 +213,80 @@ export default function Home() {
     }
     const a = parseInt(m[1], 10);
     const b = parseInt(m[2], 10);
-    if (a < 1 || b > parsed.numPages || a > b || b - a + 1 > 12) {
-      setError(`Range must be within 1-${parsed.numPages} and at most 12 pages`);
+    if (a < 1 || b > parsed.numPages || a > b || b - a + 1 > 24) {
+      setError(`Range must be within 1-${parsed.numPages} and at most 24 pages`);
       return;
     }
     const pages = [];
     for (let p = a; p <= b; p++) pages.push(p);
     extract(pages);
+  };
+
+  const extractTopCandidates = () => {
+    if (!candidates.length) return;
+    extract(candidates[0].pages);
+  };
+
+  const visionLocate = async () => {
+    if (!parsed) return;
+    setError(null);
+    setPhase('extracting');
+    try {
+      const all = Array.from({ length: parsed.numPages }, (_, i) => i + 1);
+      const interesting = signals
+        .filter((s) => s.score > 0 || s.signals.some((x) => x.includes('no text')))
+        .map((s) => s.page);
+      const stride = parsed.numPages > 40 ? 3 : 1;
+      const sampled = new Set<number>([
+        ...interesting,
+        ...all.filter((p) => p % stride === 1 || p === parsed.numPages),
+      ]);
+      const pages = Array.from(sampled).sort((a, b) => a - b).slice(0, 60);
+      setProgress(`Vision-locating over ${pages.length} page thumbnails...`);
+      const thumbs = await renderPages(pages, 0.45, 900);
+      const batches = chunkPages(thumbs, 16);
+      const found = new Set<number>();
+      for (let i = 0; i < batches.length; i++) {
+        setProgress(`Vision locate batch ${i + 1}/${batches.length}...`);
+        const res = await fetch('/api/locate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            pages: batches[i].map((r) => ({
+              page: r.page,
+              imageBase64: r.dataUrl.split(',')[1],
+              mediaType: 'image/jpeg',
+            })),
+          }),
+        });
+        const j = await res.json();
+        if (!res.ok) throw new Error(j?.error || `Vision locate failed (${res.status})`);
+        for (const p of j.pages || []) found.add(p);
+      }
+      if (!found.size) {
+        setError('Vision locator did not find an SoA. Enter a manual page range.');
+        setPhase('located');
+        setProgress('');
+        return;
+      }
+      const foundPages = Array.from(found).sort((a, b) => a - b);
+      setCandidates((prev) => [
+        {
+          id: 'cand-vision',
+          pages: foundPages,
+          score: 99,
+          titleGuess: `Vision locate: pages ${foundPages[0]}-${foundPages[foundPages.length - 1]}`,
+          signals: ['vision locator'],
+        },
+        ...prev.filter((c) => c.id !== 'cand-vision'),
+      ]);
+      setPhase('located');
+      setProgress('');
+    } catch (e) {
+      setError(`Vision locate failed: ${e instanceof Error ? e.message : String(e)}`);
+      setPhase('located');
+      setProgress('');
+    }
   };
 
   const loadSample = async (name: string) => {
@@ -241,14 +320,13 @@ export default function Home() {
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-slate-900">SoA Extractor</h1>
         <p className="mt-1 max-w-3xl text-sm text-slate-600">
-          Upload a clinical trial protocol PDF. A deterministic locator scans every
-          page for Schedule of Activities tables, then Claude extracts the located
-          pages into a faithful structured table: verbatim cell values, hierarchical
-          headers, and footnotes linked to the cells they modify.
+          Upload any clinical trial protocol PDF. A deterministic locator finds
+          Schedule of Activities tables under whatever name the sponsor used;
+          Claude then extracts a faithful structured grid: verbatim cells,
+          hierarchical headers, and footnotes linked to the cells they modify.
         </p>
       </header>
 
-      {/* Upload zone */}
       <section className="mb-6 flex flex-wrap items-center gap-4">
         <div
           onDragOver={(e) => e.preventDefault()}
@@ -308,28 +386,60 @@ export default function Home() {
         </div>
       )}
 
-      {/* Locator results */}
       {parsed && (phase === 'located' || phase === 'extracting' || phase === 'done') && (
         <section className="mb-6 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-          <div className="mb-2 flex items-center justify-between">
+          <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
             <h2 className="font-semibold text-slate-900">
               Locator: {candidates.length} candidate SoA region
               {candidates.length === 1 ? '' : 's'} found
             </h2>
-            <button
-              onClick={() => setShowSignals((v) => !v)}
-              className="text-xs text-blue-600 hover:underline"
-            >
-              {showSignals ? 'hide' : 'show'} per-page scores
-            </button>
+            <div className="flex flex-wrap items-center gap-3">
+              <label className="flex items-center gap-1.5 text-xs text-slate-600">
+                <input
+                  type="checkbox"
+                  checked={useOpus}
+                  onChange={(e) => setUseOpus(e.target.checked)}
+                />
+                Use Opus 5 (slower, better on unusual layouts)
+              </label>
+              <button
+                onClick={() => setShowSignals((v) => !v)}
+                className="text-xs text-blue-600 hover:underline"
+              >
+                {showSignals ? 'hide' : 'show'} per-page scores
+              </button>
+            </div>
           </div>
-          {candidates.length === 0 && (
-            <p className="text-sm text-slate-600">
-              No pages scored high enough. The document may use an unusual layout
-              (scanned images with no text layer will do this). You can still force
-              an extraction with a manual page range below.
+          {scannedHint && (
+            <p className="mb-2 text-sm text-amber-800">
+              This PDF has almost no text layer (likely scanned). The text locator
+              cannot find the table. Use vision locate or a manual page range.
             </p>
           )}
+          {candidates.length === 0 && (
+            <p className="text-sm text-slate-600">
+              No pages scored high enough for an automatic SoA hit. Try vision
+              locate (works on unseen titles and scans) or force a page range.
+            </p>
+          )}
+          <div className="mb-3 flex flex-wrap gap-2">
+            {candidates.length > 0 && (
+              <button
+                onClick={extractTopCandidates}
+                disabled={phase === 'extracting'}
+                className="rounded bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+              >
+                Extract best region
+              </button>
+            )}
+            <button
+              onClick={visionLocate}
+              disabled={phase === 'extracting'}
+              className="rounded border border-slate-300 bg-white px-3 py-1.5 text-xs hover:bg-slate-50 disabled:opacity-50"
+            >
+              Vision locate (any layout)
+            </button>
+          </div>
           <ul className="space-y-2">
             {candidates.map((c) => (
               <li
@@ -390,7 +500,6 @@ export default function Home() {
         </section>
       )}
 
-      {/* Extraction results */}
       {extraction && (
         <section className="space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-2">
@@ -441,9 +550,10 @@ export default function Home() {
       )}
 
       <footer className="mt-10 border-t border-slate-200 pt-4 text-xs text-slate-400">
-        Take-home 1b for Intake AI. Locator is deterministic (keyword and grid
-        heuristics over the text layer); extraction uses Claude on rendered page
-        images. Cell values are reproduced verbatim; nothing is normalized.
+        Take-home 1b for Intake AI. Locator is deterministic over the text layer
+        with an optional vision fallback; extraction uses Claude on rendered
+        page images in parallel 2-page chunks. Cell values are reproduced
+        verbatim; nothing is normalized.
       </footer>
     </main>
   );

@@ -1,0 +1,821 @@
+{
+  "tables": [
+    {
+      "id": "t1",
+      "title": "Table 1. Study schedule of events.",
+      "pages": [
+        27
+      ],
+      "columns": [
+        {
+          "id": "c1",
+          "path": [
+            "Week"
+          ],
+          "label": "SC v1",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "*",
+          "window": null,
+          "markers": [
+            "*"
+          ]
+        },
+        {
+          "id": "c2",
+          "path": [
+            "Week"
+          ],
+          "label": "SC v2",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "*",
+          "window": null,
+          "markers": [
+            "*"
+          ]
+        },
+        {
+          "id": "c3",
+          "path": [
+            "Week"
+          ],
+          "label": "SC v3",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "*",
+          "window": null,
+          "markers": [
+            "*"
+          ]
+        },
+        {
+          "id": "c4",
+          "path": [
+            "Week"
+          ],
+          "label": "V1",
+          "visitNumber": "1",
+          "studyDay": null,
+          "studyWeek": "0",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c5",
+          "path": [
+            "Week"
+          ],
+          "label": "@",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "2",
+          "window": null,
+          "markers": [
+            "@"
+          ]
+        },
+        {
+          "id": "c6",
+          "path": [
+            "Week"
+          ],
+          "label": "@",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "4",
+          "window": null,
+          "markers": [
+            "@"
+          ]
+        },
+        {
+          "id": "c7",
+          "path": [
+            "Week"
+          ],
+          "label": "V2",
+          "visitNumber": "2",
+          "studyDay": null,
+          "studyWeek": "12",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c8",
+          "path": [
+            "Week"
+          ],
+          "label": "V3",
+          "visitNumber": "3",
+          "studyDay": null,
+          "studyWeek": "24",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c9",
+          "path": [
+            "Week"
+          ],
+          "label": "@",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "36",
+          "window": null,
+          "markers": [
+            "@"
+          ]
+        },
+        {
+          "id": "c10",
+          "path": [
+            "Week"
+          ],
+          "label": "V4^",
+          "visitNumber": "4",
+          "studyDay": null,
+          "studyWeek": "48 (or early termination)",
+          "window": null,
+          "markers": [
+            "^"
+          ]
+        }
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "kind": "assessment",
+          "label": "ICF/HIPAA",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "kind": "assessment",
+          "label": "Demographics/medical history",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r3",
+          "kind": "assessment",
+          "label": "Concomitant medications",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "kind": "assessment",
+          "label": "Adverse events",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "kind": "assessment",
+          "label": "Physical/neurological exams",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r6",
+          "kind": "assessment",
+          "label": "Vital signs",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r7",
+          "kind": "assessment",
+          "label": "MMSE",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r8",
+          "kind": "assessment",
+          "label": "CDR-SB",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r9",
+          "kind": "assessment",
+          "label": "Wechsler Logical Memory II",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r10",
+          "kind": "assessment",
+          "label": "Free and cued selective reminding task (FCSRT)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r11",
+          "kind": "assessment",
+          "label": "Assessment of inclusion/exclusion criteria",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r12",
+          "kind": "assessment",
+          "label": "Blood draw (safety laboratories)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r13",
+          "kind": "assessment",
+          "label": "Fasting blood draw (future biomarkers)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r14",
+          "kind": "assessment",
+          "label": "Blood draw (drug levels)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r15",
+          "kind": "assessment",
+          "label": "Urinalysis",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r16",
+          "kind": "assessment",
+          "label": "Electrocardiogram (EKG)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r17",
+          "kind": "assessment",
+          "label": "Blood draw (APOE genotyping)",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r18",
+          "kind": "assessment",
+          "label": "GDS",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r19",
+          "kind": "assessment",
+          "label": "Lumbar puncture",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X",
+              "markers": [
+                "#"
+              ]
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r20",
+          "kind": "assessment",
+          "label": "MRI",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r21",
+          "kind": "assessment",
+          "label": "ADAS-cog",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r22",
+          "kind": "assessment",
+          "label": "ADCS-ADL-MCI",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r23",
+          "kind": "assessment",
+          "label": "C-SSRS",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r24",
+          "kind": "assessment",
+          "label": "Dispense study drug",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X",
+              "markers": [
+                "π"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "r25",
+          "kind": "assessment",
+          "label": "Distribute study medication diaries",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r26",
+          "kind": "assessment",
+          "label": "Collect completed study medication diaries",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r27",
+          "kind": "assessment",
+          "label": "Assess treatment assignment blindness",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c10",
+              "value": "X"
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        {
+          "marker": "*",
+          "text": "60 days are allotted to complete the screening assessments",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "column",
+              "col": "c1"
+            },
+            {
+              "target": "column",
+              "col": "c2"
+            },
+            {
+              "target": "column",
+              "col": "c3"
+            }
+          ]
+        },
+        {
+          "marker": "#",
+          "text": "Must be performed within 30 days of platelet level and coagulation parameters (SC v1 blood panel). In the event of inability to procure adequate sample, may be performed under guided fluoroscopy, which may require additional visits.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r19",
+              "col": "c2"
+            }
+          ]
+        },
+        {
+          "marker": "@",
+          "text": "Telephone visits will assess safety and adverse events",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "column",
+              "col": "c5"
+            },
+            {
+              "target": "column",
+              "col": "c6"
+            },
+            {
+              "target": "column",
+              "col": "c9"
+            }
+          ]
+        },
+        {
+          "marker": "^",
+          "text": "In the event of early termination due to participant withdrawal of consent or removal by investigator, the end of study visit should be completed.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "column",
+              "col": "c10"
+            }
+          ]
+        },
+        {
+          "marker": "π",
+          "text": "Participants will be administered blinded study drug at the end of study visit as part of an extension study, until the go/no-go analyses are complete. If a go decision is achieved, participants will be enrolled in an extension study.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "cell",
+              "row": "r24",
+              "col": "c10"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "ambiguities": [
+        "Columns labeled '@' (weeks 2, 4, 36) represent telephone visits per footnote @; no separate visit number is printed for these columns.",
+        "Visit V4 is printed with a caret symbol (V4^) indicating footnote ^ applies to this column/visit."
+      ]
+    }
+  ],
+  "model": "claude-sonnet-5",
+  "extractedAt": "2026-09-03T02:12:52.876Z",
+  "sourceFile": "NCT03061474_neat_alzheimers_study_schedule_protocol.pdf"
+}

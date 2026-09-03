@@ -1,0 +1,1773 @@
+{
+  "tables": [
+    {
+      "id": "t1",
+      "title": "Table 2 - Schedule of Assessments",
+      "pages": [
+        34
+      ],
+      "columns": [
+        {
+          "id": "c1",
+          "path": [
+            "Scrn/Baseline"
+          ],
+          "label": "00",
+          "visitNumber": "00",
+          "studyDay": null,
+          "studyWeek": "0",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c2",
+          "path": [
+            "Active Treatment",
+            "Week 1"
+          ],
+          "label": "101",
+          "visitNumber": "101",
+          "studyDay": null,
+          "studyWeek": "1",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c3",
+          "path": [
+            "Active Treatment",
+            "Week 1"
+          ],
+          "label": "102",
+          "visitNumber": "102",
+          "studyDay": null,
+          "studyWeek": "1",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c4",
+          "path": [
+            "Active Treatment",
+            "Week 1"
+          ],
+          "label": "103",
+          "visitNumber": "103",
+          "studyDay": null,
+          "studyWeek": "1",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c5",
+          "path": [
+            "Active Treatment",
+            "Week 2"
+          ],
+          "label": "201",
+          "visitNumber": "201",
+          "studyDay": null,
+          "studyWeek": "2",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c6",
+          "path": [
+            "Active Treatment",
+            "Week 2"
+          ],
+          "label": "202",
+          "visitNumber": "202",
+          "studyDay": null,
+          "studyWeek": "2",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c7",
+          "path": [
+            "Active Treatment",
+            "Week 2"
+          ],
+          "label": "203",
+          "visitNumber": "203",
+          "studyDay": null,
+          "studyWeek": "2",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c8",
+          "path": [
+            "Active Treatment",
+            "Week 3"
+          ],
+          "label": "301",
+          "visitNumber": "301",
+          "studyDay": null,
+          "studyWeek": "3",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c9",
+          "path": [
+            "Active Treatment",
+            "Week 3"
+          ],
+          "label": "302",
+          "visitNumber": "302",
+          "studyDay": null,
+          "studyWeek": "3",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c10",
+          "path": [
+            "Active Treatment",
+            "Week 3"
+          ],
+          "label": "303",
+          "visitNumber": "303",
+          "studyDay": null,
+          "studyWeek": "3",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c11",
+          "path": [
+            "Active Treatment",
+            "Week 4"
+          ],
+          "label": "401",
+          "visitNumber": "401",
+          "studyDay": null,
+          "studyWeek": "4",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c12",
+          "path": [
+            "Active Treatment",
+            "Week 4"
+          ],
+          "label": "402",
+          "visitNumber": "402",
+          "studyDay": null,
+          "studyWeek": "4",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c13",
+          "path": [
+            "Active Treatment",
+            "Week 4"
+          ],
+          "label": "403",
+          "visitNumber": "403",
+          "studyDay": null,
+          "studyWeek": "4",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c14",
+          "path": [
+            "Active Treatment",
+            "Week 5"
+          ],
+          "label": "501",
+          "visitNumber": "501",
+          "studyDay": null,
+          "studyWeek": "5",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c15",
+          "path": [
+            "Active Treatment",
+            "Week 5"
+          ],
+          "label": "502",
+          "visitNumber": "502",
+          "studyDay": null,
+          "studyWeek": "5",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c16",
+          "path": [
+            "Active Treatment",
+            "Week 5"
+          ],
+          "label": "503",
+          "visitNumber": "503",
+          "studyDay": null,
+          "studyWeek": "5",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c17",
+          "path": [
+            "Active Treatment",
+            "Week 6"
+          ],
+          "label": "601",
+          "visitNumber": "601",
+          "studyDay": null,
+          "studyWeek": "6",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c18",
+          "path": [
+            "Active Treatment",
+            "Week 6"
+          ],
+          "label": "602",
+          "visitNumber": "602",
+          "studyDay": null,
+          "studyWeek": "6",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c19",
+          "path": [
+            "Active Treatment",
+            "Week 6"
+          ],
+          "label": "603",
+          "visitNumber": "603",
+          "studyDay": null,
+          "studyWeek": "6",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c20",
+          "path": [
+            "Active Treatment",
+            "Week 7"
+          ],
+          "label": "701",
+          "visitNumber": "701",
+          "studyDay": null,
+          "studyWeek": "7",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c21",
+          "path": [
+            "Active Treatment",
+            "Week 7"
+          ],
+          "label": "702",
+          "visitNumber": "702",
+          "studyDay": null,
+          "studyWeek": "7",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c22",
+          "path": [
+            "Active Treatment",
+            "Week 7"
+          ],
+          "label": "703",
+          "visitNumber": "703",
+          "studyDay": null,
+          "studyWeek": "7",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c23",
+          "path": [
+            "Active Treatment",
+            "Week 8"
+          ],
+          "label": "801",
+          "visitNumber": "801",
+          "studyDay": null,
+          "studyWeek": "8",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c24",
+          "path": [
+            "Active Treatment",
+            "Week 8"
+          ],
+          "label": "802",
+          "visitNumber": "802",
+          "studyDay": null,
+          "studyWeek": "8",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c25",
+          "path": [
+            "Active Treatment",
+            "Week 8"
+          ],
+          "label": "803",
+          "visitNumber": "803",
+          "studyDay": null,
+          "studyWeek": "8",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c26",
+          "path": [
+            "End of Med"
+          ],
+          "label": "501 or 803",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "5 or 8",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c27",
+          "path": [
+            "Follow-up"
+          ],
+          "label": "M1FU",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "12",
+          "window": null,
+          "markers": []
+        },
+        {
+          "id": "c28",
+          "path": [
+            "Follow-up"
+          ],
+          "label": "M3FU",
+          "visitNumber": null,
+          "studyDay": null,
+          "studyWeek": "20",
+          "window": null,
+          "markers": []
+        }
+      ],
+      "rows": [
+        {
+          "id": "r1",
+          "kind": "assessment",
+          "label": "Informed Consent",
+          "category": null,
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "kind": "category",
+          "label": "General Measures",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r3",
+          "kind": "assessment",
+          "label": "Inclusion/Exclusion",
+          "category": "General Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "kind": "assessment",
+          "label": "Locator Form",
+          "category": "General Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c17",
+              "value": "X"
+            },
+            {
+              "col": "c23",
+              "value": "X"
+            },
+            {
+              "col": "c25",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c27",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "kind": "assessment",
+          "label": "Demographics Form",
+          "category": "General Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r6",
+          "kind": "assessment",
+          "label": "Family Origin",
+          "category": "General Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r7",
+          "kind": "assessment",
+          "label": "Treatment Satisfaction Survey",
+          "category": "General Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c25",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r8",
+          "kind": "assessment",
+          "label": "End of Medication Form",
+          "category": "General Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c25",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r9",
+          "kind": "assessment",
+          "label": "End of Study Form",
+          "category": "General Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r10",
+          "kind": "category",
+          "label": "Safety and Medical Measures",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r11",
+          "kind": "assessment",
+          "label": "Medical and Psychiatric History",
+          "category": "Safety and Medical Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r12",
+          "kind": "assessment",
+          "label": "Physical Examination",
+          "category": "Safety and Medical Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r13",
+          "kind": "assessment",
+          "label": "Injection Site Examination",
+          "category": "Safety and Medical Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r14",
+          "kind": "assessment",
+          "label": "Electrocardiogram",
+          "category": "Safety and Medical Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r15",
+          "kind": "assessment",
+          "label": "Clinical Laboratory Tests",
+          "category": "Safety and Medical Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r16",
+          "kind": "assessment",
+          "label": "Buprenorphine and Naltrexone Blood Levels",
+          "category": "Safety and Medical Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r17",
+          "kind": "assessment",
+          "label": "Pregnancy and Birth Control Assessment",
+          "category": "Safety and Medical Measures",
+          "markers": [
+            "A"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X",
+              "markers": [
+                "A"
+              ]
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c27",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r18",
+          "kind": "assessment",
+          "label": "Vital Signs",
+          "category": "Safety and Medical Measures",
+          "markers": [
+            "B"
+          ],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "O"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "O"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "O"
+            },
+            {
+              "col": "c11",
+              "value": "O"
+            }
+          ]
+        },
+        {
+          "id": "r19",
+          "kind": "assessment",
+          "label": "Prior and Concomitant Medications",
+          "category": "Safety and Medical Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c15",
+              "value": "X"
+            },
+            {
+              "col": "c16",
+              "value": "X"
+            },
+            {
+              "col": "c17",
+              "value": "X"
+            },
+            {
+              "col": "c18",
+              "value": "X"
+            },
+            {
+              "col": "c19",
+              "value": "X"
+            },
+            {
+              "col": "c20",
+              "value": "X"
+            },
+            {
+              "col": "c21",
+              "value": "X"
+            },
+            {
+              "col": "c22",
+              "value": "X"
+            },
+            {
+              "col": "c23",
+              "value": "X"
+            },
+            {
+              "col": "c24",
+              "value": "X"
+            },
+            {
+              "col": "c25",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c27",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r20",
+          "kind": "assessment",
+          "label": "Adverse Events and Serious Adverse Events",
+          "category": "Safety and Medical Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c15",
+              "value": "X"
+            },
+            {
+              "col": "c16",
+              "value": "X"
+            },
+            {
+              "col": "c17",
+              "value": "X"
+            },
+            {
+              "col": "c18",
+              "value": "X"
+            },
+            {
+              "col": "c19",
+              "value": "X"
+            },
+            {
+              "col": "c20",
+              "value": "X"
+            },
+            {
+              "col": "c21",
+              "value": "X"
+            },
+            {
+              "col": "c22",
+              "value": "X"
+            },
+            {
+              "col": "c23",
+              "value": "X"
+            },
+            {
+              "col": "c24",
+              "value": "X"
+            },
+            {
+              "col": "c25",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c27",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r21",
+          "kind": "category",
+          "label": "Drug Use and Psychological Measures",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r22",
+          "kind": "assessment",
+          "label": "Timeline Follow-back",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c15",
+              "value": "X"
+            },
+            {
+              "col": "c16",
+              "value": "X"
+            },
+            {
+              "col": "c17",
+              "value": "X"
+            },
+            {
+              "col": "c18",
+              "value": "X"
+            },
+            {
+              "col": "c19",
+              "value": "X"
+            },
+            {
+              "col": "c20",
+              "value": "X"
+            },
+            {
+              "col": "c21",
+              "value": "X"
+            },
+            {
+              "col": "c22",
+              "value": "X"
+            },
+            {
+              "col": "c23",
+              "value": "X"
+            },
+            {
+              "col": "c24",
+              "value": "X"
+            },
+            {
+              "col": "c25",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c27",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r23",
+          "kind": "assessment",
+          "label": "Urine Drug Screen",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c15",
+              "value": "X"
+            },
+            {
+              "col": "c16",
+              "value": "X"
+            },
+            {
+              "col": "c17",
+              "value": "X"
+            },
+            {
+              "col": "c18",
+              "value": "X"
+            },
+            {
+              "col": "c19",
+              "value": "X"
+            },
+            {
+              "col": "c20",
+              "value": "X"
+            },
+            {
+              "col": "c21",
+              "value": "X"
+            },
+            {
+              "col": "c22",
+              "value": "X"
+            },
+            {
+              "col": "c23",
+              "value": "X"
+            },
+            {
+              "col": "c24",
+              "value": "X"
+            },
+            {
+              "col": "c25",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c27",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r24",
+          "kind": "assessment",
+          "label": "Visual Analog Craving Scale",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c17",
+              "value": "X"
+            },
+            {
+              "col": "c20",
+              "value": "X"
+            },
+            {
+              "col": "c23",
+              "value": "X"
+            },
+            {
+              "col": "c25",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c27",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r25",
+          "kind": "assessment",
+          "label": "Beck Depression Inventory",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c17",
+              "value": "X"
+            },
+            {
+              "col": "c20",
+              "value": "X"
+            },
+            {
+              "col": "c23",
+              "value": "X"
+            },
+            {
+              "col": "c25",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c27",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r26",
+          "kind": "assessment",
+          "label": "Treatment Effect Assessment",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c17",
+              "value": "X"
+            },
+            {
+              "col": "c23",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r27",
+          "kind": "assessment",
+          "label": "WHO Quality of Life BREF",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c27",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r28",
+          "kind": "assessment",
+          "label": "PRISM - Suicide and Homicide Screening",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c27",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r29",
+          "kind": "assessment",
+          "label": "Opioid Use Questionnaire",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r30",
+          "kind": "assessment",
+          "label": "DSM IV-TR Checklist",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r31",
+          "kind": "assessment",
+          "label": "Risk Assessment Battery",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r32",
+          "kind": "assessment",
+          "label": "Self-Help Assessment",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c27",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r33",
+          "kind": "assessment",
+          "label": "Addiction Severity Index Lite",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c27",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r34",
+          "kind": "assessment",
+          "label": "Fagerström Test for Nicotine Dependence",
+          "category": "Drug Use and Psychological Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            },
+            {
+              "col": "c28",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r35",
+          "kind": "category",
+          "label": "Compliance Measures",
+          "category": null,
+          "markers": [],
+          "cells": []
+        },
+        {
+          "id": "r36",
+          "kind": "assessment",
+          "label": "Dose Logs",
+          "category": "Compliance Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c1",
+              "value": "X"
+            },
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c3",
+              "value": "X"
+            },
+            {
+              "col": "c4",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c6",
+              "value": "X"
+            },
+            {
+              "col": "c7",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c9",
+              "value": "X"
+            },
+            {
+              "col": "c10",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c12",
+              "value": "X"
+            },
+            {
+              "col": "c13",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c15",
+              "value": "X"
+            },
+            {
+              "col": "c16",
+              "value": "X"
+            },
+            {
+              "col": "c17",
+              "value": "X"
+            },
+            {
+              "col": "c18",
+              "value": "X"
+            },
+            {
+              "col": "c19",
+              "value": "X"
+            },
+            {
+              "col": "c20",
+              "value": "X"
+            },
+            {
+              "col": "c21",
+              "value": "X"
+            },
+            {
+              "col": "c22",
+              "value": "X"
+            },
+            {
+              "col": "c23",
+              "value": "X"
+            },
+            {
+              "col": "c24",
+              "value": "X"
+            },
+            {
+              "col": "c25",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            }
+          ]
+        },
+        {
+          "id": "r37",
+          "kind": "assessment",
+          "label": "CBT Attendance Log",
+          "category": "Compliance Measures",
+          "markers": [],
+          "cells": [
+            {
+              "col": "c2",
+              "value": "X"
+            },
+            {
+              "col": "c5",
+              "value": "X"
+            },
+            {
+              "col": "c8",
+              "value": "X"
+            },
+            {
+              "col": "c11",
+              "value": "X"
+            },
+            {
+              "col": "c14",
+              "value": "X"
+            },
+            {
+              "col": "c17",
+              "value": "X"
+            },
+            {
+              "col": "c20",
+              "value": "X"
+            },
+            {
+              "col": "c23",
+              "value": "X"
+            },
+            {
+              "col": "c26",
+              "value": "X"
+            }
+          ]
+        }
+      ],
+      "footnotes": [
+        {
+          "marker": "A",
+          "text": "Collected according schedule of assessments, including PRIOR TO the naloxone challenge and the XR-NTX administrations.",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r17"
+            },
+            {
+              "target": "cell",
+              "row": "r17",
+              "col": "c1"
+            }
+          ]
+        },
+        {
+          "marker": "B",
+          "text": "Collected according to schedule of assessments, including BEFORE and AFTER administration of naloxone, first dose of oral naltrexone, XR-NTX, and first dose of BUP (or PLB).",
+          "continuedAcrossPages": false,
+          "appliesTo": [
+            {
+              "target": "row",
+              "row": "r18"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "O = Orthostatic vitals"
+      ],
+      "ambiguities": [
+        "The extracted text layer for page 34 has lost the original whitespace/column alignment used to visually align 'X' marks under specific visit columns. For rows where the printed X count is less than the full 28 columns (Locator Form, Treatment Satisfaction Survey, End of Medication Form, Physical Examination, Injection Site Examination, Electrocardiogram, Clinical Laboratory Tests, Buprenorphine and Naltrexone Blood Levels, Pregnancy and Birth Control Assessment, Vital Signs, Visual Analog Craving Scale, Beck Depression Inventory, Treatment Effect Assessment, WHO Quality of Life BREF, PRISM - Suicide and Homicide Screening, Risk Assessment Battery, Self-Help Assessment, Addiction Severity Index Lite, Fagerström Test for Nicotine Dependence, Dose Logs, CBT Attendance Log), the specific column each 'X' belongs to could not be verified from raw alignment and was inferred from footnote descriptions (section 8.1-8.2 narrative text) and typical visit-schedule logic (e.g., every-2-weeks, weekly, or end-of-phase patterns). These cell-to-column assignments should be verified against the original page image.",
+        "The row printed as 'A X Pregnancy and Birth Control Assessment X X X X' places the footnote marker 'A' immediately before the first 'X' at the start of the line, ahead of the row label itself; this is likely an artifact of text-layer reading order (superscript marker pulled to the front) rather than the marker belonging to a separate column. It was interpreted as marker A attached to the first data cell (column 00/c1).",
+        "The row printed as 'B Vital Signs O X X X X O X X X O O' was interpreted as footnote marker 'B' attached to the row label 'Vital Signs', with the sequence of O/X symbols mapped sequentially to the first 11 columns (c1-c11) based on the footnote's description of vitals collected around naloxone challenge, first oral naltrexone dose, XR-NTX, and first BUP/PLB dose (all early induction-period events). Exact column alignment for this row is uncertain.",
+        "The 'Study Week' values '0', '5 or 8', '12', '20' were mapped to the Scrn/Baseline, End of Med, and Follow-up (M1FU, M3FU) column groups respectively, while '1'-'8' were mapped to the Active Treatment week groups, based on positional order in the header text; exact alignment could not be visually confirmed.",
+        "Column 'c26' (label '501 or 803') is a distinct End-of-Medication milestone column separate from the regular Week 5 visit 501 (c14) and Week 8 visit 803 (c25) columns, as printed separately in the Study Visit header row; its exact intended relationship to c14/c25 is based on textual placement only."
+      ]
+    }
+  ],
+  "model": "claude-sonnet-5",
+  "extractedAt": "2026-09-03T02:14:00.818Z",
+  "sourceFile": "CTN0048_cocaine_use_reduction_buprenorphine.pdf"
+}

@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "extract": "tsx scripts/extract-batch.ts"
+    "extract": "tsx scripts/extract-batch.ts",
+    "locate": "tsx scripts/locate-only.ts",
+    "self-check": "tsx scripts/self-check.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.122.0",

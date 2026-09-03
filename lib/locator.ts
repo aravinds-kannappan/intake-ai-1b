@@ -3,9 +3,10 @@ import type { PageSignal, SoACandidate } from './soa-types';
 // Deterministic SoA locator. Input: plain text of every page (reading order).
 // Output: scored per-page signals and contiguous candidate page ranges.
 // No page numbers are hardcoded; everything is derived from the text.
+// Tuned to sponsor vocabulary variance, not to the five assignment PDFs.
 
 const TITLE_RE =
-  /(schedule\s+of\s+(events|activities|assessments?|measures|procedures|visits|blood\s+collections)|time\s+and\s+events\s+schedule|study\s+flow\s+chart|table\s+of\s+events|overview\s+of\s+study\s+assessments|study\s+procedures?\s+table)/i;
+  /(schedule\s+of\s+(events|activities|assessments?|measures|procedures|visits|evaluations|observations|blood\s+collections)|time\s+and\s+events(\s+schedule)?|study\s+flow\s*charts?|table\s+of\s+events|overview\s+of\s+study\s+(assessments|procedures|activities)|study\s+procedures?\s+(table|schedule)|assessment\s+schedule|visit\s+schedule|activities\s+by\s+visit|planned\s+assessments|study\s+calendar|time[\s-]?event\s+schedule|flow\s*chart\s+of\s+(assessments|activities|procedures)|schedule\s+of\s+assessments\s+and\s+procedures)/i;
 
 const CONTINUATION_RE = /\b(continued|concluded|cont['’]?d|\(cont)/i;
 
@@ -21,27 +22,41 @@ const HEADER_KEYWORDS = [
   /\bwashout\b/i,
   /\brandomi[sz]ation\b/i,
   /\bend\s+of\s+(treatment|trial|study)\b/i,
+  /\benrollment\b/i,
+  /\bpredose\b/i,
+  /\bcycle\s+\d+\b/i,
+  /\bweek\s+\d+\b/i,
 ];
 
-// Tokens that look like SoA cell content: X, (X), 3X, 1X, Xa, checkmarks, dots.
-const GRID_TOKEN_RE = /^\(?(?:[X✓✔●•]|[0-9]+\s?X|X[a-z]?|X\d)\)?$/;
+// Tokens that look like SoA cell content. Not just "X": sponsors also use
+// Y/N, checkmarks, frequencies (Q2W, BID), doses, and parenthesized marks.
+const GRID_TOKEN_RE =
+  /^\(?((?:[X✓✔√●•○]|[YN]|[0-9]+\s?[Xx]|[Xx][a-z0-9*†‡]?|Q\d+W|QD|BID|TID|PRN))\)?$/;
 
-// Lines that look like footnote definitions: "a - text", "* text", "Xa = text", "(b) text"
 const FOOTNOTE_LINE_RE =
-  /^\s*(\*{1,4}|†|‡|X?[a-z]|\([a-z]\)|[a-z]\d?)\s*[-–—=:.]\s+\S/;
+  /^\s*(\*{1,4}|†|‡|§|X?[a-z]|X?\d|\([a-z0-9]\)|[a-z]\d?)\s*[-–—=:.]\s+\S/;
 
-const TOC_LINE_RE = /\.{5,}\s*\d+\s*$/; // dotted leaders ending in a page number
+const TOC_LINE_RE = /\.{5,}\s*\d+\s*$/;
 
 function isHeadingLike(line: string): boolean {
   const t = line.trim();
   if (t.length === 0 || t.length > 110) return false;
   if (TOC_LINE_RE.test(t)) return false;
-  // Narrative references ("see Schedule of Events, Attachment...") are usually
-  // mid-sentence; headings put the phrase near the start of a short line.
   const m = t.match(TITLE_RE);
   if (!m) return false;
   const idx = m.index ?? 0;
-  return idx <= 45;
+  if (idx > 45) return false;
+  if (/\b(see|refer(?:ring)? to|described in|provided in|shown in|provides?|will be|depending upon)\b/i.test(t)) {
+    return false;
+  }
+  return true;
+}
+
+function isShortTabularLine(line: string): boolean {
+  const toks = line.trim().split(/\s+/).filter(Boolean);
+  if (toks.length < 8) return false;
+  const short = toks.filter((t) => t.length <= 8).length;
+  return short / toks.length >= 0.7;
 }
 
 export function scorePage(text: string, page: number): PageSignal {
@@ -71,10 +86,8 @@ export function scorePage(text: string, page: number): PageSignal {
     signals.push(`${headerHits} visit-header keywords`);
   }
 
-  // A "Study Day"/"VISIT"/"WEEK" line followed by a run of numbers is a strong
-  // signal of a schedule header row.
   const headerRowLine = lines.find((l) => {
-    if (!/\b(study\s+(day|week)|visit|week)\b/i.test(l)) return false;
+    if (!/\b(study\s+(day|week)|visit|week|cycle|day)\b/i.test(l)) return false;
     const nums = l.split(/\s+/).filter((w) => /^-?\d+\.?\d*\*?$/.test(w));
     return nums.length >= 3;
   });
@@ -91,18 +104,20 @@ export function scorePage(text: string, page: number): PageSignal {
   if (gridLines > 0) {
     const pts = Math.min(6, gridLines);
     score += pts;
-    signals.push(`${gridLines} grid-like rows (X marks)`);
+    signals.push(`${gridLines} grid-like rows`);
   }
 
-  // Line-agnostic grid signal: rotated/landscape pages come out of the text
-  // layer with scrambled line structure, but the X-mark tokens survive.
-  const gridTokCount = text
-    .split(/\s+/)
-    .filter((t) => GRID_TOKEN_RE.test(t)).length;
+  const gridTokCount = text.split(/\s+/).filter((t) => GRID_TOKEN_RE.test(t)).length;
   if (gridTokCount >= 6) {
     const pts = Math.min(5, 1 + Math.floor(gridTokCount / 8));
     score += pts;
     signals.push(`${gridTokCount} grid tokens page-wide`);
+  }
+
+  const tabularLines = lines.filter(isShortTabularLine).length;
+  if (tabularLines >= 4 && !looksLikeToc) {
+    score += Math.min(3, Math.floor(tabularLines / 4));
+    signals.push(`${tabularLines} dense tabular lines`);
   }
 
   const footnoteLines = lines.filter((l) => FOOTNOTE_LINE_RE.test(l)).length;
@@ -110,17 +125,25 @@ export function scorePage(text: string, page: number): PageSignal {
     score += 2;
     signals.push(`${footnoteLines} footnote-style lines`);
   }
-  if (/footnotes?\s+to\s+(the\s+)?(flow\s*chart|table|schedule)/i.test(text) || /notes\s+on\s+the\s+schedule/i.test(text)) {
+  if (
+    /footnotes?\s+to\s+(the\s+)?(flow\s*chart|table|schedule)/i.test(text) ||
+    /notes\s+on\s+the\s+schedule/i.test(text) ||
+    /notes?\s+(to|for)\s+(the\s+)?(table|schedule|soa)/i.test(text)
+  ) {
     score += 4;
     signals.push('explicit footnote block heading');
+  }
+
+  const charCount = text.replace(/\s+/g, '').length;
+  if (charCount < 40) {
+    signals.push('almost no text (possible scan)');
   }
 
   return { page, score, signals };
 }
 
 const SEED_THRESHOLD = 8;
-const EXTEND_THRESHOLD = 4;
-const MAX_CANDIDATE_PAGES = 10;
+const MAX_CANDIDATE_PAGES = 12;
 
 export function locateSoA(pageTexts: string[]): {
   pageSignals: PageSignal[];
@@ -128,18 +151,21 @@ export function locateSoA(pageTexts: string[]): {
 } {
   const pageSignals = pageTexts.map((t, i) => scorePage(t, i + 1));
 
+  const hasGrid = (s: PageSignal) =>
+    s.signals.some((x) => x.includes('grid-like') || x.includes('grid tokens'));
+
   const isSeed = (s: PageSignal) =>
     s.score >= SEED_THRESHOLD &&
-    (s.signals.some((x) => x.startsWith('title')) ||
-      s.signals.some((x) => x.includes('grid-like') || x.includes('grid tokens')));
+    (s.signals.some((x) => x.startsWith('title')) || hasGrid(s));
 
   const isExtension = (s: PageSignal) =>
-    s.score >= EXTEND_THRESHOLD ||
+    hasGrid(s) ||
     s.signals.some(
       (x) =>
         x.includes('continuation') ||
         x.includes('footnote-style') ||
-        x.includes('footnote block')
+        x.includes('footnote block') ||
+        x.startsWith('title')
     );
 
   const used = new Set<number>();
@@ -151,9 +177,6 @@ export function locateSoA(pageTexts: string[]): {
 
     let start = i;
     let end = i;
-    // extend backward through earlier pages of the same table (rotated
-    // continuation pages often score below the seed threshold) and through a
-    // title-only cover page
     while (
       start > 0 &&
       !used.has(pageSignals[start - 1].page) &&
@@ -163,7 +186,6 @@ export function locateSoA(pageTexts: string[]): {
     ) {
       start--;
     }
-    // extend forward through continuations, more grid pages, footnote spillover
     while (
       end + 1 < pageSignals.length &&
       end - start + 1 < MAX_CANDIDATE_PAGES &&
@@ -186,9 +208,7 @@ export function locateSoA(pageTexts: string[]): {
     candidates.push({
       id: `cand-${candidates.length + 1}`,
       pages,
-      score: pageSignals
-        .slice(start, end + 1)
-        .reduce((acc, p) => acc + p.score, 0),
+      score: pageSignals.slice(start, end + 1).reduce((acc, p) => acc + p.score, 0),
       titleGuess,
       signals: Array.from(
         new Set(pageSignals.slice(start, end + 1).flatMap((p) => p.signals))
@@ -198,4 +218,10 @@ export function locateSoA(pageTexts: string[]): {
 
   candidates.sort((a, b) => b.score - a.score);
   return { pageSignals, candidates };
+}
+
+export function textLooksScanned(pageTexts: string[]): boolean {
+  if (!pageTexts.length) return true;
+  const nonempty = pageTexts.filter((t) => t.replace(/\s+/g, '').length > 40);
+  return nonempty.length / pageTexts.length < 0.25;
 }
