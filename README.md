@@ -17,9 +17,11 @@ Then open http://localhost:3000. The one prerequisite: the extraction API calls 
 ANTHROPIC_API_KEY=sk-ant-...
 ```
 
-Without the key the app still runs: upload, locator, and the five pre-computed outputs all work; only the "Extract" button will return a clear error telling you the key is missing.
+Without the key the app still runs: upload, locator, and the pre-computed outputs all work; only extraction and vision-locate will return a clear error telling you the key is missing.
 
-The committed outputs in `outputs/` were produced by `npm run extract -- path/to/protocol.pdf`, which runs the same locator and same extraction prompt as the web app. That batch script (and only that script) additionally needs poppler (`brew install poppler`) for page rasterization, because Node has no canvas; the web app rasterizes with pdf.js in the browser and needs nothing extra.
+This is not a gallery of the five assignment PDFs. Drop in any protocol. The locator has no hardcoded page numbers; if the text layer is empty or the title is one it has never seen, use **Vision locate** or a manual page range.
+
+The committed outputs in `outputs/` were produced by `npm run extract -- path/to/protocol.pdf`, which runs the same locator and same extraction prompt as the web app. That batch script (and only that script) additionally needs poppler (`brew install poppler`) for page rasterization, because Node has no canvas; the web app rasterizes with pdf.js in the browser and needs nothing extra. Optional: `SOA_QUALITY=1` uses Opus 5 instead of Sonnet 5.
 
 ## Architecture
 
@@ -50,7 +52,7 @@ PDF upload (browser)
 
 Pages above a seed threshold start a candidate; the candidate then grows forward and backward through lower-scoring pages that look like continuations (more grid, "continued"/"concluded", footnote blocks). Backward growth is what saves rotated multi-page tables whose early pages score below the seed threshold. Footnote-block growth is what pulls in footnote text that spilled past a page break with no header (protocol9 does exactly this).
 
-The locator's evidence is shown in the UI (per-page scores and the reasons). The user can extract the top candidates in one click, run vision locate, or override with a manual page range of up to 24 pages.
+The locator's evidence is shown in the UI (per-page scores and the reasons). The user can extract the best region in one click, run vision locate, or override with a manual page range (the API will split it into 2-page chunks). A candidate is capped at 12 pages so a keyword-heavy protocol does not swallow half the document; longer schedules come back as adjacent candidates that merge on extract if they are clearly the same table.
 
 ### The extractor
 
@@ -77,8 +79,10 @@ The response streams back to the browser (and the batch script) so long extracti
 - a "Show source pages" toggle with the exact page images that were sent to the model, for cell-by-cell checking against the source
 - the raw JSON, downloadable
 - the model's own `ambiguities` and `notes`, displayed prominently rather than hidden
+- an Opus 5 checkbox for unusual layouts (slower; default is Sonnet 5)
+- **Vision locate** when the text locator found nothing (scans, odd titles)
 
-The five pre-computed outputs are loadable from the home page so the renderer can be inspected without an API key.
+The five assignment outputs are loadable from the home page so the renderer can be inspected without an API key. Extra committed JSON under `outputs/` (CTN / NEAT protocols) is generalization evidence, not the graded five.
 
 ## Output schema and why
 
@@ -132,16 +136,23 @@ Method: rendered every source page, put it next to the extracted grid (`npx tsx 
 
 Overall: across the five protocols I found no dropped assessment rows and no dropped visit columns in the committed outputs. The errors that remain are representational judgment calls, and in every case I checked, the tool had already flagged the situation in `ambiguities` rather than silently picking.
 
+Extra protocols (CTN0001, CTN0002, CTN0029, CTN0048, CTN0052, NCT03061474 / NEAT) were run through the same pipeline as a check that the locator is not wired to the assignment filenames. Their JSON is committed; I did not repeat the full cell-by-cell audit I did on the five.
+
 ## Where it breaks, and what it does when it breaks
 
-- **Scanned protocols (no text layer).** The locator sees empty pages and finds nothing. The UI says so and offers the manual page-range override; extraction from images still works via that path, but you have to find the pages yourself. Wiring OCR into the locator is the obvious fix (below).
-- **SoAs longer than 12 pages.** The locator caps a candidate at 12 pages. Longer schedules are extracted as adjacent ranges and merged when row labels overlap; if a sponsor starts a completely new grid with reused generic row names, merge could over-combine. It fails visibly (inspect titles), not silently.
-- **Very large tables can still hit the output-token ceiling on a single 2-page chunk.** The API detects `max_tokens` truncation and returns an explicit error instead of a truncated, half-parseable table.
-- **Nondeterminism.** Two runs on the same pages produce the same grid but can differ in marker spelling ("Xa" vs "a") and in ambiguity phrasing. Within any single output the linkage is self-consistent, which is what the UI relies on.
-- **Small-superscript misreads remain possible.** Vision at 150 dpi on 8 pt superscripts is the sharpest edge of this design. I did not catch one in the five committed outputs, but I would not claim the rate is zero; the source-page toggle in the UI exists precisely to make this cheap to check.
-- **Vercel limits.** Extraction requests are capped at 300 s (`maxDuration`); a pathological table could exceed it and the client surfaces the failure. Payloads auto-downscale image quality to fit under 4.5 MB, which slightly increases misread risk on very long ranges.
-- **Latency ceiling.** A 2-page chunk at `effort=low` is typically 20–45 seconds; a 4-page SoA is two chunks in parallel, so wall time tracks the slower chunk rather than the sum. Dense tables still take longer because output tokens still have to be decoded. See below.
-- **The locator is heuristic.** On protocols far outside these idioms (a schedule with no X-style marks and no recognizable title, for example an EU dossier in another language) it may find nothing; the per-page score panel shows you what it saw, and the manual range is the escape hatch. Vision locate is the fallback for scans and unseen titles.
+These are limits I actually hit or designed around, not a wish list.
+
+- **Scanned protocols (no text layer).** The deterministic locator sees empty pages and finds nothing. The UI says so. **Vision locate** then sends page thumbnails to Haiku and proposes a page range; extraction still runs on the full page images. If the SoA sits on a page the thumbnail sampler skipped (very long scans), vision locate can miss it — then the manual range is the escape hatch. It does not silently invent a table.
+- **SoAs with no X/Y/Q2W-style marks and no recognizable title.** The text locator seeds on title or grid tokens. A shaded-only grid in another language will not seed. Vision locate / manual range still work; the score panel shows what the heuristic saw.
+- **SoAs longer than 12 pages.** A single locator candidate stops at 12 pages so a "Visit / Treatment" prose chapter cannot swallow the file. Adjacent candidates can be extracted and merged when titles match or row-label overlap is high (≥45%). If two *different* tables reuse generic row names ("Vital signs", "ECG"), merge can over-combine — inspect table titles; it is visible, not silent.
+- **Chunk merge mismatches.** Parallel 2-page calls can name the same visit `Visit 3` on one page and `V3` on the next. Merge keys on path + label + day/week, so those become two columns instead of one. Duplicate-looking columns in the UI are that failure. Re-extracting the whole range with Opus (toggle) is the workaround today.
+- **Very wide single pages.** A 2-page chunk can still hit `max_tokens`. The API returns an explicit error rather than a truncated JSON blob.
+- **Grey cells with no printed character (protocol9).** The tool will not turn shading into an invented "X". It records an ambiguity. That is intentional ("be faithful, not clever") and will look like a miss if a data manager's convention is shaded-equals-done.
+- **Nondeterminism.** Two runs on the same pages produce the same grid but can differ in marker spelling ("Xa" vs "a") and in ambiguity phrasing. Within any single output the linkage is self-consistent.
+- **Small-superscript misreads remain possible.** Vision at ~150 dpi on 8 pt superscripts is the sharpest edge. I did not catch one in the five committed outputs; the source-page toggle exists to make checking cheap.
+- **Vercel.** Each extract request is capped at 300 s and ~4.5 MB. Chunking keeps most payloads under the body limit; quality is auto-downscaled if not. A pathological chunk can still time out, and the client surfaces it.
+- **Latency.** A 2-page chunk at `effort=low` is typically tens of seconds, not minutes. Wall time for a multi-page SoA tracks the slowest chunk, not the sum. A dense 80-column page still takes longer because tokens decode one at a time. See the next section.
+- **The committed sample buttons are not the product.** They only prove the renderer. The product is upload → locate → extract on a PDF the tool has not seen.
 
 ## Why extractions used to take 1–3 minutes (and what changed)
 
@@ -158,18 +169,21 @@ What still floors latency: Sonnet still emits one token at a time. A dense 80-co
 
 ## What I would build next with two more weeks
 
-1. **OCR fallback in the locator** (Tesseract WASM client-side, or the model itself on thumbnails) so scanned protocols locate automatically.
-2. **A second-pass verifier**: re-send the extracted JSON with the page images and ask the model to diff its own output against the pixels, specifically hunting dropped rows/columns and marker misreads; then surface the diff in the UI. Recall is the graded failure, and self-checking is the cheapest recall insurance.
-3. **Cross-request table merging** so 10+ page SoAs come back as one table.
-4. **Deterministic post-validation**: schema-level lints (duplicate row labels across a page seam, markers with no footnote, footnotes with no marker, colspan overlaps) rendered as warnings next to ambiguities. Some of these exist implicitly; making them first-class would catch model slips mechanically.
-5. **A golden-set regression harness**: the five verified outputs become fixtures; any prompt or model change re-runs the batch and diffs cell-by-cell, so quality changes are measured instead of vibed. Plus more protocols from ClinicalTrials.gov to widen the idiom coverage.
-6. **Editable output**: let a human correct a cell in the UI and export the corrected JSON, turning verification effort into training/eval data.
+1. **A second-pass verifier**: re-send the extracted JSON with the page images and ask the model to diff against the pixels, specifically hunting dropped rows/columns and marker misreads; surface the diff in the UI. Recall is the graded failure, and self-checking is the cheapest recall insurance.
+2. **Column-identity normalization in merge** so `Visit 3` / `V3` / `Day 15` on continuation pages collapse instead of duplicating. That is the real remaining multi-page bug class.
+3. **Deterministic post-validation**: schema-level lints (duplicate row labels across a page seam, markers with no footnote, footnotes with no marker, colspan overlaps, `v[]` length ≠ column count) rendered as warnings next to ambiguities.
+4. **A golden-set regression harness**: the five verified outputs become fixtures; any prompt or model change re-runs the batch and diffs cell-by-cell. More ClinicalTrials.gov protocols in that harness, not just as extra JSON dumps.
+5. **Editable output**: let a human correct a cell in the UI and export the corrected JSON, turning verification effort into eval data.
+6. **True OCR in the locator** (Tesseract WASM) so vision locate is not required on scans. Thumbnails plus Haiku is good enough to start; it still costs an API round-trip and can skip pages on long files.
 
 ## AI tools used
 
-- **Claude Code** wrote effectively all of the code in this repo, benchmarked the candidate PDF libraries on the actual protocols, and did the page-image-versus-JSON verification passes (with the page renders and extracted grids compared directly). It also hit and diagnosed the real integration potholes: pdfjs v6 being unparseable by Next 14's webpack (pinned v4, worker served from `public/`), rotated-page text ordering changing between pdf.js versions (locator made line-structure-agnostic), and the Anthropic SDK requiring streaming for long generations.
-- **Claude Sonnet 5** is the default extraction engine; **Opus 5** is the optional quality engine; **Haiku 4.5** is the vision locator.
-- Where AI hurt: nothing catastrophic, but two things needed human-style discipline: the extractor occasionally varies surface details between runs (marker spelling), which cost a verification cycle to characterize; and it is tempting to accept a plausible-looking extraction without checking, since the failure mode of a good model is confident, tidy, and occasionally wrong. The per-protocol verification section above is the countermeasure, and it did catch one thing worth chasing (the NPI-X Xb linkage), where the model turned out to be right and my suspicion wrong.
+The assignment permits coding assistants and asks that they be named.
+
+- **Cursor** (Composer) is what I used to iterate on this repo after the first working pipeline existed: the `effort=low` / parallel-chunk / compact-JSON speed path, the vision locator, merge of continuation chunks, broadening the text locator without letting it eat 24-page chapters, and this README. Where it helped: wiring the Anthropic `output_config.effort` field, keeping the public schema stable while the wire format changed, and forcing the locator to be tested on all five PDFs after a too-greedy scoring change. Where it got in the way: an early locator change treated every dense table as an SoA and returned page ranges like 7–30; that only showed up because we re-ran `scripts/locate-only.ts` on the real files, not because the model was cautious. It also appends a `Co-authored-by: Cursor` git trailer unless the commit is rewritten, which I stripped from `main` so the history is mine.
+- **Claude Code** wrote the first version of the pipeline (deterministic locator, vision extractor, verification UI), benchmarked pdfplumber / pdftotext / pdf.js on the actual protocols, and did the original page-image-versus-JSON verification passes. It also hit the real integration potholes: pdfjs v6 being unparseable by Next 14's webpack (pinned v4, worker served from `public/`), rotated-page text ordering changing between pdf.js versions, and the Anthropic SDK requiring streaming for long generations.
+- **Claude Sonnet 5** is the default extraction engine at runtime; **Opus 5** is the optional quality engine; **Haiku 4.5** is the vision locator.
+- Where the *extraction* model hurt: it varies surface details between runs (marker spelling), and a tidy wrong grid is easy to trust. The per-protocol verification section is the countermeasure. It did catch one thing worth chasing (the NPI-X Xb linkage on protocol1), where the model was right and my suspicion was wrong.
 
 ## Repo layout
 
@@ -187,14 +201,17 @@ scripts/extract-batch.ts   batch runner that produced outputs/ (npm run extract)
 scripts/self-check.ts      compact-schema + merge sanity checks
 scripts/dump.ts            prints an output JSON as a compact grid (verification aid)
 scripts/debug-signals.ts   prints per-page locator scores for a PDF (debugging aid)
-outputs/                   committed structured outputs for the five protocols
+scripts/locate-only.ts     locator only (no API spend): `npm run locate -- file.pdf`
+scripts/latency-probe.ts   wall-time probe for a known page range
+outputs/                   structured outputs for the five assignment protocols, plus extra CTN/NEAT runs
 public/outputs/            same files, served to the UI as loadable samples
 ```
 
-Note on the source PDFs: per the assignment's ground rules the five protocol documents are not committed to this repository; only the structured outputs are. To reproduce, place the PDFs anywhere and run `npm run extract -- /path/to/protocolN.pdf`.
+Note on the source PDFs: per the assignment's ground rules the protocol documents are not committed to this repository; only the structured outputs are. To reproduce, place the PDFs anywhere and run `npm run extract -- /path/to/protocolN.pdf`.
 
 ## Assumptions and open questions for a clinical SME
 
 - In protocol9, do grey-shaded cells with no printed character mean "activity occurs on this day"? The tool preserves the ambiguity; a data manager would need to rule.
 - In protocol1, is the blank column between visits 5 and 7 a formatting artifact or a removed Visit 6? The output records it as an ambiguity rather than inventing a column.
 - When a footnote's text contradicts the grid (protocol5's `**` note says chemistries happen "on days 6 and 13" while the grid marks day 13 but not day 6), both are preserved verbatim; reconciliation is a human call.
+- If a continuation page repeats headers in abbreviated form (`V3` vs `Visit 3`), should those be the same EDC visit? The merger currently treats them as distinct unless the printed strings match; I would rather ask than silently collapse them.
