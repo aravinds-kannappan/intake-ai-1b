@@ -122,7 +122,7 @@ export default function Home() {
           // Text-only extraction: no images.
           rendered = pages.map((p) => ({ page: p, dataUrl: '' }));
         }
-        let total = rendered.reduce((a, r) => a + r.dataUrl.length, 0);
+        const total = rendered.reduce((a, r) => a + r.dataUrl.length, 0);
         if (total > 3_800_000) rendered = await renderPages(pages, 0.45, 900);
 
         const imgs: Record<number, string> = { ...(parsed.pageDataUrls || {}) };

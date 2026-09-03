@@ -49,7 +49,6 @@ export function buildUserContent(
   const content: unknown[] = [];
   for (const p of pages) {
     const hasImage = !!p.imageBase64;
-    const hasText = !!p.text;
     content.push({
       type: 'text',
       text: `--- page ${p.page} ---`,
