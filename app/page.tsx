@@ -173,7 +173,12 @@ export default function Home() {
               const { done, value } = await reader.read();
               if (done) break;
               raw += decoder.decode(value, { stream: true });
-              const statuses = [...raw.matchAll(/\[\[STATUS: ([^\]]+)\]\]/g)].map((m) => m[1]);
+              const statuses: string[] = [];
+              const statusRe = /\[\[STATUS: ([^\]]+)\]\]/g;
+              let statusMatch: RegExpExecArray | null;
+              while ((statusMatch = statusRe.exec(raw))) {
+                statuses.push(statusMatch[1]);
+              }
               if (statuses.length) {
                 setProgress(`Page chunk ${i + 1}/${chunks.length}: ${statuses[statuses.length - 1]}`);
               }
