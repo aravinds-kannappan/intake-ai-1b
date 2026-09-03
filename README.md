@@ -1,8 +1,8 @@
 # SoA Extractor (Take-Home 1b, Intake AI)
 
-A tool that takes a clinical trial protocol PDF, finds the Schedule of Activities (whatever the sponsor decided to call it), and produces a faithful, structured, machine-readable representation of it: every row, every column, verbatim cell values, hierarchical headers on both axes, and footnotes linked to the cells they modify. A web UI lets you drop in any protocol and inspect the result against the source pages.
+A tool that takes a clinical trial protocol (PDF, Word, images, or text), finds the Schedule of Activities (whatever the sponsor decided to call it), and produces a faithful, structured, machine-readable representation of it: every row, every column, verbatim cell values, hierarchical headers on both axes, and footnotes linked to the cells they modify. A web UI lets you drop in any protocol and inspect the result against the source pages.
 
-Deployment: Vercel, auto-deploying from `main` (import this repo in Vercel and set `ANTHROPIC_API_KEY` in the project's environment variables; no other configuration is needed).
+Deployment: Vercel, auto-deploying from `main` (import this repo in Vercel and set `ANTHROPIC_API_KEY` in the project's environment variables; no other configuration is needed). Live: https://intake-ai-1b.vercel.app
 
 ## Running it
 
@@ -21,15 +21,15 @@ Without the key the app still runs: upload, locator, and the pre-computed output
 
 This is not a gallery of the five assignment PDFs. Drop in any protocol. The locator has no hardcoded page numbers; if the text layer is empty or the title is one it has never seen, use **Vision locate** or a manual page range.
 
-The committed outputs in `outputs/` were produced by `npm run extract -- path/to/protocol.pdf`, which runs the same locator and same extraction prompt as the web app. That batch script (and only that script) additionally needs poppler (`brew install poppler`) for page rasterization, because Node has no canvas; the web app rasterizes with pdf.js in the browser and needs nothing extra. Optional: `SOA_QUALITY=1` uses Opus 5 instead of Sonnet 5.
+The committed outputs in `outputs/` were produced by `npm run extract -- path/to/protocol.pdf`, which runs the same locator and same extraction prompt as the web app. That batch script (and only that script) additionally needs poppler (`brew install poppler`) for page rasterization, because Node has no canvas; the web app rasterizes with pdf.js in the browser and needs nothing extra. Optional: `SOA_QUALITY=1` uses Sonnet 5 instead of the default Haiku 4.5.
 
 ## Architecture
 
 The pipeline has three stages, split deliberately between deterministic code and a model:
 
 ```
-PDF upload (browser)
-  └─ pdf.js: per-page text layer + page rasterization (client side, no server deps)
+Document upload (browser): PDF / DOCX / images / text
+  └─ lib/ingest.ts → page texts (+ page images when available)
        └─ Locator (lib/locator.ts): deterministic scoring over page text
             └─ optional vision locate (/api/locate, Haiku) when text is missing
                or the title is one the keyword list has never seen
@@ -40,7 +40,7 @@ PDF upload (browser)
                       └─ JSON (lib/soa-types.ts schema) rendered as an interactive table
 ```
 
-Supports **PDF, DOCX, images (png/jpg/webp/gif), and text/HTML/CSV**. Non-PDF files are ingested in the browser (`lib/ingest.ts`) into the same page-text + optional page-image representation the locator/extractor already use.
+Supports **PDF, DOCX, images (png/jpg/webp/gif), and text/HTML/CSV**. Non-PDF files are ingested in the browser into the same page-text + optional page-image representation the locator/extractor already use.
 
 ### The locator
 
@@ -54,7 +54,7 @@ Supports **PDF, DOCX, images (png/jpg/webp/gif), and text/HTML/CSV**. Non-PDF fi
 
 Pages above a seed threshold start a candidate; the candidate then grows forward and backward through lower-scoring pages that look like continuations (more grid, "continued"/"concluded", footnote blocks). Backward growth is what saves rotated multi-page tables whose early pages score below the seed threshold. Footnote-block growth is what pulls in footnote text that spilled past a page break with no header (protocol9 does exactly this).
 
-The locator's evidence is shown in the UI (per-page scores and the reasons). The user can extract the best region in one click, run vision locate, or override with a manual page range (the API will split it into 2-page chunks). A candidate is capped at 12 pages so a keyword-heavy protocol does not swallow half the document; longer schedules come back as adjacent candidates that merge on extract if they are clearly the same table.
+The locator's evidence is shown in the UI (per-page scores and the reasons). The user can extract the best region in one click, run vision locate, or override with a manual page range (the API splits it into **1-page** parallel chunks). A candidate is capped at 12 pages so a keyword-heavy protocol does not swallow half the document; longer schedules come back as adjacent candidates that merge on extract if they are clearly the same table.
 
 ### The extractor
 
@@ -74,14 +74,14 @@ The response streams back to the browser (and the batch script) so long extracti
 
 ### The UI
 
-`app/page.tsx` (Next.js 14, App Router, Tailwind). Upload or drag a PDF, watch the locator's candidates appear with their evidence, extract any candidate (or a manual range), and get:
+`app/page.tsx` (Next.js 14, App Router, Tailwind). Upload or drag a protocol file (PDF / DOCX / images / text), watch the locator's candidates appear with their evidence, extract any candidate (or a manual range), and get:
 
 - the table rendered with its full header hierarchy (period row, visit labels, visit number / study day / study week / window rows), category rows, and colspans
 - every footnote marker as a clickable superscript; clicking a marker or a footnote highlights every cell, row, and column header that carries it
 - a "Show source pages" toggle with the exact page images that were sent to the model, for cell-by-cell checking against the source
 - the raw JSON, downloadable
 - the model's own `ambiguities` and `notes`, displayed prominently rather than hidden
-- an Opus 5 checkbox for unusual layouts (slower; default is Sonnet 5)
+- a **Higher quality (Sonnet)** checkbox for unusual layouts (slower; default is Haiku 4.5)
 - **Vision locate** when the text locator found nothing (scans, odd titles)
 
 The five assignment outputs are loadable from the home page so the renderer can be inspected without an API key. Extra committed JSON under `outputs/` (CTN / NEAT protocols) is generalization evidence, not the graded five.
@@ -147,14 +147,14 @@ These are limits I actually hit or designed around, not a wish list.
 - **Scanned protocols (no text layer).** The deterministic locator sees empty pages and finds nothing. The UI says so. **Vision locate** then sends page thumbnails to Haiku and proposes a page range; extraction still runs on the full page images. If the SoA sits on a page the thumbnail sampler skipped (very long scans), vision locate can miss it — then the manual range is the escape hatch. It does not silently invent a table.
 - **SoAs with no X/Y/Q2W-style marks and no recognizable title.** The text locator seeds on title or grid tokens. A shaded-only grid in another language will not seed. Vision locate / manual range still work; the score panel shows what the heuristic saw.
 - **SoAs longer than 12 pages.** A single locator candidate stops at 12 pages so a "Visit / Treatment" prose chapter cannot swallow the file. Adjacent candidates can be extracted and merged when titles match or row-label overlap is high (≥45%). If two *different* tables reuse generic row names ("Vital signs", "ECG"), merge can over-combine — inspect table titles; it is visible, not silent.
-- **Chunk merge mismatches.** Parallel 2-page calls can name the same visit `Visit 3` on one page and `V3` on the next. Merge keys on path + label + day/week, so those become two columns instead of one. Duplicate-looking columns in the UI are that failure. Re-extracting the whole range with Opus (toggle) is the workaround today.
-- **Very wide single pages.** A 2-page chunk can still hit `max_tokens`. The API returns an explicit error rather than a truncated JSON blob.
+- **Chunk merge mismatches.** Parallel 1-page calls can name the same visit `Visit 3` on one page and `V3` on the next. Merge keys on path + label + day/week, so those become two columns instead of one. Duplicate-looking columns in the UI are that failure. Re-extracting with the Sonnet quality toggle is the workaround today.
+- **Very wide single pages.** A single-page chunk can still hit `max_tokens`. The API returns an explicit error rather than a truncated JSON blob.
 - **Grey cells with no printed character (protocol9).** The tool will not turn shading into an invented "X". It records an ambiguity. That is intentional ("be faithful, not clever") and will look like a miss if a data manager's convention is shaded-equals-done.
 - **Nondeterminism.** Two runs on the same pages produce the same grid but can differ in marker spelling ("Xa" vs "a") and in ambiguity phrasing. Within any single output the linkage is self-consistent.
-- **Small-superscript misreads remain possible.** Vision at ~150 dpi on 8 pt superscripts is the sharpest edge. I did not catch one in the five committed outputs; the source-page toggle exists to make checking cheap.
+- **Small-superscript misreads remain possible.** Vision at ~1000 px / Haiku is the sharpest edge. Flip Sonnet quality if a superscript looks wrong; the source-page toggle exists to make checking cheap.
 - **Vercel.** Each extract request is capped at 300 s and ~4.5 MB. Chunking keeps most payloads under the body limit; quality is auto-downscaled if not. A pathological chunk can still time out, and the client surfaces it.
-- **Latency.** A 2-page chunk at `effort=low` is typically tens of seconds, not minutes. Wall time for a multi-page SoA tracks the slowest chunk, not the sum. A dense 80-column page still takes longer because tokens decode one at a time. See the next section.
-- **The committed sample buttons are not the product.** They only prove the renderer. The product is upload → locate → extract on a PDF the tool has not seen.
+- **Latency.** A 1-page Haiku chunk is typically tens of seconds. Wall time for a multi-page SoA tracks the slowest page, not the sum. A dense 80-column page still takes longer because tokens decode one at a time. See the next section.
+- **The committed sample buttons are not the product.** They only prove the renderer. The product is upload → locate → extract on a document the tool has not seen.
 
 ## Why extractions used to take 1–3 minutes (and what changed)
 
@@ -182,7 +182,7 @@ A typical 3-page SoA should land well under a minute on Haiku; dense wide tables
 
 The assignment permits coding assistants and asks that they be named.
 
-- **Cursor** (Composer) is what I used to iterate on this repo after the first working pipeline existed: the `effort=low` / parallel-chunk / compact-JSON speed path, the vision locator, merge of continuation chunks, broadening the text locator without letting it eat 24-page chapters, and this README. Where it helped: wiring the Anthropic `output_config.effort` field, keeping the public schema stable while the wire format changed, and forcing the locator to be tested on all five PDFs after a too-greedy scoring change. Where it got in the way: an early locator change treated every dense table as an SoA and returned page ranges like 7–30; that only showed up because we re-ran `scripts/locate-only.ts` on the real files, not because the model was cautious. It also appends a `Co-authored-by: Cursor` git trailer unless the commit is rewritten, which I stripped from `main` so the history is mine.
+- **Cursor** (Composer) is what I used to iterate on this repo after the first working pipeline existed: the Haiku default / 1-page parallel chunks / ultra-compact JSON speed path, multi-format ingest (DOCX/images/text), the vision locator, merge of continuation chunks, broadening the text locator without letting it eat 24-page chapters, and this README. Where it helped: keeping the public schema stable while the wire format changed, and forcing the locator to be tested on all five PDFs after a too-greedy scoring change. Where it got in the way: an early locator change treated every dense table as an SoA and returned page ranges like 7–30; that only showed up because we re-ran `scripts/locate-only.ts` on the real files. It also appends a `Co-authored-by: Cursor` git trailer unless the commit is rewritten, which I stripped from `main` so the history is mine.
 - **Claude Code** wrote the first version of the pipeline (deterministic locator, vision extractor, verification UI), benchmarked pdfplumber / pdftotext / pdf.js on the actual protocols, and did the original page-image-versus-JSON verification passes. It also hit the real integration potholes: pdfjs v6 being unparseable by Next 14's webpack (pinned v4, worker served from `public/`), rotated-page text ordering changing between pdf.js versions, and the Anthropic SDK requiring streaming for long generations.
 - **Claude Sonnet 5** is the optional quality engine; **Haiku 4.5** is the default extractor and the vision locator.
 - Where the *extraction* model hurt: it varies surface details between runs (marker spelling), and a tidy wrong grid is easy to trust. The per-protocol verification section is the countermeasure. It did catch one thing worth chasing (the NPI-X Xb linkage on protocol1), where the model was right and my suspicion was wrong.
